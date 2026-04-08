@@ -325,7 +325,6 @@
     .catalog-card-tag {
       display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.7rem;
       font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
-      background: rgba(0,244,255,0.1); color: #00f4ff; border: 1px solid rgba(0,244,255,0.15);
       margin-bottom: 0.75rem;
     }
     .catalog-card-prices {
@@ -346,6 +345,36 @@
     }
     .catalog-card:hover .catalog-card-cta {
       background: linear-gradient(135deg, #00f4ff, #00b8d4); color: #050510;
+    }
+    .catalog-card.hidden-card { display: none; }
+
+    /* SECTOR FILTER TABS */
+    .sector-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 2.5rem; }
+    .sector-tab {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 10px 20px; border-radius: 12px; font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; transition: all 0.3s ease;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.5);
+    }
+    .sector-tab:hover { background: rgba(255,255,255,0.08); color: #fff; }
+    .sector-tab.active { color: #050510; border-color: transparent; }
+
+    /* VALUE PROPS */
+    .value-prop-card {
+      text-align: center; padding: 2rem 1.5rem;
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px; transition: all 0.4s ease;
+    }
+    .value-prop-card:hover {
+      border-color: rgba(0,244,255,0.2); transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(0,244,255,0.08);
+    }
+    .value-prop-icon {
+      width: 56px; height: 56px; border-radius: 16px; margin: 0 auto 1rem;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, rgba(0,244,255,0.15), rgba(0,100,180,0.1));
+      color: #00f4ff;
     }
 
     /* CATALOG MODAL */
@@ -583,21 +612,36 @@
     </div>
   </section>
 
-  <!-- ====== CATÁLOGO DE SOLUCIONES (unified) ====== -->
+  <!-- ====== CATÁLOGO SECTORIAL DE SOLUCIONES ====== -->
   <section id="catalogo" class="relative z-10 py-24 px-6" data-section="catalogo">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16">
+      <div class="text-center mb-10">
         <span data-aos="fade-up" class="section-label">
           <i data-lucide="briefcase" class="w-3.5 h-3.5"></i>
-          Catálogo de Soluciones
+          Nichos de Éxito
         </span>
         <h2 data-aos="fade-up" data-aos-delay="100" class="font-outfit font-bold text-3xl md:text-5xl mt-4">
-          Soluciones que <span class="text-neon">impulsan resultados</span>
+          Soluciones para <span class="text-neon">tu tipo de negocio</span>
         </h2>
         <p data-aos="fade-up" data-aos-delay="200" class="text-gray-400 mt-4 max-w-2xl mx-auto">
-          Cada paquete incluye tecnología de punta, soporte dedicado y la garantía DigitalPro. Elige tu modelo de adquisición ideal.
+          No vendemos código. Vendemos la transformación de tu negocio. Encuentra tu sector y descubre lo que podemos hacer por ti.
         </p>
       </div>
+
+      <!-- Sector Filter Tabs -->
+      <div data-aos="fade-up" data-aos-delay="250" id="sector-tabs" class="sector-tabs">
+        <!-- Rendered by JS from config.json -->
+      </div>
+
+      <!-- Value Props: ¿Qué te llevas realmente? -->
+      <div data-aos="fade-up" data-aos-delay="280" class="mb-12">
+        <h3 class="text-center font-outfit font-bold text-xl mb-6 text-gray-300">¿Qué te llevas <span class="text-neon">realmente</span>?</h3>
+        <div id="value-props-grid" class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- Rendered by JS from config.json -->
+        </div>
+      </div>
+
+      <!-- Catalog Cards Grid -->
       <div id="catalog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Rendered by JS from config.json -->
       </div>
@@ -810,41 +854,107 @@
         `).join('');
       }
 
-      // --- CATALOG (unified projects + pricing) ---
+      // --- CATALOG SECTORS + VALUE PROPS + CARDS ---
       const catalogGrid = document.getElementById('catalog-grid');
+      const sectorTabsEl = document.getElementById('sector-tabs');
+      const valuePropsGrid = document.getElementById('value-props-grid');
+
+      // Render value props
+      if (CONFIG.catalog_value_props && valuePropsGrid) {
+        valuePropsGrid.innerHTML = CONFIG.catalog_value_props.map((vp, i) => `
+          <div class="value-prop-card" data-aos="zoom-in" data-aos-delay="${i * 80}">
+            <div class="value-prop-icon"><i data-lucide="${esc(vp.icon)}" class="w-7 h-7"></i></div>
+            <h4 class="font-outfit font-bold text-lg mb-2">${esc(vp.title)}</h4>
+            <p class="text-sm text-gray-400 leading-relaxed">${esc(vp.desc)}</p>
+          </div>
+        `).join('');
+      }
+
+      // Render sector tabs
+      const sectors = CONFIG.catalog_sectors || [];
+      if (sectorTabsEl && sectors.length) {
+        sectorTabsEl.innerHTML = `
+          <button class="sector-tab active" data-sector="todos" style="--tab-color: #00f4ff;">
+            <span>✨</span> Todos
+          </button>
+          ${sectors.map(s => `
+            <button class="sector-tab" data-sector="${esc(s.id)}" style="--tab-color: ${s.color};">
+              <span>${esc(s.emoji)}</span> ${esc(s.name)}
+            </button>
+          `).join('')}
+        `;
+        // Wire sector tab clicks
+        sectorTabsEl.querySelectorAll('.sector-tab').forEach(tab => {
+          tab.addEventListener('click', () => {
+            sectorTabsEl.querySelectorAll('.sector-tab').forEach(t => {
+              t.classList.remove('active');
+              t.style.background = '';
+              t.style.borderColor = '';
+              t.style.color = '';
+            });
+            tab.classList.add('active');
+            const color = tab.style.getPropertyValue('--tab-color');
+            tab.style.background = color;
+            tab.style.borderColor = 'transparent';
+            tab.style.color = '#050510';
+            const sector = tab.dataset.sector;
+            document.querySelectorAll('.catalog-card').forEach(card => {
+              if (sector === 'todos' || card.dataset.sector === sector) {
+                card.classList.remove('hidden-card');
+              } else {
+                card.classList.add('hidden-card');
+              }
+            });
+          });
+          // Apply active style to initial "Todos" tab
+          if (tab.dataset.sector === 'todos') {
+            const color = tab.style.getPropertyValue('--tab-color');
+            tab.style.background = color;
+            tab.style.color = '#050510';
+          }
+        });
+      }
+
+      // Build sector color map
+      const sectorColorMap = {};
+      sectors.forEach(s => { sectorColorMap[s.id] = s.color; });
+
+      // Render catalog cards
       if (CONFIG.catalog && catalogGrid) {
         const WA = (CONFIG.business && CONFIG.business.whatsapp) || '15125551234';
-        catalogGrid.innerHTML = CONFIG.catalog.map((item, i) => `
-          <div data-aos="zoom-in-up" data-aos-delay="${i * 120}" data-aos-duration="700"
-               class="catalog-card${item.featured ? ' featured' : ''}" data-catalog-id="${esc(item.id)}"
+        catalogGrid.innerHTML = CONFIG.catalog.map((item, i) => {
+          const sColor = sectorColorMap[item.sector] || '#00f4ff';
+          return `
+          <div data-aos="zoom-in-up" data-aos-delay="${i * 100}" data-aos-duration="700"
+               class="catalog-card${item.featured ? ' featured' : ''}" data-catalog-id="${esc(item.id)}" data-sector="${esc(item.sector || '')}"
                onclick="openCatalogModal('${esc(item.id)}')">
             <div style="overflow:hidden; border-radius: 16px 16px 0 0;">
               <img src="${esc(item.image)}" alt="${esc(item.name)}" loading="lazy" class="catalog-card-img" />
             </div>
             <div class="catalog-card-body">
-              <span class="catalog-card-tag">${esc(item.category)}</span>
+              <span class="catalog-card-tag" style="background: ${sColor}15; color: ${sColor}; border: 1px solid ${sColor}30;">${esc(item.category)}</span>
               <h3 class="font-outfit font-bold text-xl mb-1">${esc(item.name)}</h3>
               <p class="text-xs text-gray-500 font-semibold mb-2">${esc(item.tagline)}</p>
               <p class="text-sm text-gray-400 leading-relaxed">${esc(item.description_short)}</p>
               <div class="catalog-card-prices">
                 <div>
-                  <div class="price-label">Suscripción</div>
+                  <div class="price-label">${esc(item.subscription.label || 'Suscripción')}</div>
                   <span class="price-val">$${item.subscription.price}</span>
                   <span class="price-period">${esc(item.subscription.period)}</span>
                 </div>
                 <div>
-                  <div class="price-label">Compra Única</div>
+                  <div class="price-label">${esc(item.one_time.label || 'Compra Única')}</div>
                   <span class="price-val">$${item.one_time.price}</span>
                   <span class="price-period"> ${esc(item.currency)}</span>
                 </div>
               </div>
               <div class="catalog-card-cta">
                 <i data-lucide="eye" class="w-4 h-4"></i>
-                Configurar y Solicitar
+                Ver Detalles y Solicitar
               </div>
             </div>
           </div>
-        `).join('');
+        `}).join('');
       }
 
       // --- BOOKING OPTIONS ---
@@ -1049,7 +1159,7 @@
 
       content.innerHTML = `
         <img src="${esc(item.image)}" alt="${esc(item.name)}" class="modal-hero-img" />
-        <span class="catalog-card-tag">${esc(item.category)}</span>
+        <span class="catalog-card-tag" style="background: rgba(0,244,255,0.1); color: #00f4ff; border: 1px solid rgba(0,244,255,0.15);">${esc(item.category)}</span>
         <h2 class="font-outfit font-bold text-2xl md:text-3xl mt-2 mb-1">${esc(item.name)}</h2>
         <p class="text-neon font-semibold text-sm mb-4">${esc(item.tagline)}</p>
         <p class="text-gray-300 leading-relaxed text-sm mb-2">${esc(item.description_full)}</p>
@@ -1057,7 +1167,7 @@
         <details class="modal-includes" open>
           <summary>
             <i data-lucide="shield-check" class="w-4 h-4"></i>
-            Blindaje Incluido en este paquete
+            ¿Qué incluye este paquete?
             <i data-lucide="chevron-down" class="w-4 h-4 chevron-icon transition-transform ml-auto"></i>
           </summary>
           <ul class="mt-3 space-y-2">
@@ -1072,11 +1182,11 @@
 
         <h3 class="font-outfit font-bold text-lg mb-3 flex items-center gap-2">
           <i data-lucide="settings-2" class="w-5 h-5 text-neon"></i>
-          Elige tu modelo de adquisición
+          Elige cómo prefieres adquirirlo
         </h3>
         <div class="modal-pricing-cols">
           <div class="modal-pricing-box recommended">
-            <div class="box-label" style="background: rgba(0,244,255,0.15); color: #00f4ff;">Opción A · Suscripción</div>
+            <div class="box-label" style="background: rgba(0,244,255,0.15); color: #00f4ff;">${esc(item.subscription.label || 'Plan Emprendedor')} · Suscripción</div>
             <div class="flex items-baseline gap-1 mb-3">
               <span class="font-outfit font-bold text-3xl text-neon">$${item.subscription.price}</span>
               <span class="text-gray-500 text-sm">${esc(item.subscription.period)}</span>
@@ -1096,7 +1206,7 @@
             </a>
           </div>
           <div class="modal-pricing-box">
-            <div class="box-label" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6);">Opción B · Compra Única</div>
+            <div class="box-label" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6);">${esc(item.one_time.label || 'Plan Crecimiento')} · Compra Única</div>
             <div class="flex items-baseline gap-1 mb-3">
               <span class="font-outfit font-bold text-3xl text-white">$${item.one_time.price}</span>
               <span class="text-gray-500 text-sm">${esc(item.currency)}</span>
@@ -1514,10 +1624,17 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
             <div><label class="adm-label">Nombre</label><input class="admin-input" value="${aAttr(item.name)}" oninput="window._admCfg().catalog[${i}].name=this.value" /></div>
             <div><label class="adm-label">ID</label><input class="admin-input" value="${aAttr(item.id)}" oninput="window._admCfg().catalog[${i}].id=this.value" /></div>
-            <div><label class="adm-label">Categoría</label><input class="admin-input" value="${aAttr(item.category)}" oninput="window._admCfg().catalog[${i}].category=this.value" /></div>
+            <div><label class="adm-label">Sector</label>
+              <select class="admin-input" onchange="window._admCfg().catalog[${i}].sector=this.value">
+                ${(ADM_CONFIG.catalog_sectors||[]).map(s => `<option value="${aAttr(s.id)}" ${item.sector===s.id?'selected':''}>${aEsc(s.emoji+' '+s.name)}</option>`).join('')}
+              </select>
+            </div>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+            <div><label class="adm-label">Categoría</label><input class="admin-input" value="${aAttr(item.category)}" oninput="window._admCfg().catalog[${i}].category=this.value" /></div>
             <div><label class="adm-label">Tagline</label><input class="admin-input" value="${aAttr(item.tagline)}" oninput="window._admCfg().catalog[${i}].tagline=this.value" /></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-1 gap-3 mt-3">
             <div><label class="adm-label">URL Imagen</label><input class="admin-input" value="${aAttr(item.image)}" oninput="window._admCfg().catalog[${i}].image=this.value" /></div>
           </div>
           ${item.image ? `<img src="${aAttr(item.image)}" class="mt-3 rounded-lg w-full max-h-32 object-cover opacity-60" alt="preview"/>` : ''}
@@ -1525,16 +1642,18 @@
           <div class="mt-3"><label class="adm-label">Descripción completa (modal)</label><textarea class="admin-input" rows="4" oninput="window._admCfg().catalog[${i}].description_full=this.value">${aEsc(item.description_full)}</textarea></div>
           <div class="mt-3"><label class="adm-label">Incluye (uno por línea: Hosting, SSL, SEO...)</label><textarea class="admin-input" rows="3" oninput="window._admCfg().catalog[${i}].includes=this.value.split('\\n').filter(Boolean)">${(item.includes||[]).join('\n')}</textarea></div>
           <div class="mt-4 p-3 rounded-lg" style="background: rgba(0,244,255,0.03); border: 1px solid rgba(0,244,255,0.1);">
-            <p class="text-xs font-bold text-neon mb-3">💰 Opción A — Suscripción Mensual</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <p class="text-xs font-bold text-neon mb-3">💰 Suscripción Mensual</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div><label class="adm-label">Etiqueta plan</label><input class="admin-input" value="${aAttr(item.subscription?.label||'Plan Emprendedor')}" oninput="if(!window._admCfg().catalog[${i}].subscription)window._admCfg().catalog[${i}].subscription={};window._admCfg().catalog[${i}].subscription.label=this.value" /></div>
               <div><label class="adm-label">Precio mensual</label><input type="number" class="admin-input" value="${item.subscription?.price||0}" oninput="if(!window._admCfg().catalog[${i}].subscription)window._admCfg().catalog[${i}].subscription={};window._admCfg().catalog[${i}].subscription.price=Number(this.value)" /></div>
               <div><label class="adm-label">Periodo</label><input class="admin-input" value="${aAttr(item.subscription?.period||'/mes')}" oninput="window._admCfg().catalog[${i}].subscription.period=this.value" /></div>
             </div>
             <div class="mt-2"><label class="adm-label">Beneficios suscripción (uno por línea)</label><textarea class="admin-input" rows="3" oninput="window._admCfg().catalog[${i}].subscription.benefits=this.value.split('\\n').filter(Boolean)">${(item.subscription?.benefits||[]).join('\n')}</textarea></div>
           </div>
           <div class="mt-3 p-3 rounded-lg" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);">
-            <p class="text-xs font-bold text-gray-300 mb-3">🏷️ Opción B — Compra Única</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <p class="text-xs font-bold text-gray-300 mb-3">🏷️ Compra Única</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div><label class="adm-label">Etiqueta plan</label><input class="admin-input" value="${aAttr(item.one_time?.label||'Plan Crecimiento')}" oninput="if(!window._admCfg().catalog[${i}].one_time)window._admCfg().catalog[${i}].one_time={};window._admCfg().catalog[${i}].one_time.label=this.value" /></div>
               <div><label class="adm-label">Precio único</label><input type="number" class="admin-input" value="${item.one_time?.price||0}" oninput="if(!window._admCfg().catalog[${i}].one_time)window._admCfg().catalog[${i}].one_time={};window._admCfg().catalog[${i}].one_time.price=Number(this.value)" /></div>
               <div><label class="adm-label">Moneda</label><input class="admin-input" value="${aAttr(item.currency||'USD')}" oninput="window._admCfg().catalog[${i}].currency=this.value" /></div>
             </div>
@@ -1565,11 +1684,12 @@
       if (!ADM_CONFIG.catalog) ADM_CONFIG.catalog = [];
       ADM_CONFIG.catalog.push({
         id: 'nuevo-' + Date.now(), name: 'Nueva Solución', tagline: 'Descripción breve',
-        category: 'Categoría', image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop&q=80',
+        category: 'Categoría', sector: (ADM_CONFIG.catalog_sectors||[])[0]?.id || 'automotriz',
+        image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop&q=80',
         description_short: 'Descripción corta...', description_full: 'Descripción completa del paquete...',
         includes: ['Hosting Premium', 'Certificado SSL', 'Soporte 24/7'],
-        subscription: { price: 99, period: '/mes', benefits: ['Blindaje Continuo', 'Soporte dedicado'] },
-        one_time: { price: 999, benefits: ['Entrega completa', 'Soporte 60 días'] },
+        subscription: { label: 'Plan Emprendedor', price: 99, period: '/mes', benefits: ['Soporte continuo', 'Actualizaciones incluidas'] },
+        one_time: { label: 'Plan Crecimiento', price: 999, benefits: ['Entrega completa', 'Soporte 60 días'] },
         currency: 'USD', whatsapp_msg: 'Hola DigitalPro, me interesa Nueva Solución.',
         formspree_subject: 'Interesado en: Nueva Solución', featured: false
       });

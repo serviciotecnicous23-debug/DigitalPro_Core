@@ -47,120 +47,189 @@
       "whatsapp_msg": "Hola DigitalPro, vengo de la web y me interesa el servicio de Desarrollo Full-Stack."
     }
   ],
+  "catalog_sectors": [
+    {
+      "id": "automotriz",
+      "name": "Sector Automotriz",
+      "emoji": "🔧",
+      "subtitle": "Talleres, Mecánicas y Servicios Automotrices",
+      "color": "#f97316"
+    },
+    {
+      "id": "retail",
+      "name": "Microemprendimientos & Retail",
+      "emoji": "🛍️",
+      "subtitle": "Tiendas, Boutiques y Emprendedores Locales",
+      "color": "#a855f7"
+    },
+    {
+      "id": "profesionales",
+      "name": "Servicios Profesionales",
+      "emoji": "💼",
+      "subtitle": "Consultores, Abogados, Contadores y más",
+      "color": "#3b82f6"
+    }
+  ],
+  "catalog_value_props": [
+    { "icon": "dollar-sign", "title": "Más Ventas", "desc": "Tu negocio visible 24/7 para clientes que ya están buscando lo que ofreces." },
+    { "icon": "clock", "title": "Ahorro de Tiempo", "desc": "Automatiza citas, presupuestos y seguimiento. Tú atiende, la web trabaja." },
+    { "icon": "star", "title": "Reputación Digital", "desc": "Presencia profesional que genera confianza desde el primer clic." }
+  ],
   "catalog": [
     {
-      "id": "dashboard-ia",
-      "name": "Dashboard Predictivo IA",
-      "tagline": "Inteligencia de Datos en Tiempo Real",
-      "category": "Inteligencia Artificial",
-      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&q=80",
-      "description_short": "Panel analítico con modelos de predicción de ventas impulsado por IA.",
-      "description_full": "Transforma el caos de datos en decisiones rentables. Nuestro Dashboard Predictivo utiliza modelos de machine learning entrenados con tus métricas reales para anticipar tendencias, detectar oportunidades ocultas y blindar tu negocio contra pérdidas inesperadas. Visualiza KPIs en tiempo real con gráficos interactivos que tu equipo entenderá sin ser científicos de datos.",
-      "includes": ["Hosting Premium AWS", "Certificado SSL Enterprise", "SEO On-Page Avanzado", "Soporte Prioritario 24/7"],
-      "subscription": {
-        "price": 149,
-        "period": "/mes",
-        "benefits": ["Blindaje y Optimización Continua", "Actualizaciones de modelos IA mensuales", "Soporte dedicado 24/7", "Backups diarios automáticos", "Escalabilidad garantizada"]
-      },
-      "one_time": {
-        "price": 2499,
-        "benefits": ["Entrega completa del código fuente", "90 días de soporte post-entrega", "Documentación técnica completa", "Sesión de capacitación incluida"]
-      },
-      "currency": "USD",
-      "whatsapp_msg": "Hola DigitalPro, vengo de la web y me interesa el paquete *Dashboard Predictivo IA*. Quiero más detalles.",
-      "formspree_subject": "Interesado en: Dashboard Predictivo IA",
-      "featured": false
-    },
-    {
-      "id": "ecommerce-lujo",
-      "name": "Tienda de Lujo Online",
-      "tagline": "E-Commerce de Alta Conversión",
-      "category": "E-Commerce",
-      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&q=80",
-      "description_short": "Plataforma e-commerce premium con checkout en 1 clic y experiencia VIP.",
-      "description_full": "Tu tienda online no debería ser una más del montón. Diseñamos experiencias de compra que seducen, convierten y fidelizan. Checkout optimizado en 1 clic, catálogo inteligente con filtros avanzados, integración con pasarelas de pago globales y un diseño que refleja el nivel premium de tu marca. Cada pixel está pensado para maximizar conversiones.",
-      "includes": ["Hosting Premium CloudFlare", "Certificado SSL Premium", "SEO E-Commerce Avanzado", "Soporte Prioritario 24/7"],
-      "subscription": {
-        "price": 199,
-        "period": "/mes",
-        "benefits": ["Blindaje Anti-Fraude Continuo", "Optimización de conversión mensual", "Soporte e-commerce dedicado 24/7", "Actualizaciones de seguridad", "Monitoreo de uptime 99.9%"]
-      },
-      "one_time": {
-        "price": 3499,
-        "benefits": ["Código fuente y activos completos", "120 días de soporte incluido", "Migración de productos asistida", "Training de administración"]
-      },
-      "currency": "USD",
-      "whatsapp_msg": "Hola DigitalPro, vengo de la web y me interesa el paquete *Tienda de Lujo Online*. Quiero más detalles.",
-      "formspree_subject": "Interesado en: Tienda de Lujo Online",
-      "featured": true
-    },
-    {
-      "id": "app-gestion",
-      "name": "App de Gestión Empresarial",
-      "tagline": "Control Total desde tu Bolsillo",
-      "category": "Desarrollo Móvil",
-      "image": "https://images.unsplash.com/photo-1555421689-d68471e189f2?w=600&h=400&fit=crop&q=80",
-      "description_short": "App nativa iOS/Android con sincronización cloud y panel administrativo.",
-      "description_full": "Lleva el pulso de tu empresa donde vayas. App nativa de alto rendimiento con sincronización instantánea en la nube, notificaciones inteligentes, dashboard ejecutivo y módulos personalizables para inventario, personal, finanzas y clientes. Diseñada para escalar con tu negocio sin perder velocidad ni experiencia de usuario.",
-      "includes": ["Hosting Cloud Escalable", "Certificado SSL Mobile", "ASO (App Store Optimization)", "Soporte Prioritario 24/7"],
-      "subscription": {
-        "price": 249,
-        "period": "/mes",
-        "benefits": ["Evolución Continua de Features", "Actualizaciones iOS/Android garantizadas", "Soporte técnico dedicado 24/7", "Monitoreo de crashes en tiempo real", "Backups automáticos"]
-      },
-      "one_time": {
-        "price": 4999,
-        "benefits": ["Código fuente nativo completo", "Publicación en App Store y Google Play", "180 días de soporte incluido", "Documentación y API docs"]
-      },
-      "currency": "USD",
-      "whatsapp_msg": "Hola DigitalPro, vengo de la web y me interesa el paquete *App de Gestión Empresarial*. Quiero más detalles.",
-      "formspree_subject": "Interesado en: App de Gestión Empresarial",
-      "featured": false
-    },
-    {
-      "id": "landing-pro",
-      "name": "Landing Page Pro",
-      "tagline": "Máxima Conversión, Mínimo Tiempo",
-      "category": "Web Design",
-      "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop&q=80",
-      "description_short": "Diseño premium de alta conversión, optimizada para SEO y velocidad.",
-      "description_full": "Una landing page que no convierte es dinero tirado. Nuestro diseño combina psicología de ventas, copywriting persuasivo y tecnología de punta para crear páginas que capturan leads como imanes. Carga ultra-rápida (<1s), responsive perfecto, formularios inteligentes y analytics integrado para que midas cada clic que importa.",
-      "includes": ["Hosting Vercel/Netlify", "Certificado SSL Incluido", "SEO On-Page Completo", "Soporte 24/7"],
+      "id": "taller-digital-pro",
+      "name": "Tu Taller Abierto 24/7",
+      "tagline": "Citas, presupuestos y grúa desde el celular de tu cliente",
+      "sector": "automotriz",
+      "category": "Sector Automotriz",
+      "image": "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=600&h=400&fit=crop&q=80",
+      "description_short": "Tu taller recibe citas y solicitudes de grúa aunque estés debajo de un carro. Así de simple.",
+      "description_full": "Imagina que un cliente busca 'mecánico cerca de mí' a las 11pm y encuentra TU taller con un botón grande que dice 'Pide tu grúa aquí'. Eso es lo que construimos. Una página profesional con botones claros para agendar citas, pedir presupuestos y solicitar grúa — todo desde el celular. Tu teléfono suena con clientes nuevos, no con excusas. Interfaz rápida y fluida que carga en menos de 1 segundo. Tu página siempre en línea, sin caídas.",
+      "includes": ["Tu página siempre en línea, sin caídas", "Conexión segura para tus clientes (SSL)", "Apareces en Google cuando buscan mecánicos cerca", "Soporte técnico cuando lo necesites"],
       "subscription": {
         "price": 79,
         "period": "/mes",
-        "benefits": ["Optimización Continua de Conversión", "A/B Testing mensual", "Soporte y ajustes ilimitados", "Reportes de performance", "Actualizaciones de diseño"]
+        "label": "Plan Emprendedor",
+        "benefits": ["Mantenimiento y protección continua", "Te posicionamos en Google mes a mes", "Soporte directo por WhatsApp", "Actualizaciones de diseño incluidas", "Tu inversión: una fracción de lo que ganas con 1 cliente nuevo"]
       },
       "one_time": {
-        "price": 499,
-        "benefits": ["Entrega completa del proyecto", "Código limpio y documentado", "60 días de soporte incluido", "Deploy en tu hosting preferido"]
+        "price": 1200,
+        "label": "Plan Crecimiento",
+        "benefits": ["La web es 100% tuya para siempre", "90 días de soporte después de la entrega", "Te enseñamos a administrarla", "Incluye todo el diseño y contenido"]
       },
       "currency": "USD",
-      "whatsapp_msg": "Hola DigitalPro, vengo de la web y me interesa el paquete *Landing Page Pro*. Quiero más detalles.",
-      "formspree_subject": "Interesado en: Landing Page Pro",
+      "whatsapp_msg": "Hola DigitalPro, tengo un taller/mecánica y me interesa el paquete *Tu Taller Abierto 24/7*. Quiero más detalles.",
+      "formspree_subject": "Taller Automotriz interesado en: Tu Taller Abierto 24/7",
       "featured": false
     },
     {
-      "id": "automatizacion-starter",
-      "name": "Automatización IA Starter",
-      "tagline": "Tu Equipo Trabaja, la IA Ejecuta",
-      "category": "Automatización",
-      "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop&q=80",
-      "description_short": "3 flujos automatizados con IA integrada que trabajan por ti 24/7.",
-      "description_full": "Deja de perder horas en tareas repetitivas. Configuramos flujos inteligentes que conectan tus herramientas favoritas, procesan datos con IA y ejecutan acciones automáticas sin intervención humana. Email marketing, seguimiento de leads, facturación, reportes — todo funcionando mientras tú te enfocas en crecer.",
-      "includes": ["Infraestructura Cloud", "Monitoreo de Flujos", "Integraciones API", "Soporte Técnico 24/7"],
+      "id": "flota-gestion",
+      "name": "Control de Flota y Clientes",
+      "tagline": "Panel inteligente para talleres que manejan volumen",
+      "sector": "automotriz",
+      "category": "Sector Automotriz",
+      "image": "https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=600&h=400&fit=crop&q=80",
+      "description_short": "Sistema para talleres grandes: historial de vehículos, seguimiento de órdenes y facturación automática.",
+      "description_full": "Si tu taller maneja más de 20 carros por semana, necesitas dejar de apuntar en libretas. Nuestro sistema te da un panel donde ves todos los vehículos en proceso, el historial de cada cliente, y generas facturas con un clic. Tu equipo sabe exactamente qué hacer y tu cliente recibe actualizaciones automáticas. Interfaz rápida y fluida que tu equipo entenderá sin capacitación. Todo funciona desde el celular o la computadora del taller.",
+      "includes": ["Sistema en la nube, accede desde cualquier lugar", "Conexión segura empresarial", "Notificaciones automáticas a clientes", "Soporte prioritario 24/7"],
       "subscription": {
-        "price": 129,
+        "price": 149,
         "period": "/mes",
-        "benefits": ["Blindaje y Monitoreo Continuo", "Nuevos flujos cada trimestre", "Soporte prioritario 24/7", "Optimización de prompts IA", "Escalamiento automático"]
+        "label": "Plan Emprendedor",
+        "benefits": ["Evolución continua del sistema", "Nuevas funciones cada trimestre", "Soporte técnico dedicado", "Respaldos automáticos diarios", "Escala sin límites"]
       },
       "one_time": {
-        "price": 999,
-        "benefits": ["3 flujos completamente configurados", "Documentación de cada flujo", "60 días de soporte incluido", "Training de mantenimiento"]
+        "price": 3500,
+        "label": "Plan Crecimiento",
+        "benefits": ["Sistema completamente tuyo", "Código fuente incluido", "120 días de soporte", "Capacitación para tu equipo"]
       },
       "currency": "USD",
-      "whatsapp_msg": "Hola DigitalPro, vengo de la web y me interesa el paquete *Automatización IA Starter*. Quiero más detalles.",
-      "formspree_subject": "Interesado en: Automatización IA Starter",
+      "whatsapp_msg": "Hola DigitalPro, tengo un taller grande y me interesa el *Control de Flota y Clientes*. Quiero más detalles.",
+      "formspree_subject": "Taller interesado en: Control de Flota y Clientes",
+      "featured": false
+    },
+    {
+      "id": "tienda-barrio-mundo",
+      "name": "Del Barrio al Mundo",
+      "tagline": "Tu tienda online con catálogo estilo iPhone y checkout fácil",
+      "sector": "retail",
+      "category": "Microemprendimientos & Retail",
+      "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop&q=80",
+      "description_short": "Lleva tu tienda del barrio a todo el mundo. Catálogo bonito, pagos fáciles, envíos claros.",
+      "description_full": "Tu tienda merece verse tan bien como lo que vendes. Creamos una tienda online con fotos profesionales, catálogo organizado por categorías, carrito de compras intuitivo y pagos seguros con tarjeta o contra-entrega. Tus clientes compran desde el sofá y tú recibes el pedido en tu celular. Interfaz rápida y fluida que se ve increíble en cualquier pantalla. Tu tienda siempre en línea, sin caídas — porque cada minuto offline es una venta perdida.",
+      "includes": ["Tienda siempre en línea, ultra-rápida", "Pagos seguros con encriptación", "Apareces en Google Shopping", "Soporte técnico incluido"],
+      "subscription": {
+        "price": 99,
+        "period": "/mes",
+        "label": "Plan Emprendedor",
+        "benefits": ["Protección contra fraudes 24/7", "Optimizamos tus ventas cada mes", "Soporte e-commerce dedicado", "Actualizaciones de seguridad", "Añade productos ilimitados"]
+      },
+      "one_time": {
+        "price": 1800,
+        "label": "Plan Crecimiento",
+        "benefits": ["La tienda es 100% tuya", "Te enseñamos a cargar productos", "90 días de soporte incluido", "Migración de inventario asistida"]
+      },
+      "currency": "USD",
+      "whatsapp_msg": "Hola DigitalPro, tengo una tienda/emprendimiento y me interesa el paquete *Del Barrio al Mundo*. Quiero más detalles.",
+      "formspree_subject": "Emprendedor interesado en: Del Barrio al Mundo",
+      "featured": true
+    },
+    {
+      "id": "marca-redes-pro",
+      "name": "Marca + Redes Integradas",
+      "tagline": "Tu web conectada con Instagram, Facebook y WhatsApp Business",
+      "sector": "retail",
+      "category": "Microemprendimientos & Retail",
+      "image": "https://images.unsplash.com/photo-1607082349566-187342175e2f?w=600&h=400&fit=crop&q=80",
+      "description_short": "Landing page + catálogo visual + conexión directa con tus redes sociales. Todo en uno.",
+      "description_full": "Si ya vendes por Instagram, imagina que cada post lleve a una página hermosa donde tu cliente ve TODO tu catálogo, lee reseñas y te escribe por WhatsApp en un clic. No más 'mándame DM por precio'. Construimos la extensión perfecta de tus redes: una página que convierte seguidores en compradores. Interfaz rápida y fluida con galerías que cargan al instante. Tu marca se ve profesional y genera confianza desde el primer clic.",
+      "includes": ["Hosting ultra-rápido incluido", "Conexión segura SSL", "Integración con redes sociales", "Soporte cuando lo necesites"],
+      "subscription": {
+        "price": 59,
+        "period": "/mes",
+        "label": "Plan Emprendedor",
+        "benefits": ["Optimización mensual de contenido", "Reportes de visitas y clics", "Soporte ilimitado por WhatsApp", "Actualizaciones de diseño", "A/B testing para vender más"]
+      },
+      "one_time": {
+        "price": 800,
+        "label": "Plan Crecimiento",
+        "benefits": ["Entrega completa del proyecto", "60 días de soporte incluido", "Capacitación de administración", "Código limpio y documentado"]
+      },
+      "currency": "USD",
+      "whatsapp_msg": "Hola DigitalPro, tengo un emprendimiento y me interesa *Marca + Redes Integradas*. Quiero más detalles.",
+      "formspree_subject": "Emprendedor interesado en: Marca + Redes Integradas",
+      "featured": false
+    },
+    {
+      "id": "autoridad-digital",
+      "name": "Autoridad y Confianza Digital",
+      "tagline": "La web que hace que te elijan antes de conocerte",
+      "sector": "profesionales",
+      "category": "Servicios Profesionales",
+      "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop&q=80",
+      "description_short": "Página profesional que transmite experiencia, credenciales y confianza. Tu mejor carta de presentación.",
+      "description_full": "Cuando alguien busca un abogado, contador o consultor, lo primero que hace es googlearte. Si no tienes web o tu web parece de 2010, pierdes credibilidad al instante. Construimos una presencia digital que refleja tu nivel: diseño elegante, sección de credenciales, testimonios verificados, blog con artículos que te posicionan como experto y un formulario de contacto que filtra clientes serios. Interfaz rápida y fluida que se ve impecable en celular y computadora. Tu página siempre en línea, sin caídas.",
+      "includes": ["Hosting profesional incluido", "Certificado de seguridad SSL", "Posicionamiento local en Google", "Soporte técnico dedicado"],
+      "subscription": {
+        "price": 89,
+        "period": "/mes",
+        "label": "Plan Emprendedor",
+        "benefits": ["Optimización continua de reputación", "Contenido SEO mensual", "Soporte prioritario", "Actualizaciones de diseño", "Reportes de leads mensuales"]
+      },
+      "one_time": {
+        "price": 1500,
+        "label": "Plan Crecimiento",
+        "benefits": ["Web completamente tuya", "90 días de soporte post-entrega", "Sesión de estrategia digital", "Contenido inicial incluido"]
+      },
+      "currency": "USD",
+      "whatsapp_msg": "Hola DigitalPro, soy profesionista y me interesa el paquete *Autoridad y Confianza Digital*. Quiero más detalles.",
+      "formspree_subject": "Profesional interesado en: Autoridad y Confianza Digital",
+      "featured": false
+    },
+    {
+      "id": "sistema-operativo-medida",
+      "name": "Sistema Operativo a tu Medida",
+      "tagline": "Software personalizado que automatiza tu negocio completo",
+      "sector": "profesionales",
+      "category": "Servicios Profesionales",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&q=80",
+      "description_short": "CRM, facturación, agenda y reportes — todo conectado en un sistema hecho para TU forma de trabajar.",
+      "description_full": "Deja de adaptar tu negocio a un software genérico. Nosotros adaptamos el software a tu negocio. Sistema completo con gestión de clientes, facturación automática, calendario inteligente, reportes en tiempo real y app móvil para que lleves el control desde cualquier lugar. Cada módulo diseñado para cómo TÚ trabajas, no para cómo trabaja una empresa de Silicon Valley. Interfaz rápida y fluida que tu equipo dominará en días, no en meses.",
+      "includes": ["Infraestructura en la nube escalable", "Seguridad de nivel empresarial", "Integraciones con tus herramientas actuales", "Soporte técnico prioritario 24/7"],
+      "subscription": {
+        "price": 249,
+        "period": "/mes",
+        "label": "Plan Elite",
+        "benefits": ["Evolución continua del sistema", "Nuevos módulos cada trimestre", "Soporte VIP 24/7", "Respaldos automáticos diarios", "Escala sin límites de usuarios"]
+      },
+      "one_time": {
+        "price": 5000,
+        "label": "Plan Elite",
+        "benefits": ["Sistema completamente tuyo", "Código fuente y documentación", "180 días de soporte dedicado", "Capacitación completa para tu equipo"]
+      },
+      "currency": "USD",
+      "whatsapp_msg": "Hola DigitalPro, necesito un sistema a medida para mi empresa. Me interesa el *Sistema Operativo a tu Medida*.",
+      "formspree_subject": "Empresa interesada en: Sistema Operativo a tu Medida",
       "featured": false
     }
   ],
