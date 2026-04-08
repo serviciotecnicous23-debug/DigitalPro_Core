@@ -3,7 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DigitalPro | Soluciones Digitales que Escalan Negocios</title>
+  <title>DigitalPro | Web Design & AI Solutions in Austin, TX</title>
+
+  <!-- ===== SEO LOCAL (Austin, TX) ===== -->
+  <meta name="description" content="DigitalPro: agencia digital premium en Austin, TX. Diseño web, automatización IA, SaaS y auditoría digital. Web Design Austin | AI Solutions Texas." />
+  <meta name="keywords" content="web design austin, ai solutions texas, digital agency austin tx, saas development, ia automatizacion, fullstack developer austin, seo austin texas" />
+  <meta name="author" content="DigitalPro" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="DigitalPro | Soluciones Digitales que Escalan Negocios" />
+  <meta property="og:description" content="Agencia digital premium en Austin, TX. Automatización IA, SaaS, auditoría digital y desarrollo Full-Stack." />
+  <meta property="og:image" content="/icons/icon-512.png" />
+  <meta property="og:url" content="https://digitalpro.dev" />
+  <meta property="og:locale" content="es_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DigitalPro | Web Design & AI Solutions Austin TX" />
+  <meta name="twitter:description" content="Transformamos ideas en productos digitales de alto impacto. Austin, TX." />
+
+  <!-- Geo Tags (Austin, TX) -->
+  <meta name="geo.region" content="US-TX" />
+  <meta name="geo.placename" content="Austin" />
+  <meta name="geo.position" content="30.2672;-97.7431" />
+  <meta name="ICBM" content="30.2672, -97.7431" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#00f4ff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="DigitalPro" />
+  <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://digitalpro.dev/" />
 
   <!-- Google Fonts: Inter + Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -37,8 +73,33 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
+  <!-- JSON-LD Structured Data (Local Business) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "DigitalPro",
+    "description": "Agencia digital premium en Austin, TX. Diseño web, automatización IA, SaaS y auditoría digital.",
+    "url": "https://digitalpro.dev",
+    "telephone": "+15125551234",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Austin",
+      "addressRegion": "TX",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 30.2672,
+      "longitude": -97.7431
+    },
+    "areaServed": ["Austin", "Texas", "United States"],
+    "serviceType": ["Web Design", "AI Automation", "SaaS Development", "Digital Audit"]
+  }
+  </script>
+
   <style>
-    /* ===== 1. CYBER-LUXURY BASE ===== */
+    /* ===== CYBER-LUXURY BASE ===== */
     *, *::before, *::after { box-sizing: border-box; }
 
     body {
@@ -83,12 +144,11 @@
       box-shadow: 0 0 30px rgba(0, 244, 255, 0.1), inset 0 0 30px rgba(0, 244, 255, 0.03);
     }
 
-    /* Neon glow text */
     .neon-glow {
       text-shadow: 0 0 10px rgba(0,244,255,0.4), 0 0 40px rgba(0,244,255,0.15);
     }
 
-    /* ===== 2. PROJECT CARDS 3D HOVER ===== */
+    /* PROJECT CARDS 3D HOVER */
     .project-card {
       position: relative;
       border-radius: 16px;
@@ -110,9 +170,7 @@
 
     .project-card:hover {
       transform: translateY(-12px) rotateX(3deg) rotateY(-2deg) scale(1.02);
-      box-shadow:
-        0 25px 60px rgba(0, 244, 255, 0.15),
-        0 0 80px rgba(0, 244, 255, 0.08);
+      box-shadow: 0 25px 60px rgba(0, 244, 255, 0.15), 0 0 80px rgba(0, 244, 255, 0.08);
     }
 
     .project-card:hover::before {
@@ -120,147 +178,179 @@
     }
 
     .project-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
+      width: 100%; height: 220px; object-fit: cover;
       transition: transform 0.6s ease;
     }
 
-    .project-card:hover img {
-      transform: scale(1.08);
-    }
+    .project-card:hover img { transform: scale(1.08); }
 
     .project-overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(to top, rgba(5,5,16,0.95) 0%, rgba(5,5,16,0.3) 50%, transparent 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+      display: flex; flex-direction: column; justify-content: flex-end;
       padding: 1.5rem;
     }
 
-    /* ===== 3. BUTTONS ===== */
+    /* BUTTONS */
     .btn-neon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
       background: linear-gradient(135deg, #00f4ff, #00b8d4);
-      color: #050510;
-      border: none;
-      padding: 14px 32px;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
+      color: #050510; border: none; padding: 14px 32px; border-radius: 12px;
+      font-weight: 700; font-size: 1rem; cursor: pointer;
+      transition: all 0.3s ease; position: relative; overflow: hidden;
+      text-decoration: none;
     }
 
     .btn-neon:hover {
       box-shadow: 0 0 25px rgba(0,244,255,0.4), 0 0 60px rgba(0,244,255,0.15);
       transform: translateY(-2px);
     }
-
     .btn-neon:active { transform: translateY(0); }
 
     .btn-neon .spinner {
-      display: none;
-      width: 20px;
-      height: 20px;
-      border: 3px solid rgba(5,5,16,0.3);
-      border-top-color: #050510;
-      border-radius: 50%;
-      animation: spin 0.6s linear infinite;
+      display: none; width: 20px; height: 20px;
+      border: 3px solid rgba(5,5,16,0.3); border-top-color: #050510;
+      border-radius: 50%; animation: spin 0.6s linear infinite;
     }
-
     .btn-neon.loading .btn-text { display: none; }
     .btn-neon.loading .spinner { display: inline-block; }
+    .btn-neon.loading .btn-icon { display: none; }
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ===== 4. FORM PRO ===== */
-    .form-field {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
+    /* FORM PRO */
+    .form-field { position: relative; display: flex; align-items: center; }
 
     .form-field .icon-wrap {
-      position: absolute;
-      left: 14px;
-      color: rgba(0, 244, 255, 0.5);
-      pointer-events: none;
+      position: absolute; left: 14px;
+      color: rgba(0, 244, 255, 0.5); pointer-events: none;
       transition: color 0.3s ease;
     }
 
     .form-field input:focus ~ .icon-wrap,
-    .form-field textarea:focus ~ .icon-wrap {
-      color: #00f4ff;
-    }
+    .form-field textarea:focus ~ .icon-wrap { color: #00f4ff; }
 
     .form-input {
-      width: 100%;
-      padding: 14px 14px 14px 48px;
+      width: 100%; padding: 14px 14px 14px 48px;
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(8px);
-      border: 1px solid rgba(0, 244, 255, 0.15);
-      border-radius: 12px;
-      color: #fff;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-      outline: none;
+      border: 1px solid rgba(0, 244, 255, 0.15); border-radius: 12px;
+      color: #fff; font-family: 'Inter', sans-serif; font-size: 0.95rem;
+      transition: all 0.3s ease; outline: none;
     }
-
     .form-input::placeholder { color: rgba(255,255,255,0.35); }
-
     .form-input:focus {
       border-color: #00f4ff;
       box-shadow: 0 0 20px rgba(0,244,255,0.12);
       background: rgba(255, 255, 255, 0.08);
     }
 
-    /* ===== 5. SERVICES ===== */
+    /* SERVICES */
     .service-icon {
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 48px; height: 48px;
+      display: flex; align-items: center; justify-content: center;
       border-radius: 12px;
       background: linear-gradient(135deg, rgba(0,244,255,0.15), rgba(0,100,180,0.1));
-      color: #00f4ff;
-      margin-bottom: 1rem;
+      color: #00f4ff; margin-bottom: 1rem;
     }
 
-    /* ===== 6. NAVIGATION ===== */
+    /* NAVIGATION */
     .nav-glass {
       background: rgba(5, 5, 16, 0.7);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(0, 244, 255, 0.08);
     }
 
-    /* Section divider */
     .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 6px 16px;
-      border-radius: 999px;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 6px 16px; border-radius: 999px;
       background: rgba(0, 244, 255, 0.08);
       border: 1px solid rgba(0, 244, 255, 0.15);
-      color: #00f4ff;
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 1rem;
+      color: #00f4ff; font-size: 0.8rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;
+    }
+
+    /* PRICING CARDS */
+    .pricing-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 244, 255, 0.1);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .pricing-card:hover {
+      border-color: rgba(0,244,255,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,244,255,0.1);
+    }
+    .pricing-card.featured {
+      border-color: rgba(0,244,255,0.3);
+      background: rgba(0,244,255,0.06);
+    }
+    .pricing-card.featured::before {
+      content: 'MÁS POPULAR';
+      position: absolute; top: 12px; right: -30px;
+      background: linear-gradient(135deg, #00f4ff, #00b8d4);
+      color: #050510; font-size: 0.65rem; font-weight: 700;
+      padding: 4px 40px; transform: rotate(45deg);
+    }
+
+    /* QUALIFIER FORM */
+    .qualifier-step { display: none; }
+    .qualifier-step.active { display: block; }
+
+    .radio-option {
+      display: block; cursor: pointer;
+      padding: 12px 16px; border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      transition: all 0.3s ease;
+      margin-bottom: 8px;
+    }
+    .radio-option:hover { border-color: rgba(0,244,255,0.3); background: rgba(0,244,255,0.05); }
+    .radio-option input:checked + span { color: #00f4ff; }
+    .radio-option:has(input:checked) {
+      border-color: #00f4ff; background: rgba(0,244,255,0.08);
+      box-shadow: 0 0 15px rgba(0,244,255,0.1);
+    }
+
+    /* WHATSAPP FLOATING BTN */
+    .whatsapp-fab {
+      position: fixed; bottom: 24px; right: 24px; z-index: 999;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: #25D366; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      cursor: pointer; transition: all 0.3s ease;
+      text-decoration: none;
+      animation: fabPulse 2s ease-in-out infinite;
+    }
+    .whatsapp-fab:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 30px rgba(37,211,102,0.6);
+    }
+    @keyframes fabPulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+      50% { box-shadow: 0 4px 30px rgba(37,211,102,0.6), 0 0 0 10px rgba(37,211,102,0.1); }
+    }
+
+    .whatsapp-tooltip {
+      position: fixed; bottom: 92px; right: 24px; z-index: 998;
+      background: #fff; color: #333; padding: 10px 16px;
+      border-radius: 12px; border-radius: 12px 12px 4px 12px;
+      font-size: 0.85rem; font-weight: 500;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      max-width: 220px;
+      opacity: 0; transform: translateY(10px);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+    .whatsapp-tooltip.show {
+      opacity: 1; transform: translateY(0);
     }
 
     /* Scrollbar */
@@ -269,8 +359,18 @@
     ::-webkit-scrollbar-thumb { background: rgba(0,244,255,0.2); border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: rgba(0,244,255,0.4); }
 
-    /* Smooth scroll */
     html { scroll-behavior: smooth; }
+
+    /* Mobile nav */
+    .mobile-menu {
+      display: none;
+      position: fixed; inset: 0; z-index: 60;
+      background: rgba(5,5,16,0.95);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      align-items: center; justify-content: center; gap: 2rem;
+    }
+    .mobile-menu.open { display: flex; }
   </style>
 </head>
 <body class="font-inter text-white">
@@ -290,16 +390,31 @@
       <div class="hidden md:flex items-center gap-8">
         <a href="#servicios" class="text-sm text-gray-300 hover:text-neon transition-colors">Servicios</a>
         <a href="#proyectos" class="text-sm text-gray-300 hover:text-neon transition-colors">Proyectos</a>
-        <a href="#contacto" class="text-sm text-gray-300 hover:text-neon transition-colors">Contacto</a>
+        <a href="#precios" class="text-sm text-gray-300 hover:text-neon transition-colors">Precios</a>
+        <a href="#agendar" class="text-sm text-gray-300 hover:text-neon transition-colors">Agendar</a>
         <a href="#contacto" class="btn-neon text-sm !py-2 !px-5">
           <span class="btn-text">Empezar Proyecto</span>
         </a>
       </div>
+      <!-- Mobile burger -->
+      <button id="burger-btn" class="md:hidden text-white" aria-label="Menú">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
     </div>
   </nav>
 
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu">
+    <button id="close-menu" class="absolute top-6 right-6 text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
+    <a href="#servicios" class="text-xl font-semibold hover:text-neon transition-colors mobile-link">Servicios</a>
+    <a href="#proyectos" class="text-xl font-semibold hover:text-neon transition-colors mobile-link">Proyectos</a>
+    <a href="#precios" class="text-xl font-semibold hover:text-neon transition-colors mobile-link">Precios</a>
+    <a href="#agendar" class="text-xl font-semibold hover:text-neon transition-colors mobile-link">Agendar</a>
+    <a href="#contacto" class="btn-neon mobile-link">Empezar Proyecto</a>
+  </div>
+
   <!-- ====== HERO SECTION ====== -->
-  <section class="relative z-10 min-h-screen flex items-center justify-center px-6 pt-24">
+  <section class="relative z-10 min-h-screen flex items-center justify-center px-6 pt-24" data-section="hero">
     <div class="max-w-4xl mx-auto text-center">
       <div data-aos="fade-up" data-aos-duration="800">
         <span class="section-label">
@@ -318,9 +433,9 @@
         Automatización, SaaS, Auditoría IA y desarrollo Full-Stack para empresas que quieren dominar.
       </p>
       <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300" class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#contacto" class="btn-neon text-base">
-          <span class="btn-text">Iniciar Proyecto</span>
-          <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        <a href="#agendar" class="btn-neon text-base">
+          <span class="btn-text">Agendar Auditoría Gratis</span>
+          <i data-lucide="calendar" class="w-5 h-5"></i>
         </a>
         <a href="#proyectos" class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl border border-white/10 text-white/80 hover:border-neon/30 hover:text-neon transition-all font-semibold">
           Ver Portafolio
@@ -331,7 +446,7 @@
   </section>
 
   <!-- ====== SERVICES SECTION ====== -->
-  <section id="servicios" class="relative z-10 py-24 px-6">
+  <section id="servicios" class="relative z-10 py-24 px-6" data-section="servicios">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16">
         <span data-aos="fade-up" class="section-label">
@@ -343,35 +458,23 @@
         </h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Service 1 -->
-        <div data-aos="zoom-in" data-aos-delay="0" data-aos-duration="600" class="glass p-6">
-          <div class="service-icon">
-            <i data-lucide="bot" class="w-6 h-6"></i>
-          </div>
+        <div data-aos="zoom-in" data-aos-delay="0" data-aos-duration="600" class="glass p-6" data-service="automatizacion-ia">
+          <div class="service-icon"><i data-lucide="bot" class="w-6 h-6"></i></div>
           <h3 class="font-outfit font-bold text-lg mb-2">Automatización IA</h3>
           <p class="text-sm text-gray-400 leading-relaxed">Flujos inteligentes que eliminan tareas repetitivas y escalan tu operación 24/7.</p>
         </div>
-        <!-- Service 2 -->
-        <div data-aos="zoom-in" data-aos-delay="100" data-aos-duration="600" class="glass p-6">
-          <div class="service-icon">
-            <i data-lucide="cloud" class="w-6 h-6"></i>
-          </div>
+        <div data-aos="zoom-in" data-aos-delay="100" data-aos-duration="600" class="glass p-6" data-service="plataformas-saas">
+          <div class="service-icon"><i data-lucide="cloud" class="w-6 h-6"></i></div>
           <h3 class="font-outfit font-bold text-lg mb-2">Plataformas SaaS</h3>
           <p class="text-sm text-gray-400 leading-relaxed">Diseñamos y construimos productos SaaS rentables desde cero hasta el lanzamiento.</p>
         </div>
-        <!-- Service 3 -->
-        <div data-aos="zoom-in" data-aos-delay="200" data-aos-duration="600" class="glass p-6">
-          <div class="service-icon">
-            <i data-lucide="search" class="w-6 h-6"></i>
-          </div>
+        <div data-aos="zoom-in" data-aos-delay="200" data-aos-duration="600" class="glass p-6" data-service="auditoria-digital">
+          <div class="service-icon"><i data-lucide="search" class="w-6 h-6"></i></div>
           <h3 class="font-outfit font-bold text-lg mb-2">Auditoría Digital</h3>
           <p class="text-sm text-gray-400 leading-relaxed">Análisis profundo de tu stack tecnológico con recomendaciones accionables.</p>
         </div>
-        <!-- Service 4 -->
-        <div data-aos="zoom-in" data-aos-delay="300" data-aos-duration="600" class="glass p-6">
-          <div class="service-icon">
-            <i data-lucide="code-2" class="w-6 h-6"></i>
-          </div>
+        <div data-aos="zoom-in" data-aos-delay="300" data-aos-duration="600" class="glass p-6" data-service="fullstack-dev">
+          <div class="service-icon"><i data-lucide="code-2" class="w-6 h-6"></i></div>
           <h3 class="font-outfit font-bold text-lg mb-2">Full-Stack Dev</h3>
           <p class="text-sm text-gray-400 leading-relaxed">Desarrollo web y móvil de alta performance con tecnologías modernas.</p>
         </div>
@@ -380,7 +483,7 @@
   </section>
 
   <!-- ====== PROJECTS GALLERY (3D HOVER) ====== -->
-  <section id="proyectos" class="relative z-10 py-24 px-6">
+  <section id="proyectos" class="relative z-10 py-24 px-6" data-section="proyectos">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16">
         <span data-aos="fade-up" class="section-label">
@@ -392,34 +495,196 @@
         </h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Project 1: AI Dashboard -->
         <div data-aos="zoom-in-up" data-aos-delay="0" data-aos-duration="700" class="project-card glass overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&q=80"
-               alt="Dashboard de IA" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&q=80" alt="Dashboard de IA" loading="lazy" />
           <div class="project-overlay">
             <span class="text-neon text-xs font-semibold uppercase tracking-widest mb-1">Inteligencia Artificial</span>
             <h3 class="font-outfit font-bold text-xl">Dashboard Predictivo IA</h3>
-            <p class="text-sm text-gray-400 mt-1">Panel analítico en tiempo real con modelos de predicción de ventas y comportamiento de usuario.</p>
+            <p class="text-sm text-gray-400 mt-1">Panel analítico en tiempo real con modelos de predicción de ventas.</p>
           </div>
         </div>
-        <!-- Project 2: E-commerce -->
         <div data-aos="zoom-in-up" data-aos-delay="150" data-aos-duration="700" class="project-card glass overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&q=80"
-               alt="E-commerce de Lujo" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&q=80" alt="E-commerce de Lujo" loading="lazy" />
           <div class="project-overlay">
             <span class="text-neon text-xs font-semibold uppercase tracking-widest mb-1">E-Commerce</span>
             <h3 class="font-outfit font-bold text-xl">Tienda de Lujo Online</h3>
-            <p class="text-sm text-gray-400 mt-1">Plataforma e-commerce premium con experiencia de compra inmersiva y checkout en 1 clic.</p>
+            <p class="text-sm text-gray-400 mt-1">Plataforma e-commerce premium con checkout en 1 clic.</p>
           </div>
         </div>
-        <!-- Project 3: Mobile App -->
         <div data-aos="zoom-in-up" data-aos-delay="300" data-aos-duration="700" class="project-card glass overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1555421689-d68471e189f2?w=600&h=400&fit=crop&q=80"
-               alt="App Móvil" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1555421689-d68471e189f2?w=600&h=400&fit=crop&q=80" alt="App Móvil" loading="lazy" />
           <div class="project-overlay">
             <span class="text-neon text-xs font-semibold uppercase tracking-widest mb-1">Desarrollo Móvil</span>
             <h3 class="font-outfit font-bold text-xl">App de Gestión Empresarial</h3>
-            <p class="text-sm text-gray-400 mt-1">Aplicación nativa para iOS y Android con sincronización en la nube y notificaciones inteligentes.</p>
+            <p class="text-sm text-gray-400 mt-1">App nativa iOS/Android con sincronización en la nube.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PRICING + STRIPE/PAYPAL ====== -->
+  <section id="precios" class="relative z-10 py-24 px-6" data-section="precios">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <span data-aos="fade-up" class="section-label">
+          <i data-lucide="credit-card" class="w-3.5 h-3.5"></i>
+          Pago Rápido
+        </span>
+        <h2 data-aos="fade-up" data-aos-delay="100" class="font-outfit font-bold text-3xl md:text-5xl mt-4">
+          Servicios <span class="text-neon">Estandarizados</span>
+        </h2>
+        <p data-aos="fade-up" data-aos-delay="200" class="text-gray-400 mt-4 max-w-lg mx-auto">
+          Contrata y paga al instante. Sin llamadas, sin esperas.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="pricing-grid">
+        <!-- Card 1 -->
+        <div data-aos="zoom-in" data-aos-delay="0" class="pricing-card text-center">
+          <div class="w-12 h-12 rounded-xl bg-neon/10 flex items-center justify-center mx-auto mb-4">
+            <i data-lucide="scan-search" class="w-6 h-6 text-neon"></i>
+          </div>
+          <h3 class="font-outfit font-bold text-xl mb-1">Auditoría Web Express</h3>
+          <p class="text-gray-400 text-sm mb-4">Análisis completo con reporte de mejoras en 48h.</p>
+          <div class="mb-6">
+            <span class="text-4xl font-outfit font-bold text-neon">$99</span>
+            <span class="text-gray-500 text-sm"> USD</span>
+          </div>
+          <ul class="text-left text-sm text-gray-400 space-y-2 mb-6">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Análisis SEO completo</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Reporte de performance</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Recomendaciones accionables</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Entrega en 48 horas</li>
+          </ul>
+          <a href="https://buy.stripe.com/test_placeholder_audit99" target="_blank" rel="noopener"
+             class="btn-neon w-full text-sm">
+            <i data-lucide="zap" class="w-4 h-4"></i>
+            <span class="btn-text">Comprar Ahora</span>
+          </a>
+        </div>
+        <!-- Card 2 (Featured) -->
+        <div data-aos="zoom-in" data-aos-delay="100" class="pricing-card featured text-center">
+          <div class="w-12 h-12 rounded-xl bg-neon/10 flex items-center justify-center mx-auto mb-4">
+            <i data-lucide="layout" class="w-6 h-6 text-neon"></i>
+          </div>
+          <h3 class="font-outfit font-bold text-xl mb-1">Landing Page Pro</h3>
+          <p class="text-gray-400 text-sm mb-4">Diseño premium, alta conversión, optimizada para SEO.</p>
+          <div class="mb-6">
+            <span class="text-4xl font-outfit font-bold text-neon">$499</span>
+            <span class="text-gray-500 text-sm"> USD</span>
+          </div>
+          <ul class="text-left text-sm text-gray-400 space-y-2 mb-6">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Diseño custom responsivo</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> SEO on-page configurado</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Formulario de captación</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Analytics integrado</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Deploy en Vercel/Netlify</li>
+          </ul>
+          <a href="https://buy.stripe.com/test_placeholder_landing499" target="_blank" rel="noopener"
+             class="btn-neon w-full text-sm">
+            <i data-lucide="zap" class="w-4 h-4"></i>
+            <span class="btn-text">Comprar Ahora</span>
+          </a>
+        </div>
+        <!-- Card 3 -->
+        <div data-aos="zoom-in" data-aos-delay="200" class="pricing-card text-center">
+          <div class="w-12 h-12 rounded-xl bg-neon/10 flex items-center justify-center mx-auto mb-4">
+            <i data-lucide="bot" class="w-6 h-6 text-neon"></i>
+          </div>
+          <h3 class="font-outfit font-bold text-xl mb-1">Automatización Starter</h3>
+          <p class="text-gray-400 text-sm mb-4">3 flujos automatizados con IA integrada para tu negocio.</p>
+          <div class="mb-6">
+            <span class="text-4xl font-outfit font-bold text-neon">$299</span>
+            <span class="text-gray-500 text-sm"> USD</span>
+          </div>
+          <ul class="text-left text-sm text-gray-400 space-y-2 mb-6">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> 3 flujos automatizados</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Integración con tus apps</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> IA para procesamiento</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Soporte 30 días</li>
+          </ul>
+          <a href="https://buy.stripe.com/test_placeholder_auto299" target="_blank" rel="noopener"
+             class="btn-neon w-full text-sm">
+            <i data-lucide="zap" class="w-4 h-4"></i>
+            <span class="btn-text">Comprar Ahora</span>
+          </a>
+        </div>
+      </div>
+      <p data-aos="fade-up" class="text-center text-gray-500 text-xs mt-8">
+        <i data-lucide="shield-check" class="w-3.5 h-3.5 inline mr-1"></i>
+        Pagos seguros procesados por Stripe. También aceptamos PayPal bajo solicitud.
+      </p>
+    </div>
+  </section>
+
+  <!-- ====== BOOKING: PRE-QUALIFICATION + CALENDLY EMBED ====== -->
+  <section id="agendar" class="relative z-10 py-24 px-6" data-section="agendar">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <span data-aos="fade-up" class="section-label">
+          <i data-lucide="calendar-check" class="w-3.5 h-3.5"></i>
+          Agenda tu Auditoría IA
+        </span>
+        <h2 data-aos="fade-up" data-aos-delay="100" class="font-outfit font-bold text-3xl md:text-5xl mt-4">
+          Reserva tu <span class="text-neon">consulta gratuita</span>
+        </h2>
+        <p data-aos="fade-up" data-aos-delay="200" class="text-gray-400 mt-4 max-w-lg mx-auto">
+          Responde 2 preguntas rápidas y accede al calendario para agendar.
+        </p>
+      </div>
+
+      <div data-aos="fade-up" data-aos-delay="300" class="glass p-8 md:p-10" style="border-color: rgba(0,244,255,0.2);">
+        <!-- Step 1: Budget -->
+        <div id="q-step-1" class="qualifier-step active">
+          <h3 class="font-outfit font-bold text-lg mb-1 flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-neon/15 flex items-center justify-center text-neon text-sm font-bold">1</span>
+            ¿Cuál es tu presupuesto aproximado?
+          </h3>
+          <p class="text-gray-400 text-sm mb-5 ml-9">Esto nos ayuda a preparar una propuesta ajustada a tu inversión.</p>
+          <div class="space-y-0 ml-9" id="budget-options">
+            <label class="radio-option"><input type="radio" name="budget" value="Menos de $500" class="hidden" /><span class="text-sm text-gray-300">💡 Menos de $500</span></label>
+            <label class="radio-option"><input type="radio" name="budget" value="$500 - $2,000" class="hidden" /><span class="text-sm text-gray-300">🚀 $500 – $2,000</span></label>
+            <label class="radio-option"><input type="radio" name="budget" value="$2,000 - $5,000" class="hidden" /><span class="text-sm text-gray-300">⚡ $2,000 – $5,000</span></label>
+            <label class="radio-option"><input type="radio" name="budget" value="Más de $5,000" class="hidden" /><span class="text-sm text-gray-300">🏆 Más de $5,000</span></label>
+          </div>
+          <button id="q-next-1" disabled class="btn-neon mt-6 ml-9 opacity-50 cursor-not-allowed transition-opacity">
+            <span class="btn-text">Siguiente</span><i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Step 2: Service -->
+        <div id="q-step-2" class="qualifier-step">
+          <h3 class="font-outfit font-bold text-lg mb-1 flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-neon/15 flex items-center justify-center text-neon text-sm font-bold">2</span>
+            ¿Qué servicio te interesa?
+          </h3>
+          <p class="text-gray-400 text-sm mb-5 ml-9">Selecciona el que mejor se ajuste a lo que necesitas.</p>
+          <div class="space-y-0 ml-9" id="service-options">
+            <label class="radio-option"><input type="radio" name="service" value="Automatización IA" class="hidden" /><span class="text-sm text-gray-300">🤖 Automatización IA</span></label>
+            <label class="radio-option"><input type="radio" name="service" value="Plataforma SaaS" class="hidden" /><span class="text-sm text-gray-300">☁️ Plataforma SaaS</span></label>
+            <label class="radio-option"><input type="radio" name="service" value="Auditoría Digital" class="hidden" /><span class="text-sm text-gray-300">🔍 Auditoría Digital</span></label>
+            <label class="radio-option"><input type="radio" name="service" value="Desarrollo Full-Stack" class="hidden" /><span class="text-sm text-gray-300">💻 Desarrollo Full-Stack</span></label>
+            <label class="radio-option"><input type="radio" name="service" value="Otro" class="hidden" /><span class="text-sm text-gray-300">📋 Otro</span></label>
+          </div>
+          <div class="flex gap-3 mt-6 ml-9">
+            <button id="q-back-2" class="px-5 py-3 rounded-xl border border-white/10 text-sm text-gray-400 hover:border-neon/30 transition-colors">
+              ← Atrás
+            </button>
+            <button id="q-next-2" disabled class="btn-neon opacity-50 cursor-not-allowed transition-opacity">
+              <span class="btn-text">Ver Calendario</span><i data-lucide="calendar" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3: Calendly Embed -->
+        <div id="q-step-3" class="qualifier-step">
+          <div class="flex items-center gap-2 mb-4">
+            <i data-lucide="check-circle" class="w-5 h-5 text-green-400"></i>
+            <span class="text-green-400 font-semibold text-sm">¡Listo! Elige tu horario</span>
+          </div>
+          <div id="calendly-container" class="rounded-xl overflow-hidden bg-white" style="min-height: 650px;">
+            <!-- Calendly inline widget -->
+            <div class="calendly-inline-widget" data-url="https://calendly.com/digitalpro-agency/auditoria-ia?hide_gdpr_banner=1" style="min-width:100%;height:650px;"></div>
           </div>
         </div>
       </div>
@@ -427,7 +692,7 @@
   </section>
 
   <!-- ====== CONTACT / CONVERSION FORM PRO ====== -->
-  <section id="contacto" class="relative z-10 py-24 px-6">
+  <section id="contacto" class="relative z-10 py-24 px-6" data-section="contacto">
     <div class="max-w-2xl mx-auto">
       <div class="text-center mb-12">
         <span data-aos="fade-up" class="section-label">
@@ -444,27 +709,22 @@
       <div data-aos="fade-up" data-aos-delay="300" data-aos-duration="800"
            class="glass p-8 md:p-10" style="border-color: rgba(0,244,255,0.2);">
         <form id="contact-form" action="https://formspree.io/f/xnjordqg" method="POST" class="space-y-5">
-          <!-- Name -->
           <div class="form-field">
             <input type="text" name="name" placeholder="Tu nombre completo" required class="form-input" />
             <span class="icon-wrap"><i data-lucide="user" class="w-5 h-5"></i></span>
           </div>
-          <!-- Email -->
           <div class="form-field">
             <input type="email" name="email" placeholder="Tu correo electrónico" required class="form-input" />
             <span class="icon-wrap"><i data-lucide="at-sign" class="w-5 h-5"></i></span>
           </div>
-          <!-- WhatsApp -->
           <div class="form-field">
             <input type="tel" name="whatsapp" placeholder="Tu WhatsApp (con código de país)" class="form-input" />
             <span class="icon-wrap"><i data-lucide="phone" class="w-5 h-5"></i></span>
           </div>
-          <!-- Message -->
           <div class="form-field">
             <textarea name="message" rows="4" placeholder="Cuéntanos sobre tu proyecto..." required class="form-input !pt-4" style="padding-left: 48px;"></textarea>
             <span class="icon-wrap" style="top: 16px;"><i data-lucide="message-square" class="w-5 h-5"></i></span>
           </div>
-          <!-- Submit -->
           <button type="submit" class="btn-neon w-full text-base">
             <span class="btn-text">Enviar Mensaje</span>
             <span class="spinner"></span>
@@ -493,35 +753,155 @@
     </div>
   </footer>
 
+  <!-- ====== WHATSAPP FLOATING WIDGET ====== -->
+  <div id="wa-tooltip" class="whatsapp-tooltip">
+    💬 ¿Necesitas ayuda? ¡Escríbenos!
+  </div>
+  <a id="wa-fab" class="whatsapp-fab" href="#" target="_blank" rel="noopener" aria-label="Chat por WhatsApp">
+    <svg viewBox="0 0 32 32" width="32" height="32" fill="#fff">
+      <path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.9 15.9 0 0016.004 32C24.826 32 32 24.826 32 16.004 32 7.176 24.826 0 16.004 0zm9.298 22.602c-.39 1.1-1.932 2.014-3.15 2.28-.832.178-1.916.32-5.572-1.198-4.676-1.94-7.686-6.69-7.922-6.998-.226-.308-1.882-2.506-1.882-4.78s1.192-3.392 1.614-3.856c.39-.428.904-.568 1.184-.568.144 0 .288.008.41.014.39.016.586.04.844.652.322.762 1.1 2.672 1.194 2.866.096.194.192.452.066.694-.114.254-.214.36-.406.58-.194.214-.376.378-.57.608-.178.206-.378.426-.16.826.214.398 1.266 2.09 2.718 3.388 1.866 1.67 3.44 2.188 3.928 2.43.39.194.676.162.928-.098.26-.274 1.028-1.196 1.302-1.606.274-.41.548-.342.916-.206.372.136 2.362 1.114 2.766 1.316.404.206.674.306.772.474.096.166.096.966-.294 2.066z"/>
+    </svg>
+  </a>
+
   <!-- ====== SCRIPTS ====== -->
+  <!-- Calendly Widget JS -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
   <!-- AOS Init -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      once: true,
-      easing: 'ease-out-cubic',
-    });
-  </script>
+  <script>AOS.init({ once: true, easing: 'ease-out-cubic' });</script>
 
   <!-- Lucide Icons Init -->
-  <script>
-    lucide.createIcons();
-  </script>
+  <script>lucide.createIcons();</script>
 
-  <!-- Form Submit Animation -->
   <script>
+    // ===== MOBILE MENU =====
+    const burger = document.getElementById('burger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeMenu = document.getElementById('close-menu');
+    burger.addEventListener('click', () => mobileMenu.classList.add('open'));
+    closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    // ===== PRE-QUALIFICATION WIZARD =====
+    const step1 = document.getElementById('q-step-1');
+    const step2 = document.getElementById('q-step-2');
+    const step3 = document.getElementById('q-step-3');
+    const next1 = document.getElementById('q-next-1');
+    const next2 = document.getElementById('q-next-2');
+    const back2 = document.getElementById('q-back-2');
+
+    document.querySelectorAll('input[name="budget"]').forEach(r => {
+      r.addEventListener('change', () => {
+        next1.disabled = false;
+        next1.classList.remove('opacity-50', 'cursor-not-allowed');
+      });
+    });
+
+    document.querySelectorAll('input[name="service"]').forEach(r => {
+      r.addEventListener('change', () => {
+        next2.disabled = false;
+        next2.classList.remove('opacity-50', 'cursor-not-allowed');
+      });
+    });
+
+    next1.addEventListener('click', () => {
+      step1.classList.remove('active');
+      step2.classList.add('active');
+    });
+
+    back2.addEventListener('click', () => {
+      step2.classList.remove('active');
+      step1.classList.add('active');
+    });
+
+    next2.addEventListener('click', () => {
+      step2.classList.remove('active');
+      step3.classList.add('active');
+    });
+
+    // ===== FORM SUBMIT ANIMATION =====
     const form = document.getElementById('contact-form');
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', function () {
       const btn = form.querySelector('button[type="submit"]');
       const icon = btn.querySelector('.btn-icon');
       btn.classList.add('loading');
       if (icon) icon.style.display = 'none';
-      // Allow form submission to proceed normally
-      setTimeout(function () {
+      setTimeout(() => {
         btn.classList.remove('loading');
         if (icon) icon.style.display = '';
       }, 4000);
     });
+
+    // ===== WHATSAPP CONTEXT-AWARE AGENT =====
+    const WA_NUMBER = '15125551234'; // Update with real WhatsApp number
+    const waFab = document.getElementById('wa-fab');
+    const waTooltip = document.getElementById('wa-tooltip');
+
+    const sectionMessages = {
+      'hero':        'Hola DigitalPro, vengo de la web y quiero más información sobre sus servicios.',
+      'servicios':   'Hola DigitalPro, vengo de la web y me interesa conocer sus servicios en detalle.',
+      'proyectos':   'Hola DigitalPro, vengo de la web y me gustaría ver más ejemplos de su trabajo.',
+      'precios':     'Hola DigitalPro, vengo de la web y me interesa contratar un servicio. ¿Podemos hablar de precios?',
+      'agendar':     'Hola DigitalPro, vengo de la web y quiero agendar una auditoría IA.',
+      'contacto':    'Hola DigitalPro, vengo de la web y quiero hablar sobre mi proyecto.'
+    };
+
+    // Also detect service-specific context
+    const serviceMessages = {
+      'automatizacion-ia': 'Hola DigitalPro, vengo de la web y me interesa el servicio de Automatización IA.',
+      'plataformas-saas':  'Hola DigitalPro, vengo de la web y me interesa el servicio de Plataformas SaaS.',
+      'auditoria-digital': 'Hola DigitalPro, vengo de la web y me interesa el servicio de Auditoría Digital.',
+      'fullstack-dev':     'Hola DigitalPro, vengo de la web y me interesa el servicio de Desarrollo Full-Stack.'
+    };
+
+    let currentWaMessage = sectionMessages['hero'];
+    let lastHoveredService = null;
+
+    // Track which section user is scrolling through
+    function updateWaMessage() {
+      const sections = document.querySelectorAll('section[data-section]');
+      let activeSection = 'hero';
+
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
+          activeSection = sec.dataset.section;
+        }
+      });
+
+      currentWaMessage = lastHoveredService
+        ? serviceMessages[lastHoveredService]
+        : (sectionMessages[activeSection] || sectionMessages['hero']);
+
+      waFab.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(currentWaMessage);
+    }
+
+    // Track service card hovers
+    document.querySelectorAll('[data-service]').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        lastHoveredService = card.dataset.service;
+        updateWaMessage();
+      });
+      card.addEventListener('mouseleave', () => {
+        lastHoveredService = null;
+        updateWaMessage();
+      });
+    });
+
+    window.addEventListener('scroll', updateWaMessage, { passive: true });
+    updateWaMessage();
+
+    // Show tooltip after 3s, hide after 8s
+    setTimeout(() => { waTooltip.classList.add('show'); }, 3000);
+    setTimeout(() => { waTooltip.classList.remove('show'); }, 8000);
+
+    // ===== PWA SERVICE WORKER REGISTRATION =====
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    }
   </script>
 </body>
 </html>
