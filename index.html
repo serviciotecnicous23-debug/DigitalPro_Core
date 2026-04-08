@@ -72,10 +72,10 @@
     <div class="max-w-2xl mx-auto p-6 text-center">
       <h2 class="text-3xl font-bold mb-6">Contacto</h2>
       <p class="mb-6">Envíanos tus datos y te contactamos en 24 horas.</p>
-      <form class="space-y-4">
-        <input type="email" placeholder="Tu correo" class="w-full p-3 rounded-lg border border-gray-700 focus:outline-none focus:border-blue-500" />
-        <input type="text" placeholder="Tu nombre" class="w-full p-3 rounded-lg border border-gray-700 focus:outline-none focus:border-blue-500" />
-        <textarea rows="4" placeholder="Tu mensaje" class="w-full p-3 rounded-lg border border-gray-700 focus:outline-none focus:border-blue-500"></textarea>
+      <form action="https://formspree.io/f/xnjordqg" method="POST" class="space-y-4 relative z-10">
+        <input type="email" name="email" placeholder="Tu correo" class="w-full p-3 rounded-lg border border-gray-700 bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500" />
+        <input type="text" name="name" placeholder="Tu nombre" class="w-full p-3 rounded-lg border border-gray-700 bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500" />
+        <textarea rows="4" name="message" placeholder="Tu mensaje" class="w-full p-3 rounded-lg border border-gray-700 bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"></textarea>
         <button type="submit" class="button">Enviar</button>
       </form>
     </div>
