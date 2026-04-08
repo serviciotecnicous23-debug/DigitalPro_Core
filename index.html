@@ -417,35 +417,35 @@
   <section class="relative z-10 min-h-screen flex items-center justify-center px-6 pt-24" data-section="hero">
     <div class="max-w-4xl mx-auto text-center">
       <div data-aos="fade-up" data-aos-duration="800">
-        <span class="section-label">
+        <span class="section-label" id="hero-badge">
           <i data-lucide="zap" class="w-3.5 h-3.5"></i>
-          Agencia Digital en Austin, TX
+          <span>Agencia Digital en Austin, TX</span>
         </span>
       </div>
       <h1 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"
           class="font-outfit font-900 text-5xl md:text-7xl lg:text-8xl leading-tight mb-6 neon-glow">
-        Soluciones Digitales<br/>
-        <span class="bg-gradient-to-r from-neon to-blue-400 bg-clip-text text-transparent">que Escalan Negocios</span>
+        <span id="hero-line1">Soluciones Digitales</span><br/>
+        <span class="bg-gradient-to-r from-neon to-blue-400 bg-clip-text text-transparent" id="hero-line2">que Escalan Negocios</span>
       </h1>
       <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"
-         class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+         class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed" id="hero-subtitle">
         Transformamos ideas en productos digitales de alto impacto.
         Automatización, SaaS, Auditoría IA y desarrollo Full-Stack para empresas que quieren dominar.
       </p>
       <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300" class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#agendar" class="btn-neon text-base">
+        <a href="#agendar" class="btn-neon text-base" id="hero-cta1">
           <span class="btn-text">Agendar Auditoría Gratis</span>
           <i data-lucide="calendar" class="w-5 h-5"></i>
         </a>
-        <a href="#proyectos" class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl border border-white/10 text-white/80 hover:border-neon/30 hover:text-neon transition-all font-semibold">
-          Ver Portafolio
+        <a href="#proyectos" class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl border border-white/10 text-white/80 hover:border-neon/30 hover:text-neon transition-all font-semibold" id="hero-cta2">
+          <span>Ver Portafolio</span>
           <i data-lucide="eye" class="w-4 h-4"></i>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ====== SERVICES SECTION ====== -->
+  <!-- ====== SERVICES SECTION (dynamic) ====== -->
   <section id="servicios" class="relative z-10 py-24 px-6" data-section="servicios">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16">
@@ -457,32 +457,13 @@
           Todo lo que tu negocio <span class="text-neon">necesita</span>
         </h2>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div data-aos="zoom-in" data-aos-delay="0" data-aos-duration="600" class="glass p-6" data-service="automatizacion-ia">
-          <div class="service-icon"><i data-lucide="bot" class="w-6 h-6"></i></div>
-          <h3 class="font-outfit font-bold text-lg mb-2">Automatización IA</h3>
-          <p class="text-sm text-gray-400 leading-relaxed">Flujos inteligentes que eliminan tareas repetitivas y escalan tu operación 24/7.</p>
-        </div>
-        <div data-aos="zoom-in" data-aos-delay="100" data-aos-duration="600" class="glass p-6" data-service="plataformas-saas">
-          <div class="service-icon"><i data-lucide="cloud" class="w-6 h-6"></i></div>
-          <h3 class="font-outfit font-bold text-lg mb-2">Plataformas SaaS</h3>
-          <p class="text-sm text-gray-400 leading-relaxed">Diseñamos y construimos productos SaaS rentables desde cero hasta el lanzamiento.</p>
-        </div>
-        <div data-aos="zoom-in" data-aos-delay="200" data-aos-duration="600" class="glass p-6" data-service="auditoria-digital">
-          <div class="service-icon"><i data-lucide="search" class="w-6 h-6"></i></div>
-          <h3 class="font-outfit font-bold text-lg mb-2">Auditoría Digital</h3>
-          <p class="text-sm text-gray-400 leading-relaxed">Análisis profundo de tu stack tecnológico con recomendaciones accionables.</p>
-        </div>
-        <div data-aos="zoom-in" data-aos-delay="300" data-aos-duration="600" class="glass p-6" data-service="fullstack-dev">
-          <div class="service-icon"><i data-lucide="code-2" class="w-6 h-6"></i></div>
-          <h3 class="font-outfit font-bold text-lg mb-2">Full-Stack Dev</h3>
-          <p class="text-sm text-gray-400 leading-relaxed">Desarrollo web y móvil de alta performance con tecnologías modernas.</p>
-        </div>
+      <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Rendered by JS from config.json -->
       </div>
     </div>
   </section>
 
-  <!-- ====== PROJECTS GALLERY (3D HOVER) ====== -->
+  <!-- ====== PROJECTS GALLERY (3D HOVER, dynamic) ====== -->
   <section id="proyectos" class="relative z-10 py-24 px-6" data-section="proyectos">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16">
@@ -494,36 +475,13 @@
           Trabajo que <span class="text-neon">habla por sí solo</span>
         </h2>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div data-aos="zoom-in-up" data-aos-delay="0" data-aos-duration="700" class="project-card glass overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&q=80" alt="Dashboard de IA" loading="lazy" />
-          <div class="project-overlay">
-            <span class="text-neon text-xs font-semibold uppercase tracking-widest mb-1">Inteligencia Artificial</span>
-            <h3 class="font-outfit font-bold text-xl">Dashboard Predictivo IA</h3>
-            <p class="text-sm text-gray-400 mt-1">Panel analítico en tiempo real con modelos de predicción de ventas.</p>
-          </div>
-        </div>
-        <div data-aos="zoom-in-up" data-aos-delay="150" data-aos-duration="700" class="project-card glass overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&q=80" alt="E-commerce de Lujo" loading="lazy" />
-          <div class="project-overlay">
-            <span class="text-neon text-xs font-semibold uppercase tracking-widest mb-1">E-Commerce</span>
-            <h3 class="font-outfit font-bold text-xl">Tienda de Lujo Online</h3>
-            <p class="text-sm text-gray-400 mt-1">Plataforma e-commerce premium con checkout en 1 clic.</p>
-          </div>
-        </div>
-        <div data-aos="zoom-in-up" data-aos-delay="300" data-aos-duration="700" class="project-card glass overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1555421689-d68471e189f2?w=600&h=400&fit=crop&q=80" alt="App Móvil" loading="lazy" />
-          <div class="project-overlay">
-            <span class="text-neon text-xs font-semibold uppercase tracking-widest mb-1">Desarrollo Móvil</span>
-            <h3 class="font-outfit font-bold text-xl">App de Gestión Empresarial</h3>
-            <p class="text-sm text-gray-400 mt-1">App nativa iOS/Android con sincronización en la nube.</p>
-          </div>
-        </div>
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Rendered by JS from config.json -->
       </div>
     </div>
   </section>
 
-  <!-- ====== PRICING + STRIPE/PAYPAL ====== -->
+  <!-- ====== PRICING (dynamic) ====== -->
   <section id="precios" class="relative z-10 py-24 px-6" data-section="precios">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-16">
@@ -538,77 +496,8 @@
           Contrata y paga al instante. Sin llamadas, sin esperas.
         </p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="pricing-grid">
-        <!-- Card 1 -->
-        <div data-aos="zoom-in" data-aos-delay="0" class="pricing-card text-center">
-          <div class="w-12 h-12 rounded-xl bg-neon/10 flex items-center justify-center mx-auto mb-4">
-            <i data-lucide="scan-search" class="w-6 h-6 text-neon"></i>
-          </div>
-          <h3 class="font-outfit font-bold text-xl mb-1">Auditoría Web Express</h3>
-          <p class="text-gray-400 text-sm mb-4">Análisis completo con reporte de mejoras en 48h.</p>
-          <div class="mb-6">
-            <span class="text-4xl font-outfit font-bold text-neon">$99</span>
-            <span class="text-gray-500 text-sm"> USD</span>
-          </div>
-          <ul class="text-left text-sm text-gray-400 space-y-2 mb-6">
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Análisis SEO completo</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Reporte de performance</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Recomendaciones accionables</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Entrega en 48 horas</li>
-          </ul>
-          <a href="https://buy.stripe.com/test_placeholder_audit99" target="_blank" rel="noopener"
-             class="btn-neon w-full text-sm">
-            <i data-lucide="zap" class="w-4 h-4"></i>
-            <span class="btn-text">Comprar Ahora</span>
-          </a>
-        </div>
-        <!-- Card 2 (Featured) -->
-        <div data-aos="zoom-in" data-aos-delay="100" class="pricing-card featured text-center">
-          <div class="w-12 h-12 rounded-xl bg-neon/10 flex items-center justify-center mx-auto mb-4">
-            <i data-lucide="layout" class="w-6 h-6 text-neon"></i>
-          </div>
-          <h3 class="font-outfit font-bold text-xl mb-1">Landing Page Pro</h3>
-          <p class="text-gray-400 text-sm mb-4">Diseño premium, alta conversión, optimizada para SEO.</p>
-          <div class="mb-6">
-            <span class="text-4xl font-outfit font-bold text-neon">$499</span>
-            <span class="text-gray-500 text-sm"> USD</span>
-          </div>
-          <ul class="text-left text-sm text-gray-400 space-y-2 mb-6">
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Diseño custom responsivo</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> SEO on-page configurado</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Formulario de captación</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Analytics integrado</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Deploy en Vercel/Netlify</li>
-          </ul>
-          <a href="https://buy.stripe.com/test_placeholder_landing499" target="_blank" rel="noopener"
-             class="btn-neon w-full text-sm">
-            <i data-lucide="zap" class="w-4 h-4"></i>
-            <span class="btn-text">Comprar Ahora</span>
-          </a>
-        </div>
-        <!-- Card 3 -->
-        <div data-aos="zoom-in" data-aos-delay="200" class="pricing-card text-center">
-          <div class="w-12 h-12 rounded-xl bg-neon/10 flex items-center justify-center mx-auto mb-4">
-            <i data-lucide="bot" class="w-6 h-6 text-neon"></i>
-          </div>
-          <h3 class="font-outfit font-bold text-xl mb-1">Automatización Starter</h3>
-          <p class="text-gray-400 text-sm mb-4">3 flujos automatizados con IA integrada para tu negocio.</p>
-          <div class="mb-6">
-            <span class="text-4xl font-outfit font-bold text-neon">$299</span>
-            <span class="text-gray-500 text-sm"> USD</span>
-          </div>
-          <ul class="text-left text-sm text-gray-400 space-y-2 mb-6">
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> 3 flujos automatizados</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Integración con tus apps</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> IA para procesamiento</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Soporte 30 días</li>
-          </ul>
-          <a href="https://buy.stripe.com/test_placeholder_auto299" target="_blank" rel="noopener"
-             class="btn-neon w-full text-sm">
-            <i data-lucide="zap" class="w-4 h-4"></i>
-            <span class="btn-text">Comprar Ahora</span>
-          </a>
-        </div>
+      <div id="pricing-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Rendered by JS from config.json -->
       </div>
       <p data-aos="fade-up" class="text-center text-gray-500 text-xs mt-8">
         <i data-lucide="shield-check" class="w-3.5 h-3.5 inline mr-1"></i>
@@ -625,10 +514,10 @@
           <i data-lucide="calendar-check" class="w-3.5 h-3.5"></i>
           Agenda tu Auditoría IA
         </span>
-        <h2 data-aos="fade-up" data-aos-delay="100" class="font-outfit font-bold text-3xl md:text-5xl mt-4">
+        <h2 data-aos="fade-up" data-aos-delay="100" class="font-outfit font-bold text-3xl md:text-5xl mt-4" id="booking-title">
           Reserva tu <span class="text-neon">consulta gratuita</span>
         </h2>
-        <p data-aos="fade-up" data-aos-delay="200" class="text-gray-400 mt-4 max-w-lg mx-auto">
+        <p data-aos="fade-up" data-aos-delay="200" class="text-gray-400 mt-4 max-w-lg mx-auto" id="booking-subtitle">
           Responde 2 preguntas rápidas y accede al calendario para agendar.
         </p>
       </div>
@@ -642,10 +531,7 @@
           </h3>
           <p class="text-gray-400 text-sm mb-5 ml-9">Esto nos ayuda a preparar una propuesta ajustada a tu inversión.</p>
           <div class="space-y-0 ml-9" id="budget-options">
-            <label class="radio-option"><input type="radio" name="budget" value="Menos de $500" class="hidden" /><span class="text-sm text-gray-300">💡 Menos de $500</span></label>
-            <label class="radio-option"><input type="radio" name="budget" value="$500 - $2,000" class="hidden" /><span class="text-sm text-gray-300">🚀 $500 – $2,000</span></label>
-            <label class="radio-option"><input type="radio" name="budget" value="$2,000 - $5,000" class="hidden" /><span class="text-sm text-gray-300">⚡ $2,000 – $5,000</span></label>
-            <label class="radio-option"><input type="radio" name="budget" value="Más de $5,000" class="hidden" /><span class="text-sm text-gray-300">🏆 Más de $5,000</span></label>
+            <!-- Rendered by JS from config.json -->
           </div>
           <button id="q-next-1" disabled class="btn-neon mt-6 ml-9 opacity-50 cursor-not-allowed transition-opacity">
             <span class="btn-text">Siguiente</span><i data-lucide="arrow-right" class="w-4 h-4"></i>
@@ -660,11 +546,7 @@
           </h3>
           <p class="text-gray-400 text-sm mb-5 ml-9">Selecciona el que mejor se ajuste a lo que necesitas.</p>
           <div class="space-y-0 ml-9" id="service-options">
-            <label class="radio-option"><input type="radio" name="service" value="Automatización IA" class="hidden" /><span class="text-sm text-gray-300">🤖 Automatización IA</span></label>
-            <label class="radio-option"><input type="radio" name="service" value="Plataforma SaaS" class="hidden" /><span class="text-sm text-gray-300">☁️ Plataforma SaaS</span></label>
-            <label class="radio-option"><input type="radio" name="service" value="Auditoría Digital" class="hidden" /><span class="text-sm text-gray-300">🔍 Auditoría Digital</span></label>
-            <label class="radio-option"><input type="radio" name="service" value="Desarrollo Full-Stack" class="hidden" /><span class="text-sm text-gray-300">💻 Desarrollo Full-Stack</span></label>
-            <label class="radio-option"><input type="radio" name="service" value="Otro" class="hidden" /><span class="text-sm text-gray-300">📋 Otro</span></label>
+            <!-- Rendered by JS from config.json -->
           </div>
           <div class="flex gap-3 mt-6 ml-9">
             <button id="q-back-2" class="px-5 py-3 rounded-xl border border-white/10 text-sm text-gray-400 hover:border-neon/30 transition-colors">
@@ -683,8 +565,7 @@
             <span class="text-green-400 font-semibold text-sm">¡Listo! Elige tu horario</span>
           </div>
           <div id="calendly-container" class="rounded-xl overflow-hidden bg-white" style="min-height: 650px;">
-            <!-- Calendly inline widget -->
-            <div class="calendly-inline-widget" data-url="https://calendly.com/digitalpro-agency/auditoria-ia?hide_gdpr_banner=1" style="min-width:100%;height:650px;"></div>
+            <!-- Calendly inline widget loaded dynamically -->
           </div>
         </div>
       </div>
@@ -699,16 +580,16 @@
           <i data-lucide="mail" class="w-3.5 h-3.5"></i>
           Contacto
         </span>
-        <h2 data-aos="fade-up" data-aos-delay="100" class="font-outfit font-bold text-3xl md:text-5xl mt-4">
+        <h2 data-aos="fade-up" data-aos-delay="100" class="font-outfit font-bold text-3xl md:text-5xl mt-4" id="contact-title">
           ¿Listo para <span class="text-neon">despegar</span>?
         </h2>
-        <p data-aos="fade-up" data-aos-delay="200" class="text-gray-400 mt-4 max-w-lg mx-auto">
+        <p data-aos="fade-up" data-aos-delay="200" class="text-gray-400 mt-4 max-w-lg mx-auto" id="contact-subtitle">
           Envíanos tus datos y te contactamos en menos de 24 horas con una propuesta personalizada.
         </p>
       </div>
       <div data-aos="fade-up" data-aos-delay="300" data-aos-duration="800"
            class="glass p-8 md:p-10" style="border-color: rgba(0,244,255,0.2);">
-        <form id="contact-form" action="https://formspree.io/f/xnjordqg" method="POST" class="space-y-5">
+        <form id="contact-form" method="POST" class="space-y-5">
           <div class="form-field">
             <input type="text" name="name" placeholder="Tu nombre completo" required class="form-input" />
             <span class="icon-wrap"><i data-lucide="user" class="w-5 h-5"></i></span>
@@ -748,8 +629,8 @@
         </div>
         <span class="font-outfit font-semibold">Digital<span class="text-neon">Pro</span></span>
       </div>
-      <p class="text-sm text-gray-500">Austin, TX &mdash; Soluciones Digitales de Alto Nivel</p>
-      <p class="text-xs text-gray-600">&copy; 2026 DigitalPro. Todos los derechos reservados.</p>
+      <p class="text-sm text-gray-500" id="footer-location">Austin, TX &mdash; Soluciones Digitales de Alto Nivel</p>
+      <p class="text-xs text-gray-600" id="footer-copy">&copy; 2026 DigitalPro. Todos los derechos reservados.</p>
     </div>
   </footer>
 
@@ -771,10 +652,153 @@
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>AOS.init({ once: true, easing: 'ease-out-cubic' });</script>
 
-  <!-- Lucide Icons Init -->
+  <!-- Lucide Icons Init (initial pass) -->
   <script>lucide.createIcons();</script>
 
   <script>
+    // ===== LOAD CONFIG & RENDER ALL DYNAMIC SECTIONS =====
+    (async function() {
+      let CONFIG;
+      try {
+        const resp = await fetch('/src/data/config.json');
+        CONFIG = await resp.json();
+      } catch(e) {
+        console.error('Failed to load config.json', e);
+        return;
+      }
+
+      // --- HERO ---
+      const h = CONFIG.hero;
+      if (h) {
+        const badgeSpan = document.querySelector('#hero-badge span');
+        if (badgeSpan) badgeSpan.textContent = h.badge;
+        const l1 = document.getElementById('hero-line1');
+        if (l1) l1.textContent = h.title_line1;
+        const l2 = document.getElementById('hero-line2');
+        if (l2) l2.textContent = h.title_line2;
+        const sub = document.getElementById('hero-subtitle');
+        if (sub) sub.textContent = h.subtitle;
+        const cta1 = document.querySelector('#hero-cta1 .btn-text');
+        if (cta1) cta1.textContent = h.cta_primary;
+        const cta2 = document.querySelector('#hero-cta2 span');
+        if (cta2) cta2.textContent = h.cta_secondary;
+      }
+
+      // --- SERVICES (dynamic grid) ---
+      const servicesGrid = document.getElementById('services-grid');
+      if (CONFIG.services && servicesGrid) {
+        servicesGrid.innerHTML = CONFIG.services.map((s, i) => `
+          <div data-aos="zoom-in" data-aos-delay="${i * 100}" data-aos-duration="600" class="glass p-6" data-service="${s.id}">
+            <div class="service-icon"><i data-lucide="${s.icon}" class="w-6 h-6"></i></div>
+            <h3 class="font-outfit font-bold text-lg mb-2">${esc(s.name)}</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">${esc(s.description)}</p>
+          </div>
+        `).join('');
+      }
+
+      // --- PROJECTS (dynamic grid) ---
+      const projectsGrid = document.getElementById('projects-grid');
+      if (CONFIG.projects && projectsGrid) {
+        projectsGrid.innerHTML = CONFIG.projects.map((p, i) => `
+          <div data-aos="zoom-in-up" data-aos-delay="${i * 150}" data-aos-duration="700" class="project-card glass overflow-hidden">
+            <img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy" />
+            <div class="project-overlay">
+              <span class="text-neon text-xs font-semibold uppercase tracking-widest mb-1">${esc(p.category)}</span>
+              <h3 class="font-outfit font-bold text-xl">${esc(p.title)}</h3>
+              <p class="text-sm text-gray-400 mt-1">${esc(p.description)}</p>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // --- PRICING (dynamic grid) ---
+      const pricingGrid = document.getElementById('pricing-grid');
+      if (CONFIG.pricing && pricingGrid) {
+        pricingGrid.innerHTML = CONFIG.pricing.map((p, i) => `
+          <div data-aos="zoom-in" data-aos-delay="${i * 100}" class="pricing-card${p.featured ? ' featured' : ''} text-center">
+            <div class="w-12 h-12 rounded-xl bg-neon/10 flex items-center justify-center mx-auto mb-4">
+              <i data-lucide="${esc(p.icon)}" class="w-6 h-6 text-neon"></i>
+            </div>
+            <h3 class="font-outfit font-bold text-xl mb-1">${esc(p.name)}</h3>
+            <p class="text-gray-400 text-sm mb-4">${esc(p.description)}</p>
+            <div class="mb-6">
+              <span class="text-4xl font-outfit font-bold text-neon">$${p.price}</span>
+              <span class="text-gray-500 text-sm"> ${esc(p.currency)}</span>
+            </div>
+            <ul class="text-left text-sm text-gray-400 space-y-2 mb-6">
+              ${(p.features || []).map(f => `<li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> ${esc(f)}</li>`).join('')}
+            </ul>
+            <a href="${esc(p.stripe_link)}" target="_blank" rel="noopener"
+               class="btn-neon w-full text-sm">
+              <i data-lucide="zap" class="w-4 h-4"></i>
+              <span class="btn-text">Comprar Ahora</span>
+            </a>
+          </div>
+        `).join('');
+      }
+
+      // --- BOOKING OPTIONS ---
+      const bk = CONFIG.booking;
+      if (bk) {
+        // Budget options
+        const budgetEl = document.getElementById('budget-options');
+        if (budgetEl && bk.budget_options) {
+          const emojis = ['💡', '🚀', '⚡', '🏆', '💎', '✨'];
+          budgetEl.innerHTML = bk.budget_options.map((opt, i) =>
+            `<label class="radio-option"><input type="radio" name="budget" value="${esc(opt)}" class="hidden" /><span class="text-sm text-gray-300">${emojis[i] || '•'} ${esc(opt)}</span></label>`
+          ).join('');
+        }
+        // Service options
+        const serviceEl = document.getElementById('service-options');
+        if (serviceEl && bk.service_options) {
+          const emojis2 = ['🤖', '☁️', '🔍', '💻', '📋', '🎯', '🧩'];
+          serviceEl.innerHTML = bk.service_options.map((opt, i) =>
+            `<label class="radio-option"><input type="radio" name="service" value="${esc(opt)}" class="hidden" /><span class="text-sm text-gray-300">${emojis2[i] || '•'} ${esc(opt)}</span></label>`
+          ).join('');
+        }
+        // Calendly
+        const calContainer = document.getElementById('calendly-container');
+        if (calContainer && bk.calendly_url) {
+          calContainer.innerHTML = `<div class="calendly-inline-widget" data-url="${esc(bk.calendly_url)}?hide_gdpr_banner=1" style="min-width:100%;height:650px;"></div>`;
+        }
+      }
+
+      // --- CONTACT FORM (Formspree action) ---
+      const contactForm = document.getElementById('contact-form');
+      if (contactForm && CONFIG.business && CONFIG.business.formspree_id) {
+        contactForm.action = 'https://formspree.io/f/' + CONFIG.business.formspree_id;
+      }
+
+      // --- FOOTER ---
+      const biz = CONFIG.business;
+      if (biz) {
+        const fl = document.getElementById('footer-location');
+        if (fl) fl.innerHTML = biz.location + ' &mdash; ' + esc(biz.tagline);
+        const fc = document.getElementById('footer-copy');
+        if (fc) fc.innerHTML = '&copy; ' + biz.year + ' ' + esc(biz.name) + '. Todos los derechos reservados.';
+      }
+
+      // --- WHATSAPP ---
+      const WA_NUMBER = (CONFIG.business && CONFIG.business.whatsapp) || '15125551234';
+      setupWhatsApp(WA_NUMBER, CONFIG.services || []);
+
+      // Re-init Lucide icons for dynamically added elements
+      lucide.createIcons();
+
+      // Re-init AOS for dynamic elements
+      AOS.refreshHard();
+
+      // Wire up booking wizard radio buttons (they were just rendered)
+      wireBookingWizard();
+    })();
+
+    // ===== UTILITY: HTML-escape =====
+    function esc(str) {
+      const d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
+
     // ===== MOBILE MENU =====
     const burger = document.getElementById('burger-btn');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -786,46 +810,47 @@
     });
 
     // ===== PRE-QUALIFICATION WIZARD =====
-    const step1 = document.getElementById('q-step-1');
-    const step2 = document.getElementById('q-step-2');
-    const step3 = document.getElementById('q-step-3');
-    const next1 = document.getElementById('q-next-1');
-    const next2 = document.getElementById('q-next-2');
-    const back2 = document.getElementById('q-back-2');
+    function wireBookingWizard() {
+      const step1 = document.getElementById('q-step-1');
+      const step2 = document.getElementById('q-step-2');
+      const step3 = document.getElementById('q-step-3');
+      const next1 = document.getElementById('q-next-1');
+      const next2 = document.getElementById('q-next-2');
+      const back2 = document.getElementById('q-back-2');
 
-    document.querySelectorAll('input[name="budget"]').forEach(r => {
-      r.addEventListener('change', () => {
-        next1.disabled = false;
-        next1.classList.remove('opacity-50', 'cursor-not-allowed');
+      document.querySelectorAll('input[name="budget"]').forEach(r => {
+        r.addEventListener('change', () => {
+          next1.disabled = false;
+          next1.classList.remove('opacity-50', 'cursor-not-allowed');
+        });
       });
-    });
 
-    document.querySelectorAll('input[name="service"]').forEach(r => {
-      r.addEventListener('change', () => {
-        next2.disabled = false;
-        next2.classList.remove('opacity-50', 'cursor-not-allowed');
+      document.querySelectorAll('input[name="service"]').forEach(r => {
+        r.addEventListener('change', () => {
+          next2.disabled = false;
+          next2.classList.remove('opacity-50', 'cursor-not-allowed');
+        });
       });
-    });
 
-    next1.addEventListener('click', () => {
-      step1.classList.remove('active');
-      step2.classList.add('active');
-    });
+      next1.addEventListener('click', () => {
+        step1.classList.remove('active');
+        step2.classList.add('active');
+      });
 
-    back2.addEventListener('click', () => {
-      step2.classList.remove('active');
-      step1.classList.add('active');
-    });
+      back2.addEventListener('click', () => {
+        step2.classList.remove('active');
+        step1.classList.add('active');
+      });
 
-    next2.addEventListener('click', () => {
-      step2.classList.remove('active');
-      step3.classList.add('active');
-    });
+      next2.addEventListener('click', () => {
+        step2.classList.remove('active');
+        step3.classList.add('active');
+      });
+    }
 
     // ===== FORM SUBMIT ANIMATION =====
-    const form = document.getElementById('contact-form');
-    form.addEventListener('submit', function () {
-      const btn = form.querySelector('button[type="submit"]');
+    document.getElementById('contact-form').addEventListener('submit', function () {
+      const btn = this.querySelector('button[type="submit"]');
       const icon = btn.querySelector('.btn-icon');
       btn.classList.add('loading');
       if (icon) icon.style.display = 'none';
@@ -836,67 +861,60 @@
     });
 
     // ===== WHATSAPP CONTEXT-AWARE AGENT =====
-    const WA_NUMBER = '15125551234'; // Update with real WhatsApp number
-    const waFab = document.getElementById('wa-fab');
-    const waTooltip = document.getElementById('wa-tooltip');
+    function setupWhatsApp(WA_NUMBER, services) {
+      const waFab = document.getElementById('wa-fab');
+      const waTooltip = document.getElementById('wa-tooltip');
 
-    const sectionMessages = {
-      'hero':        'Hola DigitalPro, vengo de la web y quiero más información sobre sus servicios.',
-      'servicios':   'Hola DigitalPro, vengo de la web y me interesa conocer sus servicios en detalle.',
-      'proyectos':   'Hola DigitalPro, vengo de la web y me gustaría ver más ejemplos de su trabajo.',
-      'precios':     'Hola DigitalPro, vengo de la web y me interesa contratar un servicio. ¿Podemos hablar de precios?',
-      'agendar':     'Hola DigitalPro, vengo de la web y quiero agendar una auditoría IA.',
-      'contacto':    'Hola DigitalPro, vengo de la web y quiero hablar sobre mi proyecto.'
-    };
+      const sectionMessages = {
+        'hero':        'Hola DigitalPro, vengo de la web y quiero más información sobre sus servicios.',
+        'servicios':   'Hola DigitalPro, vengo de la web y me interesa conocer sus servicios en detalle.',
+        'proyectos':   'Hola DigitalPro, vengo de la web y me gustaría ver más ejemplos de su trabajo.',
+        'precios':     'Hola DigitalPro, vengo de la web y me interesa contratar un servicio. ¿Podemos hablar de precios?',
+        'agendar':     'Hola DigitalPro, vengo de la web y quiero agendar una auditoría IA.',
+        'contacto':    'Hola DigitalPro, vengo de la web y quiero hablar sobre mi proyecto.'
+      };
 
-    // Also detect service-specific context
-    const serviceMessages = {
-      'automatizacion-ia': 'Hola DigitalPro, vengo de la web y me interesa el servicio de Automatización IA.',
-      'plataformas-saas':  'Hola DigitalPro, vengo de la web y me interesa el servicio de Plataformas SaaS.',
-      'auditoria-digital': 'Hola DigitalPro, vengo de la web y me interesa el servicio de Auditoría Digital.',
-      'fullstack-dev':     'Hola DigitalPro, vengo de la web y me interesa el servicio de Desarrollo Full-Stack.'
-    };
-
-    let currentWaMessage = sectionMessages['hero'];
-    let lastHoveredService = null;
-
-    // Track which section user is scrolling through
-    function updateWaMessage() {
-      const sections = document.querySelectorAll('section[data-section]');
-      let activeSection = 'hero';
-
-      sections.forEach(sec => {
-        const rect = sec.getBoundingClientRect();
-        if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
-          activeSection = sec.dataset.section;
-        }
+      // Build service-specific messages from config
+      const serviceMessages = {};
+      services.forEach(s => {
+        serviceMessages[s.id] = s.whatsapp_msg || ('Hola DigitalPro, me interesa ' + s.name);
       });
 
-      currentWaMessage = lastHoveredService
-        ? serviceMessages[lastHoveredService]
-        : (sectionMessages[activeSection] || sectionMessages['hero']);
+      let currentWaMessage = sectionMessages['hero'];
+      let lastHoveredService = null;
 
-      waFab.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(currentWaMessage);
+      function updateWaMessage() {
+        const sections = document.querySelectorAll('section[data-section]');
+        let activeSection = 'hero';
+        sections.forEach(sec => {
+          const rect = sec.getBoundingClientRect();
+          if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
+            activeSection = sec.dataset.section;
+          }
+        });
+        currentWaMessage = lastHoveredService
+          ? (serviceMessages[lastHoveredService] || sectionMessages['servicios'])
+          : (sectionMessages[activeSection] || sectionMessages['hero']);
+        waFab.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(currentWaMessage);
+      }
+
+      // Delegate service card hovers (cards are dynamically rendered)
+      document.addEventListener('mouseover', (e) => {
+        const card = e.target.closest('[data-service]');
+        if (card) { lastHoveredService = card.dataset.service; updateWaMessage(); }
+      });
+      document.addEventListener('mouseout', (e) => {
+        const card = e.target.closest('[data-service]');
+        if (card) { lastHoveredService = null; updateWaMessage(); }
+      });
+
+      window.addEventListener('scroll', updateWaMessage, { passive: true });
+      updateWaMessage();
+
+      // Show tooltip after 3s, hide after 8s
+      setTimeout(() => { waTooltip.classList.add('show'); }, 3000);
+      setTimeout(() => { waTooltip.classList.remove('show'); }, 8000);
     }
-
-    // Track service card hovers
-    document.querySelectorAll('[data-service]').forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        lastHoveredService = card.dataset.service;
-        updateWaMessage();
-      });
-      card.addEventListener('mouseleave', () => {
-        lastHoveredService = null;
-        updateWaMessage();
-      });
-    });
-
-    window.addEventListener('scroll', updateWaMessage, { passive: true });
-    updateWaMessage();
-
-    // Show tooltip after 3s, hide after 8s
-    setTimeout(() => { waTooltip.classList.add('show'); }, 3000);
-    setTimeout(() => { waTooltip.classList.remove('show'); }, 8000);
 
     // ===== PWA SERVICE WORKER REGISTRATION =====
     if ('serviceWorker' in navigator) {
