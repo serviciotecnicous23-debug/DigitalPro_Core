@@ -299,6 +299,128 @@
       padding: 4px 40px; transform: rotate(45deg);
     }
 
+    /* CATALOG CARD */
+    .catalog-card {
+      position: relative; border-radius: 16px; overflow: hidden;
+      background: rgba(255,255,255,0.04); backdrop-filter: blur(12px);
+      border: 1px solid rgba(0,244,255,0.1);
+      transition: all 0.5s cubic-bezier(0.4,0,0.2,1); cursor: pointer;
+    }
+    .catalog-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(0,244,255,0.35);
+      box-shadow: 0 25px 60px rgba(0,244,255,0.12), 0 0 60px rgba(0,244,255,0.06);
+    }
+    .catalog-card.featured { border-color: rgba(0,244,255,0.3); background: rgba(0,244,255,0.06); }
+    .catalog-card.featured::after {
+      content: '⭐ RECOMENDADO'; position: absolute; top: 12px; right: -30px;
+      background: linear-gradient(135deg, #00f4ff, #00b8d4);
+      color: #050510; font-size: 0.6rem; font-weight: 800;
+      padding: 4px 40px; transform: rotate(45deg); z-index: 5;
+      letter-spacing: 0.05em;
+    }
+    .catalog-card-img { width: 100%; height: 200px; object-fit: cover; transition: transform 0.6s ease; }
+    .catalog-card:hover .catalog-card-img { transform: scale(1.08); }
+    .catalog-card-body { padding: 1.5rem; }
+    .catalog-card-tag {
+      display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.7rem;
+      font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+      background: rgba(0,244,255,0.1); color: #00f4ff; border: 1px solid rgba(0,244,255,0.15);
+      margin-bottom: 0.75rem;
+    }
+    .catalog-card-prices {
+      display: flex; gap: 1rem; margin-top: 1rem; padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .catalog-card-prices > div { flex: 1; }
+    .catalog-card-prices .price-label { font-size: 0.65rem; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 600; letter-spacing: 0.05em; }
+    .catalog-card-prices .price-val { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.15rem; color: #00f4ff; }
+    .catalog-card-prices .price-period { font-size: 0.7rem; color: rgba(255,255,255,0.35); }
+    .catalog-card-cta {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      width: 100%; margin-top: 1rem; padding: 12px;
+      border-radius: 12px; font-weight: 700; font-size: 0.85rem;
+      background: linear-gradient(135deg, rgba(0,244,255,0.15), rgba(0,100,180,0.1));
+      color: #00f4ff; border: 1px solid rgba(0,244,255,0.2);
+      transition: all 0.3s ease;
+    }
+    .catalog-card:hover .catalog-card-cta {
+      background: linear-gradient(135deg, #00f4ff, #00b8d4); color: #050510;
+    }
+
+    /* CATALOG MODAL */
+    .catalog-modal {
+      position: fixed; inset: 0; z-index: 9999; display: none;
+      align-items: center; justify-content: flex-end;
+    }
+    .catalog-modal.open { display: flex; }
+    .catalog-modal-backdrop {
+      position: absolute; inset: 0;
+      background: rgba(5,5,16,0.85); backdrop-filter: blur(8px);
+    }
+    .catalog-modal-panel {
+      position: relative; z-index: 1;
+      width: 100%; max-width: 640px; height: 100vh; overflow-y: auto;
+      background: rgba(10,10,46,0.98); backdrop-filter: blur(20px);
+      border-left: 1px solid rgba(0,244,255,0.15);
+      padding: 2rem; animation: slideInRight 0.4s ease;
+    }
+    @media (max-width: 768px) {
+      .catalog-modal-panel {
+        max-width: 100%; border-left: none; padding: 1.5rem;
+      }
+    }
+    @keyframes slideInRight {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    .catalog-modal-close {
+      position: sticky; top: 0; float: right;
+      width: 40px; height: 40px; border-radius: 12px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      color: #fff; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.3s; z-index: 2;
+    }
+    .catalog-modal-close:hover { background: rgba(0,244,255,0.15); border-color: #00f4ff; color: #00f4ff; }
+
+    .modal-hero-img { width: 100%; height: 240px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem; }
+    .modal-includes {
+      background: rgba(0,244,255,0.04); border: 1px solid rgba(0,244,255,0.1);
+      border-radius: 12px; padding: 1.25rem; margin: 1.5rem 0;
+    }
+    .modal-includes summary {
+      cursor: pointer; font-weight: 700; font-size: 0.85rem; color: #00f4ff;
+      list-style: none; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .modal-includes summary::-webkit-details-marker { display: none; }
+    .modal-includes[open] summary .chevron-icon { transform: rotate(180deg); }
+    .modal-pricing-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+    @media (max-width: 480px) { .modal-pricing-cols { grid-template-columns: 1fr; } }
+    .modal-pricing-box {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px; padding: 1.5rem; transition: all 0.3s;
+    }
+    .modal-pricing-box:hover { border-color: rgba(0,244,255,0.25); }
+    .modal-pricing-box.recommended { border-color: rgba(0,244,255,0.3); background: rgba(0,244,255,0.04); }
+    .modal-pricing-box .box-label {
+      display: inline-block; font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; padding: 3px 10px; border-radius: 6px; margin-bottom: 0.75rem;
+    }
+    .modal-btn-wa {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%;
+      padding: 12px; border-radius: 10px; font-weight: 700; font-size: 0.8rem;
+      background: #25D366; color: #fff; border: none; cursor: pointer; transition: all 0.3s;
+      text-decoration: none;
+    }
+    .modal-btn-wa:hover { box-shadow: 0 0 20px rgba(37,211,102,0.4); transform: translateY(-1px); }
+    .modal-btn-form {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%;
+      padding: 12px; border-radius: 10px; font-weight: 700; font-size: 0.8rem;
+      background: linear-gradient(135deg, #00f4ff, #00b8d4); color: #050510;
+      border: none; cursor: pointer; transition: all 0.3s; text-decoration: none;
+    }
+    .modal-btn-form:hover { box-shadow: 0 0 20px rgba(0,244,255,0.4); transform: translateY(-1px); }
+
     /* QUALIFIER FORM */
     .qualifier-step { display: none; }
     .qualifier-step.active { display: block; }
@@ -389,8 +511,7 @@
       </a>
       <div class="hidden md:flex items-center gap-8">
         <a href="#servicios" class="text-sm text-gray-300 hover:text-neon transition-colors">Servicios</a>
-        <a href="#proyectos" class="text-sm text-gray-300 hover:text-neon transition-colors">Proyectos</a>
-        <a href="#precios" class="text-sm text-gray-300 hover:text-neon transition-colors">Precios</a>
+        <a href="#catalogo" class="text-sm text-gray-300 hover:text-neon transition-colors">Catálogo</a>
         <a href="#agendar" class="text-sm text-gray-300 hover:text-neon transition-colors">Agendar</a>
         <a href="#contacto" class="btn-neon text-sm !py-2 !px-5">
           <span class="btn-text">Empezar Proyecto</span>
@@ -407,8 +528,7 @@
   <div id="mobile-menu" class="mobile-menu">
     <button id="close-menu" class="absolute top-6 right-6 text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
     <a href="#servicios" class="text-xl font-semibold hover:text-neon transition-colors mobile-link">Servicios</a>
-    <a href="#proyectos" class="text-xl font-semibold hover:text-neon transition-colors mobile-link">Proyectos</a>
-    <a href="#precios" class="text-xl font-semibold hover:text-neon transition-colors mobile-link">Precios</a>
+    <a href="#catalogo" class="text-xl font-semibold hover:text-neon transition-colors mobile-link">Catálogo</a>
     <a href="#agendar" class="text-xl font-semibold hover:text-neon transition-colors mobile-link">Agendar</a>
     <a href="#contacto" class="btn-neon mobile-link">Empezar Proyecto</a>
   </div>
@@ -437,7 +557,7 @@
           <span class="btn-text">Agendar Auditoría Gratis</span>
           <i data-lucide="calendar" class="w-5 h-5"></i>
         </a>
-        <a href="#proyectos" class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl border border-white/10 text-white/80 hover:border-neon/30 hover:text-neon transition-all font-semibold" id="hero-cta2">
+        <a href="#catalogo" class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl border border-white/10 text-white/80 hover:border-neon/30 hover:text-neon transition-all font-semibold" id="hero-cta2">
           <span>Ver Portafolio</span>
           <i data-lucide="eye" class="w-4 h-4"></i>
         </a>
@@ -463,48 +583,37 @@
     </div>
   </section>
 
-  <!-- ====== PROJECTS GALLERY (3D HOVER, dynamic) ====== -->
-  <section id="proyectos" class="relative z-10 py-24 px-6" data-section="proyectos">
+  <!-- ====== CATÁLOGO DE SOLUCIONES (unified) ====== -->
+  <section id="catalogo" class="relative z-10 py-24 px-6" data-section="catalogo">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16">
         <span data-aos="fade-up" class="section-label">
-          <i data-lucide="folder-open" class="w-3.5 h-3.5"></i>
-          Proyectos Destacados
+          <i data-lucide="briefcase" class="w-3.5 h-3.5"></i>
+          Catálogo de Soluciones
         </span>
         <h2 data-aos="fade-up" data-aos-delay="100" class="font-outfit font-bold text-3xl md:text-5xl mt-4">
-          Trabajo que <span class="text-neon">habla por sí solo</span>
+          Soluciones que <span class="text-neon">impulsan resultados</span>
         </h2>
+        <p data-aos="fade-up" data-aos-delay="200" class="text-gray-400 mt-4 max-w-2xl mx-auto">
+          Cada paquete incluye tecnología de punta, soporte dedicado y la garantía DigitalPro. Elige tu modelo de adquisición ideal.
+        </p>
       </div>
-      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div id="catalog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Rendered by JS from config.json -->
       </div>
     </div>
   </section>
 
-  <!-- ====== PRICING (dynamic) ====== -->
-  <section id="precios" class="relative z-10 py-24 px-6" data-section="precios">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-16">
-        <span data-aos="fade-up" class="section-label">
-          <i data-lucide="credit-card" class="w-3.5 h-3.5"></i>
-          Pago Rápido
-        </span>
-        <h2 data-aos="fade-up" data-aos-delay="100" class="font-outfit font-bold text-3xl md:text-5xl mt-4">
-          Servicios <span class="text-neon">Estandarizados</span>
-        </h2>
-        <p data-aos="fade-up" data-aos-delay="200" class="text-gray-400 mt-4 max-w-lg mx-auto">
-          Contrata y paga al instante. Sin llamadas, sin esperas.
-        </p>
-      </div>
-      <div id="pricing-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Rendered by JS from config.json -->
-      </div>
-      <p data-aos="fade-up" class="text-center text-gray-500 text-xs mt-8">
-        <i data-lucide="shield-check" class="w-3.5 h-3.5 inline mr-1"></i>
-        Pagos seguros procesados por Stripe. También aceptamos PayPal bajo solicitud.
-      </p>
+  <!-- ====== CATALOG DETAIL MODAL ====== -->
+  <div id="catalog-modal" class="catalog-modal" role="dialog" aria-hidden="true">
+    <div class="catalog-modal-backdrop" onclick="closeCatalogModal()"></div>
+    <div class="catalog-modal-panel">
+      <button class="catalog-modal-close" onclick="closeCatalogModal()" aria-label="Cerrar">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+      <div id="catalog-modal-content"></div>
     </div>
-  </section>
+  </div>
 
   <!-- ====== BOOKING: PRE-QUALIFICATION + CALENDLY EMBED ====== -->
   <section id="agendar" class="relative z-10 py-24 px-6" data-section="agendar">
@@ -701,43 +810,39 @@
         `).join('');
       }
 
-      // --- PROJECTS (dynamic grid) ---
-      const projectsGrid = document.getElementById('projects-grid');
-      if (CONFIG.projects && projectsGrid) {
-        projectsGrid.innerHTML = CONFIG.projects.map((p, i) => `
-          <div data-aos="zoom-in-up" data-aos-delay="${i * 150}" data-aos-duration="700" class="project-card glass overflow-hidden">
-            <img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy" />
-            <div class="project-overlay">
-              <span class="text-neon text-xs font-semibold uppercase tracking-widest mb-1">${esc(p.category)}</span>
-              <h3 class="font-outfit font-bold text-xl">${esc(p.title)}</h3>
-              <p class="text-sm text-gray-400 mt-1">${esc(p.description)}</p>
+      // --- CATALOG (unified projects + pricing) ---
+      const catalogGrid = document.getElementById('catalog-grid');
+      if (CONFIG.catalog && catalogGrid) {
+        const WA = (CONFIG.business && CONFIG.business.whatsapp) || '15125551234';
+        catalogGrid.innerHTML = CONFIG.catalog.map((item, i) => `
+          <div data-aos="zoom-in-up" data-aos-delay="${i * 120}" data-aos-duration="700"
+               class="catalog-card${item.featured ? ' featured' : ''}" data-catalog-id="${esc(item.id)}"
+               onclick="openCatalogModal('${esc(item.id)}')">
+            <div style="overflow:hidden; border-radius: 16px 16px 0 0;">
+              <img src="${esc(item.image)}" alt="${esc(item.name)}" loading="lazy" class="catalog-card-img" />
             </div>
-          </div>
-        `).join('');
-      }
-
-      // --- PRICING (dynamic grid) ---
-      const pricingGrid = document.getElementById('pricing-grid');
-      if (CONFIG.pricing && pricingGrid) {
-        pricingGrid.innerHTML = CONFIG.pricing.map((p, i) => `
-          <div data-aos="zoom-in" data-aos-delay="${i * 100}" class="pricing-card${p.featured ? ' featured' : ''} text-center">
-            <div class="w-12 h-12 rounded-xl bg-neon/10 flex items-center justify-center mx-auto mb-4">
-              <i data-lucide="${esc(p.icon)}" class="w-6 h-6 text-neon"></i>
+            <div class="catalog-card-body">
+              <span class="catalog-card-tag">${esc(item.category)}</span>
+              <h3 class="font-outfit font-bold text-xl mb-1">${esc(item.name)}</h3>
+              <p class="text-xs text-gray-500 font-semibold mb-2">${esc(item.tagline)}</p>
+              <p class="text-sm text-gray-400 leading-relaxed">${esc(item.description_short)}</p>
+              <div class="catalog-card-prices">
+                <div>
+                  <div class="price-label">Suscripción</div>
+                  <span class="price-val">$${item.subscription.price}</span>
+                  <span class="price-period">${esc(item.subscription.period)}</span>
+                </div>
+                <div>
+                  <div class="price-label">Compra Única</div>
+                  <span class="price-val">$${item.one_time.price}</span>
+                  <span class="price-period"> ${esc(item.currency)}</span>
+                </div>
+              </div>
+              <div class="catalog-card-cta">
+                <i data-lucide="eye" class="w-4 h-4"></i>
+                Configurar y Solicitar
+              </div>
             </div>
-            <h3 class="font-outfit font-bold text-xl mb-1">${esc(p.name)}</h3>
-            <p class="text-gray-400 text-sm mb-4">${esc(p.description)}</p>
-            <div class="mb-6">
-              <span class="text-4xl font-outfit font-bold text-neon">$${p.price}</span>
-              <span class="text-gray-500 text-sm"> ${esc(p.currency)}</span>
-            </div>
-            <ul class="text-left text-sm text-gray-400 space-y-2 mb-6">
-              ${(p.features || []).map(f => `<li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> ${esc(f)}</li>`).join('')}
-            </ul>
-            <a href="${esc(p.stripe_link)}" target="_blank" rel="noopener"
-               class="btn-neon w-full text-sm">
-              <i data-lucide="zap" class="w-4 h-4"></i>
-              <span class="btn-text">Comprar Ahora</span>
-            </a>
           </div>
         `).join('');
       }
@@ -873,8 +978,7 @@
       const sectionMessages = {
         'hero':        'Hola DigitalPro, vengo de la web y quiero más información sobre sus servicios.',
         'servicios':   'Hola DigitalPro, vengo de la web y me interesa conocer sus servicios en detalle.',
-        'proyectos':   'Hola DigitalPro, vengo de la web y me gustaría ver más ejemplos de su trabajo.',
-        'precios':     'Hola DigitalPro, vengo de la web y me interesa contratar un servicio. ¿Podemos hablar de precios?',
+        'catalogo':    'Hola DigitalPro, vengo de la web y me interesa su catálogo de soluciones.',
         'agendar':     'Hola DigitalPro, vengo de la web y quiero agendar una auditoría IA.',
         'contacto':    'Hola DigitalPro, vengo de la web y quiero hablar sobre mi proyecto.'
       };
@@ -920,6 +1024,137 @@
       setTimeout(() => { waTooltip.classList.add('show'); }, 3000);
       setTimeout(() => { waTooltip.classList.remove('show'); }, 8000);
     }
+
+    // ===== CATALOG MODAL CONFIGURATOR =====
+    let _CATALOG_DATA = null;
+    // Store catalog data reference once loaded
+    (async function() {
+      try {
+        const r = await fetch('/data/config.json');
+        const cfg = await r.json();
+        _CATALOG_DATA = cfg.catalog || [];
+        window._CATALOG_WA = (cfg.business && cfg.business.whatsapp) || '15125551234';
+        window._CATALOG_FORMSPREE = cfg.business && cfg.business.formspree_id ? 'https://formspree.io/f/' + cfg.business.formspree_id : '#contacto';
+      } catch(e) {}
+    })();
+
+    function openCatalogModal(itemId) {
+      const items = _CATALOG_DATA || [];
+      const item = items.find(c => c.id === itemId);
+      if (!item) return;
+      const modal = document.getElementById('catalog-modal');
+      const content = document.getElementById('catalog-modal-content');
+      const waNum = window._CATALOG_WA || '15125551234';
+      const formUrl = window._CATALOG_FORMSPREE || '#contacto';
+
+      content.innerHTML = `
+        <img src="${esc(item.image)}" alt="${esc(item.name)}" class="modal-hero-img" />
+        <span class="catalog-card-tag">${esc(item.category)}</span>
+        <h2 class="font-outfit font-bold text-2xl md:text-3xl mt-2 mb-1">${esc(item.name)}</h2>
+        <p class="text-neon font-semibold text-sm mb-4">${esc(item.tagline)}</p>
+        <p class="text-gray-300 leading-relaxed text-sm mb-2">${esc(item.description_full)}</p>
+
+        <details class="modal-includes" open>
+          <summary>
+            <i data-lucide="shield-check" class="w-4 h-4"></i>
+            Blindaje Incluido en este paquete
+            <i data-lucide="chevron-down" class="w-4 h-4 chevron-icon transition-transform ml-auto"></i>
+          </summary>
+          <ul class="mt-3 space-y-2">
+            ${(item.includes || []).map(inc => `
+              <li class="flex items-center gap-2 text-sm text-gray-300">
+                <i data-lucide="check-circle" class="w-4 h-4 text-neon flex-shrink-0"></i>
+                ${esc(inc)}
+              </li>
+            `).join('')}
+          </ul>
+        </details>
+
+        <h3 class="font-outfit font-bold text-lg mb-3 flex items-center gap-2">
+          <i data-lucide="settings-2" class="w-5 h-5 text-neon"></i>
+          Elige tu modelo de adquisición
+        </h3>
+        <div class="modal-pricing-cols">
+          <div class="modal-pricing-box recommended">
+            <div class="box-label" style="background: rgba(0,244,255,0.15); color: #00f4ff;">Opción A · Suscripción</div>
+            <div class="flex items-baseline gap-1 mb-3">
+              <span class="font-outfit font-bold text-3xl text-neon">$${item.subscription.price}</span>
+              <span class="text-gray-500 text-sm">${esc(item.subscription.period)}</span>
+            </div>
+            <ul class="space-y-1.5 mb-4">
+              ${(item.subscription.benefits || []).map(b => `
+                <li class="flex items-start gap-2 text-xs text-gray-300">
+                  <i data-lucide="zap" class="w-3 h-3 text-neon flex-shrink-0 mt-0.5"></i>
+                  ${esc(b)}
+                </li>
+              `).join('')}
+            </ul>
+            <a href="https://wa.me/${esc(waNum)}?text=${encodeURIComponent(item.whatsapp_msg + ' (Suscripción $' + item.subscription.price + item.subscription.period + ')')}"
+               target="_blank" rel="noopener" class="modal-btn-wa">
+              <svg viewBox="0 0 32 32" width="16" height="16" fill="#fff"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.9 15.9 0 0016.004 32C24.826 32 32 24.826 32 16.004 32 7.176 24.826 0 16.004 0z"/></svg>
+              Solicitar por WhatsApp
+            </a>
+          </div>
+          <div class="modal-pricing-box">
+            <div class="box-label" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6);">Opción B · Compra Única</div>
+            <div class="flex items-baseline gap-1 mb-3">
+              <span class="font-outfit font-bold text-3xl text-white">$${item.one_time.price}</span>
+              <span class="text-gray-500 text-sm">${esc(item.currency)}</span>
+            </div>
+            <ul class="space-y-1.5 mb-4">
+              ${(item.one_time.benefits || []).map(b => `
+                <li class="flex items-start gap-2 text-xs text-gray-300">
+                  <i data-lucide="check" class="w-3 h-3 text-green-400 flex-shrink-0 mt-0.5"></i>
+                  ${esc(b)}
+                </li>
+              `).join('')}
+            </ul>
+            <a href="https://wa.me/${esc(waNum)}?text=${encodeURIComponent(item.whatsapp_msg + ' (Compra Única $' + item.one_time.price + ')')}"
+               target="_blank" rel="noopener" class="modal-btn-wa">
+              <svg viewBox="0 0 32 32" width="16" height="16" fill="#fff"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.9 15.9 0 0016.004 32C24.826 32 32 24.826 32 16.004 32 7.176 24.826 0 16.004 0z"/></svg>
+              Solicitar por WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <a href="${esc(formUrl)}" class="modal-btn-form mt-2"
+           onclick="prefillContact('${esc(item.formspree_subject)}')">
+          <i data-lucide="mail" class="w-4 h-4"></i>
+          Solicitar por Formulario
+        </a>
+        <p class="text-center text-xs text-gray-600 mt-3">
+          <i data-lucide="shield-check" class="w-3 h-3 inline mr-1"></i>
+          Sin compromisos. Te respondemos en menos de 24h.
+        </p>
+      `;
+
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      lucide.createIcons();
+    }
+
+    function closeCatalogModal() {
+      const modal = document.getElementById('catalog-modal');
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function prefillContact(subject) {
+      closeCatalogModal();
+      setTimeout(() => {
+        const el = document.getElementById('contacto');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        const msgField = document.querySelector('#contact-form textarea[name="message"]');
+        if (msgField && !msgField.value) msgField.value = subject;
+      }, 300);
+    }
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeCatalogModal();
+    });
 
     // ===== PWA SERVICE WORKER REGISTRATION =====
     if ('serviceWorker' in navigator) {
@@ -1034,8 +1269,7 @@
         <button class="adm-tab active" data-admpanel="adm-hero"><i data-lucide="home" class="w-4 h-4 inline mr-1"></i>Hero</button>
         <button class="adm-tab" data-admpanel="adm-business"><i data-lucide="building" class="w-4 h-4 inline mr-1"></i>Negocio</button>
         <button class="adm-tab" data-admpanel="adm-services"><i data-lucide="layers" class="w-4 h-4 inline mr-1"></i>Servicios</button>
-        <button class="adm-tab" data-admpanel="adm-projects"><i data-lucide="image" class="w-4 h-4 inline mr-1"></i>Proyectos</button>
-        <button class="adm-tab" data-admpanel="adm-pricing"><i data-lucide="credit-card" class="w-4 h-4 inline mr-1"></i>Precios</button>
+        <button class="adm-tab" data-admpanel="adm-catalog"><i data-lucide="briefcase" class="w-4 h-4 inline mr-1"></i>Catálogo</button>
         <button class="adm-tab" data-admpanel="adm-booking"><i data-lucide="calendar" class="w-4 h-4 inline mr-1"></i>Booking</button>
         <button class="adm-tab" data-admpanel="adm-contact"><i data-lucide="mail" class="w-4 h-4 inline mr-1"></i>Contacto</button>
       </div>
@@ -1089,22 +1323,13 @@
         <div id="adm-services-list"></div>
       </div>
 
-      <!-- PROJECTS -->
-      <div id="adm-projects" class="adm-panel">
+      <!-- CATÁLOGO -->
+      <div id="adm-catalog" class="adm-panel">
         <div class="flex items-center justify-between mb-6">
-          <h2 class="font-outfit font-bold text-xl flex items-center gap-2"><i data-lucide="image" class="w-5 h-5 text-neon"></i> Proyectos</h2>
-          <button id="adm-add-project" class="btn-neon text-xs !py-2 !px-4"><i data-lucide="plus" class="w-4 h-4"></i> Agregar</button>
+          <h2 class="font-outfit font-bold text-xl flex items-center gap-2"><i data-lucide="briefcase" class="w-5 h-5 text-neon"></i> Catálogo de Soluciones</h2>
+          <button id="adm-add-catalog" class="btn-neon text-xs !py-2 !px-4"><i data-lucide="plus" class="w-4 h-4"></i> Agregar</button>
         </div>
-        <div id="adm-projects-list"></div>
-      </div>
-
-      <!-- PRICING -->
-      <div id="adm-pricing" class="adm-panel">
-        <div class="flex items-center justify-between mb-6">
-          <h2 class="font-outfit font-bold text-xl flex items-center gap-2"><i data-lucide="credit-card" class="w-5 h-5 text-neon"></i> Precios</h2>
-          <button id="adm-add-pricing" class="btn-neon text-xs !py-2 !px-4"><i data-lucide="plus" class="w-4 h-4"></i> Agregar</button>
-        </div>
-        <div id="adm-pricing-list"></div>
+        <div id="adm-catalog-list"></div>
       </div>
 
       <!-- BOOKING -->
@@ -1244,8 +1469,7 @@
     function renderAdmPanels() {
       bindAdmFields();
       renderAdmServices();
-      renderAdmProjects();
-      renderAdmPricing();
+      renderAdmCatalog();
     }
 
     // --- HTML escape ---
@@ -1272,53 +1496,52 @@
       lucide.createIcons();
     }
 
-    // --- Render Projects ---
-    function renderAdmProjects() {
-      const c = document.getElementById('adm-projects-list');
-      c.innerHTML = (ADM_CONFIG.projects||[]).map((p,i) => `
+    // --- Render Catalog ---
+    function renderAdmCatalog() {
+      const c = document.getElementById('adm-catalog-list');
+      c.innerHTML = (ADM_CONFIG.catalog||[]).map((item,i) => `
         <div class="adm-card">
           <div class="flex items-center justify-between mb-3">
-            <span class="font-outfit font-bold text-sm text-neon">#${i+1} — ${aEsc(p.title)}</span>
-            <button class="text-red-400 hover:text-red-300 text-xs font-semibold" onclick="window._admRemove('projects',${i})"><i data-lucide="trash-2" class="w-4 h-4 inline"></i> Eliminar</button>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <div><label class="adm-label">Título</label><input class="admin-input" value="${aAttr(p.title)}" oninput="window._admCfg().projects[${i}].title=this.value" /></div>
-            <div><label class="adm-label">Categoría</label><input class="admin-input" value="${aAttr(p.category)}" oninput="window._admCfg().projects[${i}].category=this.value" /></div>
-            <div><label class="adm-label">ID</label><input class="admin-input" value="${aAttr(p.id)}" oninput="window._admCfg().projects[${i}].id=this.value" /></div>
-            <div><label class="adm-label">URL Imagen</label><input class="admin-input" value="${aAttr(p.image)}" oninput="window._admCfg().projects[${i}].image=this.value" /></div>
-          </div>
-          <div class="mt-3"><label class="adm-label">Descripción</label><textarea class="admin-input" oninput="window._admCfg().projects[${i}].description=this.value">${aEsc(p.description)}</textarea></div>
-          ${p.image ? `<img src="${aAttr(p.image)}" class="mt-3 rounded-lg w-full max-h-40 object-cover opacity-60" alt="preview"/>` : ''}
-        </div>`).join('');
-      lucide.createIcons();
-    }
-
-    // --- Render Pricing ---
-    function renderAdmPricing() {
-      const c = document.getElementById('adm-pricing-list');
-      c.innerHTML = (ADM_CONFIG.pricing||[]).map((p,i) => `
-        <div class="adm-card">
-          <div class="flex items-center justify-between mb-3">
-            <span class="font-outfit font-bold text-sm text-neon">#${i+1} — ${aEsc(p.name)}</span>
+            <span class="font-outfit font-bold text-sm text-neon">#${i+1} — ${aEsc(item.name)}</span>
             <div class="flex items-center gap-4">
               <label class="flex items-center gap-2 text-xs text-gray-400">
-                <label class="toggle-sw"><input type="checkbox" ${p.featured?'checked':''} onchange="window._admCfg().pricing[${i}].featured=this.checked" /><span class="toggle-sl"></span></label>
+                <label class="toggle-sw"><input type="checkbox" ${item.featured?'checked':''} onchange="window._admCfg().catalog[${i}].featured=this.checked" /><span class="toggle-sl"></span></label>
                 Destacado
               </label>
-              <button class="text-red-400 hover:text-red-300 text-xs font-semibold" onclick="window._admRemove('pricing',${i})"><i data-lucide="trash-2" class="w-4 h-4 inline"></i> Eliminar</button>
+              <button class="text-red-400 hover:text-red-300 text-xs font-semibold" onclick="window._admRemove('catalog',${i})"><i data-lucide="trash-2" class="w-4 h-4 inline"></i> Eliminar</button>
             </div>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-            <div><label class="adm-label">Nombre</label><input class="admin-input" value="${aAttr(p.name)}" oninput="window._admCfg().pricing[${i}].name=this.value" /></div>
-            <div><label class="adm-label">Precio</label><input type="number" class="admin-input" value="${p.price}" oninput="window._admCfg().pricing[${i}].price=Number(this.value)" /></div>
-            <div><label class="adm-label">Moneda</label><input class="admin-input" value="${aAttr(p.currency)}" oninput="window._admCfg().pricing[${i}].currency=this.value" /></div>
+            <div><label class="adm-label">Nombre</label><input class="admin-input" value="${aAttr(item.name)}" oninput="window._admCfg().catalog[${i}].name=this.value" /></div>
+            <div><label class="adm-label">ID</label><input class="admin-input" value="${aAttr(item.id)}" oninput="window._admCfg().catalog[${i}].id=this.value" /></div>
+            <div><label class="adm-label">Categoría</label><input class="admin-input" value="${aAttr(item.category)}" oninput="window._admCfg().catalog[${i}].category=this.value" /></div>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
-            <div><label class="adm-label">Icono</label><input class="admin-input" value="${aAttr(p.icon)}" oninput="window._admCfg().pricing[${i}].icon=this.value" /></div>
-            <div><label class="adm-label">Stripe Link</label><input class="admin-input" value="${aAttr(p.stripe_link)}" oninput="window._admCfg().pricing[${i}].stripe_link=this.value" /></div>
+            <div><label class="adm-label">Tagline</label><input class="admin-input" value="${aAttr(item.tagline)}" oninput="window._admCfg().catalog[${i}].tagline=this.value" /></div>
+            <div><label class="adm-label">URL Imagen</label><input class="admin-input" value="${aAttr(item.image)}" oninput="window._admCfg().catalog[${i}].image=this.value" /></div>
           </div>
-          <div class="mt-3"><label class="adm-label">Descripción</label><input class="admin-input" value="${aAttr(p.description)}" oninput="window._admCfg().pricing[${i}].description=this.value" /></div>
-          <div class="mt-3"><label class="adm-label">Features (una por línea)</label><textarea class="admin-input" rows="4" oninput="window._admCfg().pricing[${i}].features=this.value.split('\\n').filter(Boolean)">${(p.features||[]).join('\n')}</textarea></div>
+          ${item.image ? `<img src="${aAttr(item.image)}" class="mt-3 rounded-lg w-full max-h-32 object-cover opacity-60" alt="preview"/>` : ''}
+          <div class="mt-3"><label class="adm-label">Descripción corta</label><textarea class="admin-input" rows="2" oninput="window._admCfg().catalog[${i}].description_short=this.value">${aEsc(item.description_short)}</textarea></div>
+          <div class="mt-3"><label class="adm-label">Descripción completa (modal)</label><textarea class="admin-input" rows="4" oninput="window._admCfg().catalog[${i}].description_full=this.value">${aEsc(item.description_full)}</textarea></div>
+          <div class="mt-3"><label class="adm-label">Incluye (uno por línea: Hosting, SSL, SEO...)</label><textarea class="admin-input" rows="3" oninput="window._admCfg().catalog[${i}].includes=this.value.split('\\n').filter(Boolean)">${(item.includes||[]).join('\n')}</textarea></div>
+          <div class="mt-4 p-3 rounded-lg" style="background: rgba(0,244,255,0.03); border: 1px solid rgba(0,244,255,0.1);">
+            <p class="text-xs font-bold text-neon mb-3">💰 Opción A — Suscripción Mensual</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div><label class="adm-label">Precio mensual</label><input type="number" class="admin-input" value="${item.subscription?.price||0}" oninput="if(!window._admCfg().catalog[${i}].subscription)window._admCfg().catalog[${i}].subscription={};window._admCfg().catalog[${i}].subscription.price=Number(this.value)" /></div>
+              <div><label class="adm-label">Periodo</label><input class="admin-input" value="${aAttr(item.subscription?.period||'/mes')}" oninput="window._admCfg().catalog[${i}].subscription.period=this.value" /></div>
+            </div>
+            <div class="mt-2"><label class="adm-label">Beneficios suscripción (uno por línea)</label><textarea class="admin-input" rows="3" oninput="window._admCfg().catalog[${i}].subscription.benefits=this.value.split('\\n').filter(Boolean)">${(item.subscription?.benefits||[]).join('\n')}</textarea></div>
+          </div>
+          <div class="mt-3 p-3 rounded-lg" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);">
+            <p class="text-xs font-bold text-gray-300 mb-3">🏷️ Opción B — Compra Única</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div><label class="adm-label">Precio único</label><input type="number" class="admin-input" value="${item.one_time?.price||0}" oninput="if(!window._admCfg().catalog[${i}].one_time)window._admCfg().catalog[${i}].one_time={};window._admCfg().catalog[${i}].one_time.price=Number(this.value)" /></div>
+              <div><label class="adm-label">Moneda</label><input class="admin-input" value="${aAttr(item.currency||'USD')}" oninput="window._admCfg().catalog[${i}].currency=this.value" /></div>
+            </div>
+            <div class="mt-2"><label class="adm-label">Beneficios compra única (uno por línea)</label><textarea class="admin-input" rows="3" oninput="window._admCfg().catalog[${i}].one_time.benefits=this.value.split('\\n').filter(Boolean)">${(item.one_time?.benefits||[]).join('\n')}</textarea></div>
+          </div>
+          <div class="mt-3"><label class="adm-label">Mensaje WhatsApp</label><input class="admin-input" value="${aAttr(item.whatsapp_msg)}" oninput="window._admCfg().catalog[${i}].whatsapp_msg=this.value" /></div>
+          <div class="mt-2"><label class="adm-label">Asunto Formspree</label><input class="admin-input" value="${aAttr(item.formspree_subject)}" oninput="window._admCfg().catalog[${i}].formspree_subject=this.value" /></div>
         </div>`).join('');
       lucide.createIcons();
     }
@@ -1329,8 +1552,7 @@
       if (!confirm('¿Eliminar este elemento?')) return;
       ADM_CONFIG[section].splice(idx, 1);
       if (section === 'services') renderAdmServices();
-      if (section === 'projects') renderAdmProjects();
-      if (section === 'pricing') renderAdmPricing();
+      if (section === 'catalog') renderAdmCatalog();
     };
 
     // --- Add buttons ---
@@ -1339,15 +1561,19 @@
       ADM_CONFIG.services.push({ id:'nuevo-'+Date.now(), name:'Nuevo Servicio', icon:'star', description:'Descripción...', whatsapp_msg:'Hola, me interesa el nuevo servicio.' });
       renderAdmServices();
     });
-    document.getElementById('adm-add-project').addEventListener('click', () => {
-      if (!ADM_CONFIG.projects) ADM_CONFIG.projects = [];
-      ADM_CONFIG.projects.push({ id:'nuevo-'+Date.now(), category:'Categoría', title:'Nuevo Proyecto', description:'Descripción...', image:'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop&q=80' });
-      renderAdmProjects();
-    });
-    document.getElementById('adm-add-pricing').addEventListener('click', () => {
-      if (!ADM_CONFIG.pricing) ADM_CONFIG.pricing = [];
-      ADM_CONFIG.pricing.push({ id:'nuevo-'+Date.now(), name:'Nuevo Plan', icon:'package', price:0, currency:'USD', description:'Descripción...', features:['Feature 1'], stripe_link:'', featured:false });
-      renderAdmPricing();
+    document.getElementById('adm-add-catalog').addEventListener('click', () => {
+      if (!ADM_CONFIG.catalog) ADM_CONFIG.catalog = [];
+      ADM_CONFIG.catalog.push({
+        id: 'nuevo-' + Date.now(), name: 'Nueva Solución', tagline: 'Descripción breve',
+        category: 'Categoría', image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop&q=80',
+        description_short: 'Descripción corta...', description_full: 'Descripción completa del paquete...',
+        includes: ['Hosting Premium', 'Certificado SSL', 'Soporte 24/7'],
+        subscription: { price: 99, period: '/mes', benefits: ['Blindaje Continuo', 'Soporte dedicado'] },
+        one_time: { price: 999, benefits: ['Entrega completa', 'Soporte 60 días'] },
+        currency: 'USD', whatsapp_msg: 'Hola DigitalPro, me interesa Nueva Solución.',
+        formspree_subject: 'Interesado en: Nueva Solución', featured: false
+      });
+      renderAdmCatalog();
     });
 
     // --- Save token ---

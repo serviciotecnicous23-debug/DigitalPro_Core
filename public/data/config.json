@@ -47,77 +47,120 @@
       "whatsapp_msg": "Hola DigitalPro, vengo de la web y me interesa el servicio de Desarrollo Full-Stack."
     }
   ],
-  "projects": [
+  "catalog": [
     {
       "id": "dashboard-ia",
+      "name": "Dashboard Predictivo IA",
+      "tagline": "Inteligencia de Datos en Tiempo Real",
       "category": "Inteligencia Artificial",
-      "title": "Dashboard Predictivo IA",
-      "description": "Panel analítico en tiempo real con modelos de predicción de ventas.",
-      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&q=80",
+      "description_short": "Panel analítico con modelos de predicción de ventas impulsado por IA.",
+      "description_full": "Transforma el caos de datos en decisiones rentables. Nuestro Dashboard Predictivo utiliza modelos de machine learning entrenados con tus métricas reales para anticipar tendencias, detectar oportunidades ocultas y blindar tu negocio contra pérdidas inesperadas. Visualiza KPIs en tiempo real con gráficos interactivos que tu equipo entenderá sin ser científicos de datos.",
+      "includes": ["Hosting Premium AWS", "Certificado SSL Enterprise", "SEO On-Page Avanzado", "Soporte Prioritario 24/7"],
+      "subscription": {
+        "price": 149,
+        "period": "/mes",
+        "benefits": ["Blindaje y Optimización Continua", "Actualizaciones de modelos IA mensuales", "Soporte dedicado 24/7", "Backups diarios automáticos", "Escalabilidad garantizada"]
+      },
+      "one_time": {
+        "price": 2499,
+        "benefits": ["Entrega completa del código fuente", "90 días de soporte post-entrega", "Documentación técnica completa", "Sesión de capacitación incluida"]
+      },
+      "currency": "USD",
+      "whatsapp_msg": "Hola DigitalPro, vengo de la web y me interesa el paquete *Dashboard Predictivo IA*. Quiero más detalles.",
+      "formspree_subject": "Interesado en: Dashboard Predictivo IA",
+      "featured": false
     },
     {
       "id": "ecommerce-lujo",
+      "name": "Tienda de Lujo Online",
+      "tagline": "E-Commerce de Alta Conversión",
       "category": "E-Commerce",
-      "title": "Tienda de Lujo Online",
-      "description": "Plataforma e-commerce premium con checkout en 1 clic.",
-      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&q=80",
+      "description_short": "Plataforma e-commerce premium con checkout en 1 clic y experiencia VIP.",
+      "description_full": "Tu tienda online no debería ser una más del montón. Diseñamos experiencias de compra que seducen, convierten y fidelizan. Checkout optimizado en 1 clic, catálogo inteligente con filtros avanzados, integración con pasarelas de pago globales y un diseño que refleja el nivel premium de tu marca. Cada pixel está pensado para maximizar conversiones.",
+      "includes": ["Hosting Premium CloudFlare", "Certificado SSL Premium", "SEO E-Commerce Avanzado", "Soporte Prioritario 24/7"],
+      "subscription": {
+        "price": 199,
+        "period": "/mes",
+        "benefits": ["Blindaje Anti-Fraude Continuo", "Optimización de conversión mensual", "Soporte e-commerce dedicado 24/7", "Actualizaciones de seguridad", "Monitoreo de uptime 99.9%"]
+      },
+      "one_time": {
+        "price": 3499,
+        "benefits": ["Código fuente y activos completos", "120 días de soporte incluido", "Migración de productos asistida", "Training de administración"]
+      },
+      "currency": "USD",
+      "whatsapp_msg": "Hola DigitalPro, vengo de la web y me interesa el paquete *Tienda de Lujo Online*. Quiero más detalles.",
+      "formspree_subject": "Interesado en: Tienda de Lujo Online",
+      "featured": true
     },
     {
       "id": "app-gestion",
+      "name": "App de Gestión Empresarial",
+      "tagline": "Control Total desde tu Bolsillo",
       "category": "Desarrollo Móvil",
-      "title": "App de Gestión Empresarial",
-      "description": "App nativa iOS/Android con sincronización en la nube.",
-      "image": "https://images.unsplash.com/photo-1555421689-d68471e189f2?w=600&h=400&fit=crop&q=80"
-    }
-  ],
-  "pricing": [
-    {
-      "id": "auditoria-express",
-      "name": "Auditoría Web Express",
-      "icon": "scan-search",
-      "price": 99,
+      "image": "https://images.unsplash.com/photo-1555421689-d68471e189f2?w=600&h=400&fit=crop&q=80",
+      "description_short": "App nativa iOS/Android con sincronización cloud y panel administrativo.",
+      "description_full": "Lleva el pulso de tu empresa donde vayas. App nativa de alto rendimiento con sincronización instantánea en la nube, notificaciones inteligentes, dashboard ejecutivo y módulos personalizables para inventario, personal, finanzas y clientes. Diseñada para escalar con tu negocio sin perder velocidad ni experiencia de usuario.",
+      "includes": ["Hosting Cloud Escalable", "Certificado SSL Mobile", "ASO (App Store Optimization)", "Soporte Prioritario 24/7"],
+      "subscription": {
+        "price": 249,
+        "period": "/mes",
+        "benefits": ["Evolución Continua de Features", "Actualizaciones iOS/Android garantizadas", "Soporte técnico dedicado 24/7", "Monitoreo de crashes en tiempo real", "Backups automáticos"]
+      },
+      "one_time": {
+        "price": 4999,
+        "benefits": ["Código fuente nativo completo", "Publicación en App Store y Google Play", "180 días de soporte incluido", "Documentación y API docs"]
+      },
       "currency": "USD",
-      "description": "Análisis completo con reporte de mejoras en 48h.",
-      "features": [
-        "Análisis SEO completo",
-        "Reporte de performance",
-        "Recomendaciones accionables",
-        "Entrega en 48 horas"
-      ],
-      "stripe_link": "https://buy.stripe.com/test_placeholder_audit99",
+      "whatsapp_msg": "Hola DigitalPro, vengo de la web y me interesa el paquete *App de Gestión Empresarial*. Quiero más detalles.",
+      "formspree_subject": "Interesado en: App de Gestión Empresarial",
       "featured": false
     },
     {
       "id": "landing-pro",
       "name": "Landing Page Pro",
-      "icon": "layout",
-      "price": 499,
+      "tagline": "Máxima Conversión, Mínimo Tiempo",
+      "category": "Web Design",
+      "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop&q=80",
+      "description_short": "Diseño premium de alta conversión, optimizada para SEO y velocidad.",
+      "description_full": "Una landing page que no convierte es dinero tirado. Nuestro diseño combina psicología de ventas, copywriting persuasivo y tecnología de punta para crear páginas que capturan leads como imanes. Carga ultra-rápida (<1s), responsive perfecto, formularios inteligentes y analytics integrado para que midas cada clic que importa.",
+      "includes": ["Hosting Vercel/Netlify", "Certificado SSL Incluido", "SEO On-Page Completo", "Soporte 24/7"],
+      "subscription": {
+        "price": 79,
+        "period": "/mes",
+        "benefits": ["Optimización Continua de Conversión", "A/B Testing mensual", "Soporte y ajustes ilimitados", "Reportes de performance", "Actualizaciones de diseño"]
+      },
+      "one_time": {
+        "price": 499,
+        "benefits": ["Entrega completa del proyecto", "Código limpio y documentado", "60 días de soporte incluido", "Deploy en tu hosting preferido"]
+      },
       "currency": "USD",
-      "description": "Diseño premium, alta conversión, optimizada para SEO.",
-      "features": [
-        "Diseño custom responsivo",
-        "SEO on-page configurado",
-        "Formulario de captación",
-        "Analytics integrado",
-        "Deploy en Vercel/Netlify"
-      ],
-      "stripe_link": "https://buy.stripe.com/test_placeholder_landing499",
-      "featured": true
+      "whatsapp_msg": "Hola DigitalPro, vengo de la web y me interesa el paquete *Landing Page Pro*. Quiero más detalles.",
+      "formspree_subject": "Interesado en: Landing Page Pro",
+      "featured": false
     },
     {
       "id": "automatizacion-starter",
-      "name": "Automatización Starter",
-      "icon": "bot",
-      "price": 299,
+      "name": "Automatización IA Starter",
+      "tagline": "Tu Equipo Trabaja, la IA Ejecuta",
+      "category": "Automatización",
+      "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop&q=80",
+      "description_short": "3 flujos automatizados con IA integrada que trabajan por ti 24/7.",
+      "description_full": "Deja de perder horas en tareas repetitivas. Configuramos flujos inteligentes que conectan tus herramientas favoritas, procesan datos con IA y ejecutan acciones automáticas sin intervención humana. Email marketing, seguimiento de leads, facturación, reportes — todo funcionando mientras tú te enfocas en crecer.",
+      "includes": ["Infraestructura Cloud", "Monitoreo de Flujos", "Integraciones API", "Soporte Técnico 24/7"],
+      "subscription": {
+        "price": 129,
+        "period": "/mes",
+        "benefits": ["Blindaje y Monitoreo Continuo", "Nuevos flujos cada trimestre", "Soporte prioritario 24/7", "Optimización de prompts IA", "Escalamiento automático"]
+      },
+      "one_time": {
+        "price": 999,
+        "benefits": ["3 flujos completamente configurados", "Documentación de cada flujo", "60 días de soporte incluido", "Training de mantenimiento"]
+      },
       "currency": "USD",
-      "description": "3 flujos automatizados con IA integrada para tu negocio.",
-      "features": [
-        "3 flujos automatizados",
-        "Integración con tus apps",
-        "IA para procesamiento",
-        "Soporte 30 días"
-      ],
-      "stripe_link": "https://buy.stripe.com/test_placeholder_auto299",
+      "whatsapp_msg": "Hola DigitalPro, vengo de la web y me interesa el paquete *Automatización IA Starter*. Quiero más detalles.",
+      "formspree_subject": "Interesado en: Automatización IA Starter",
       "featured": false
     }
   ],
