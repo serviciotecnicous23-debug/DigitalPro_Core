@@ -630,7 +630,12 @@
         <span class="font-outfit font-semibold">Digital<span class="text-neon">Pro</span></span>
       </div>
       <p class="text-sm text-gray-500" id="footer-location">Austin, TX &mdash; Soluciones Digitales de Alto Nivel</p>
-      <p class="text-xs text-gray-600" id="footer-copy">&copy; 2026 DigitalPro. Todos los derechos reservados.</p>
+      <div class="flex items-center gap-3">
+        <p class="text-xs text-gray-600" id="footer-copy">&copy; 2026 DigitalPro. Todos los derechos reservados.</p>
+        <button id="open-admin-btn" class="text-gray-700 hover:text-neon transition-colors" title="Admin" aria-label="Panel de administración">
+          <i data-lucide="settings" class="w-4 h-4"></i>
+        </button>
+      </div>
     </div>
   </footer>
 
@@ -920,6 +925,489 @@
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js').catch(() => {});
     }
+  </script>
+
+  <!-- ====== ADMIN PANEL (embedded overlay) ====== -->
+  <style>
+    .admin-overlay {
+      position: fixed; inset: 0; z-index: 10000; display: none;
+      background: rgba(5,5,16,0.98); backdrop-filter: blur(20px);
+      overflow-y: auto;
+    }
+    .admin-overlay.open { display: block; }
+    .admin-input {
+      width: 100%; padding: 10px 14px; background: rgba(255,255,255,0.06); border: 1px solid rgba(0,244,255,0.15);
+      border-radius: 10px; color: #fff; font-size: 0.9rem; outline: none; transition: all 0.3s;
+    }
+    .admin-input:focus { border-color: #00f4ff; box-shadow: 0 0 15px rgba(0,244,255,0.12); background: rgba(255,255,255,0.08); }
+    .admin-input::placeholder { color: rgba(255,255,255,0.3); }
+    textarea.admin-input { min-height: 80px; resize: vertical; }
+    .adm-tab {
+      padding: 10px 20px; border-radius: 10px; font-size: 0.85rem; font-weight: 600; cursor: pointer;
+      transition: all 0.3s; color: rgba(255,255,255,0.5); border: 1px solid transparent;
+    }
+    .adm-tab:hover { color: #fff; background: rgba(255,255,255,0.05); }
+    .adm-tab.active { color: #00f4ff; background: rgba(0,244,255,0.08); border-color: rgba(0,244,255,0.2); }
+    .adm-panel { display: none; }
+    .adm-panel.active { display: block; }
+    label.adm-label { display: block; font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.5); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .adm-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; transition: all 0.3s;
+    }
+    .adm-card:hover { border-color: rgba(0,244,255,0.2); }
+    .adm-toast {
+      position: fixed; bottom: 24px; right: 24px; z-index: 99999;
+      padding: 14px 24px; border-radius: 12px; font-weight: 600; font-size: 0.9rem;
+      transform: translateY(100px); opacity: 0; transition: all 0.4s ease;
+    }
+    .adm-toast.show { transform: translateY(0); opacity: 1; }
+    .adm-toast.success { background: #059669; color: #fff; }
+    .adm-toast.error { background: #dc2626; color: #fff; }
+    .toggle-sw { position: relative; width: 44px; height: 24px; cursor: pointer; display: inline-block; }
+    .toggle-sw input { display: none; }
+    .toggle-sl { position: absolute; inset: 0; background: rgba(255,255,255,0.1); border-radius: 12px; transition: 0.3s; }
+    .toggle-sl::before { content: ''; position: absolute; width: 18px; height: 18px; left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: 0.3s; }
+    .toggle-sw input:checked + .toggle-sl { background: #00f4ff; }
+    .toggle-sw input:checked + .toggle-sl::before { transform: translateX(20px); }
+  </style>
+
+  <!-- Admin Auth Gate -->
+  <div id="admin-auth-gate" class="admin-overlay" style="display:none; align-items:center; justify-content:center;">
+    <div class="glass p-10 max-w-md w-full mx-4 text-center" style="border-color: rgba(0,244,255,0.2);">
+      <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-neon to-neon-dark flex items-center justify-center mx-auto mb-6">
+        <span class="text-abyss font-outfit font-bold text-xl">DP</span>
+      </div>
+      <h1 class="font-outfit font-bold text-2xl mb-2">Admin Panel</h1>
+      <p class="text-gray-400 text-sm mb-8">Ingresa tu contraseña para gestionar el contenido</p>
+      <form id="adm-auth-form" class="space-y-4">
+        <input type="password" id="adm-auth-pw" placeholder="Contraseña" required class="admin-input text-center" autocomplete="current-password" />
+        <button type="submit" class="btn-neon w-full">
+          <i data-lucide="lock" class="w-4 h-4"></i>
+          Acceder
+        </button>
+      </form>
+      <p id="adm-auth-error" class="text-red-400 text-sm mt-4 hidden">Contraseña incorrecta</p>
+      <button id="adm-auth-close" class="mt-6 text-gray-500 hover:text-white text-sm transition-colors">← Volver a la web</button>
+    </div>
+  </div>
+
+  <!-- Admin Main Panel -->
+  <div id="admin-panel" class="admin-overlay">
+    <!-- Top bar -->
+    <div class="sticky top-0 z-50 border-b border-white/5 px-6 py-3" style="background: rgba(5,5,16,0.92); backdrop-filter: blur(20px);">
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-neon to-neon-dark flex items-center justify-center">
+            <span class="text-abyss font-outfit font-bold text-sm">DP</span>
+          </div>
+          <span class="font-outfit font-bold text-lg">Admin<span class="text-neon">Panel</span></span>
+        </div>
+        <div class="flex items-center gap-3">
+          <button id="adm-btn-save" class="btn-neon text-sm !py-2.5 !px-6">
+            <i data-lucide="upload-cloud" class="w-4 h-4"></i>
+            <span>Guardar y Publicar</span>
+          </button>
+          <button id="adm-close" class="text-gray-400 hover:text-white p-2 transition-colors" title="Cerrar admin">
+            <i data-lucide="x" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 py-6">
+      <!-- GitHub Token -->
+      <div id="adm-token-notice" class="glass p-4 mb-6 flex items-start gap-3" style="border-color: rgba(255,200,0,0.3); background: rgba(255,200,0,0.04);">
+        <i data-lucide="alert-triangle" class="w-5 h-5 text-yellow-400 mt-0.5 flex-shrink-0"></i>
+        <div class="flex-1">
+          <p class="text-sm font-semibold text-yellow-300">Configura tu Token de GitHub</p>
+          <p class="text-xs text-gray-400 mt-1">Para guardar cambios necesitas un <a href="https://github.com/settings/tokens" target="_blank" class="text-neon underline">GitHub Personal Access Token</a> con permiso <code class="text-neon">repo</code>.</p>
+          <div class="flex items-center gap-3 mt-3">
+            <input type="password" id="adm-gh-token" placeholder="ghp_xxxxxxxxxxxx" class="admin-input !text-sm flex-1" autocomplete="off" />
+            <button id="adm-save-token" class="btn-neon text-xs !py-2 !px-4">Guardar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex flex-wrap gap-2 mb-8 overflow-x-auto pb-2">
+        <button class="adm-tab active" data-admpanel="adm-hero"><i data-lucide="home" class="w-4 h-4 inline mr-1"></i>Hero</button>
+        <button class="adm-tab" data-admpanel="adm-business"><i data-lucide="building" class="w-4 h-4 inline mr-1"></i>Negocio</button>
+        <button class="adm-tab" data-admpanel="adm-services"><i data-lucide="layers" class="w-4 h-4 inline mr-1"></i>Servicios</button>
+        <button class="adm-tab" data-admpanel="adm-projects"><i data-lucide="image" class="w-4 h-4 inline mr-1"></i>Proyectos</button>
+        <button class="adm-tab" data-admpanel="adm-pricing"><i data-lucide="credit-card" class="w-4 h-4 inline mr-1"></i>Precios</button>
+        <button class="adm-tab" data-admpanel="adm-booking"><i data-lucide="calendar" class="w-4 h-4 inline mr-1"></i>Booking</button>
+        <button class="adm-tab" data-admpanel="adm-contact"><i data-lucide="mail" class="w-4 h-4 inline mr-1"></i>Contacto</button>
+      </div>
+
+      <!-- HERO -->
+      <div id="adm-hero" class="adm-panel active">
+        <h2 class="font-outfit font-bold text-xl mb-6 flex items-center gap-2"><i data-lucide="home" class="w-5 h-5 text-neon"></i> Sección Hero</h2>
+        <div class="glass p-6 space-y-4" style="border-color: rgba(0,244,255,0.15);">
+          <div><label class="adm-label">Badge</label><input type="text" data-admbind="hero.badge" class="admin-input" /></div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div><label class="adm-label">Título Línea 1</label><input type="text" data-admbind="hero.title_line1" class="admin-input" /></div>
+            <div><label class="adm-label">Título Línea 2</label><input type="text" data-admbind="hero.title_line2" class="admin-input" /></div>
+          </div>
+          <div><label class="adm-label">Subtítulo</label><textarea data-admbind="hero.subtitle" class="admin-input"></textarea></div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div><label class="adm-label">CTA Primario</label><input type="text" data-admbind="hero.cta_primary" class="admin-input" /></div>
+            <div><label class="adm-label">CTA Secundario</label><input type="text" data-admbind="hero.cta_secondary" class="admin-input" /></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BUSINESS -->
+      <div id="adm-business" class="adm-panel">
+        <h2 class="font-outfit font-bold text-xl mb-6 flex items-center gap-2"><i data-lucide="building" class="w-5 h-5 text-neon"></i> Datos del Negocio</h2>
+        <div class="glass p-6 space-y-4" style="border-color: rgba(0,244,255,0.15);">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div><label class="adm-label">Nombre</label><input type="text" data-admbind="business.name" class="admin-input" /></div>
+            <div><label class="adm-label">Tagline</label><input type="text" data-admbind="business.tagline" class="admin-input" /></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div><label class="adm-label">Email</label><input type="email" data-admbind="business.email" class="admin-input" /></div>
+            <div><label class="adm-label">Teléfono</label><input type="tel" data-admbind="business.phone" class="admin-input" /></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div><label class="adm-label">WhatsApp (sin +)</label><input type="text" data-admbind="business.whatsapp" class="admin-input" /></div>
+            <div><label class="adm-label">Ubicación</label><input type="text" data-admbind="business.location" class="admin-input" /></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div><label class="adm-label">Formspree ID</label><input type="text" data-admbind="business.formspree_id" class="admin-input" /></div>
+            <div><label class="adm-label">Año (footer)</label><input type="number" data-admbind="business.year" class="admin-input" /></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SERVICES -->
+      <div id="adm-services" class="adm-panel">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="font-outfit font-bold text-xl flex items-center gap-2"><i data-lucide="layers" class="w-5 h-5 text-neon"></i> Servicios</h2>
+          <button id="adm-add-service" class="btn-neon text-xs !py-2 !px-4"><i data-lucide="plus" class="w-4 h-4"></i> Agregar</button>
+        </div>
+        <div id="adm-services-list"></div>
+      </div>
+
+      <!-- PROJECTS -->
+      <div id="adm-projects" class="adm-panel">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="font-outfit font-bold text-xl flex items-center gap-2"><i data-lucide="image" class="w-5 h-5 text-neon"></i> Proyectos</h2>
+          <button id="adm-add-project" class="btn-neon text-xs !py-2 !px-4"><i data-lucide="plus" class="w-4 h-4"></i> Agregar</button>
+        </div>
+        <div id="adm-projects-list"></div>
+      </div>
+
+      <!-- PRICING -->
+      <div id="adm-pricing" class="adm-panel">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="font-outfit font-bold text-xl flex items-center gap-2"><i data-lucide="credit-card" class="w-5 h-5 text-neon"></i> Precios</h2>
+          <button id="adm-add-pricing" class="btn-neon text-xs !py-2 !px-4"><i data-lucide="plus" class="w-4 h-4"></i> Agregar</button>
+        </div>
+        <div id="adm-pricing-list"></div>
+      </div>
+
+      <!-- BOOKING -->
+      <div id="adm-booking" class="adm-panel">
+        <h2 class="font-outfit font-bold text-xl mb-6 flex items-center gap-2"><i data-lucide="calendar" class="w-5 h-5 text-neon"></i> Booking</h2>
+        <div class="glass p-6 space-y-4" style="border-color: rgba(0,244,255,0.15);">
+          <div><label class="adm-label">Calendly URL</label><input type="url" data-admbind="booking.calendly_url" class="admin-input" /></div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div><label class="adm-label">Título sección</label><input type="text" data-admbind="booking.section_title" class="admin-input" /></div>
+            <div><label class="adm-label">Subtítulo</label><input type="text" data-admbind="booking.section_subtitle" class="admin-input" /></div>
+          </div>
+          <div><label class="adm-label">Presupuestos (uno por línea)</label><textarea data-admbind-array="booking.budget_options" class="admin-input" rows="4"></textarea></div>
+          <div><label class="adm-label">Servicios (uno por línea)</label><textarea data-admbind-array="booking.service_options" class="admin-input" rows="5"></textarea></div>
+        </div>
+      </div>
+
+      <!-- CONTACT -->
+      <div id="adm-contact" class="adm-panel">
+        <h2 class="font-outfit font-bold text-xl mb-6 flex items-center gap-2"><i data-lucide="mail" class="w-5 h-5 text-neon"></i> Contacto</h2>
+        <div class="glass p-6 space-y-4" style="border-color: rgba(0,244,255,0.15);">
+          <div><label class="adm-label">Título</label><input type="text" data-admbind="contact.title" class="admin-input" /></div>
+          <div><label class="adm-label">Subtítulo</label><textarea data-admbind="contact.subtitle" class="admin-input"></textarea></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Toast -->
+  <div id="adm-toast" class="adm-toast"></div>
+
+  <script>
+  // ====== ADMIN ENGINE (embedded) ======
+  (function() {
+    const ADM_CONFIG_PATH = 'public/data/config.json';
+    const ADM_CONFIG_URL = '/data/config.json';
+    const ADM_PW_HASH = '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8';
+    let ADM_CONFIG = null;
+    let ADM_SHA = null;
+
+    const authGate = document.getElementById('admin-auth-gate');
+    const adminPanel = document.getElementById('admin-panel');
+    const openBtn = document.getElementById('open-admin-btn');
+
+    // --- Open admin ---
+    openBtn.addEventListener('click', () => {
+      if (sessionStorage.getItem('dp_admin_auth') === 'true') {
+        openAdminPanel();
+      } else {
+        authGate.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+    });
+
+    // Also open via URL hash #admin
+    if (window.location.hash === '#admin') {
+      openBtn.click();
+    }
+
+    // --- Auth form ---
+    document.getElementById('adm-auth-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const pw = document.getElementById('adm-auth-pw').value;
+      const buf = new TextEncoder().encode(pw);
+      const hashBuf = await crypto.subtle.digest('SHA-256', buf);
+      const hash = Array.from(new Uint8Array(hashBuf)).map(b => b.toString(16).padStart(2,'0')).join('');
+      if (hash === ADM_PW_HASH) {
+        sessionStorage.setItem('dp_admin_auth', 'true');
+        authGate.style.display = 'none';
+        openAdminPanel();
+      } else {
+        document.getElementById('adm-auth-error').classList.remove('hidden');
+        document.getElementById('adm-auth-pw').value = '';
+      }
+    });
+
+    document.getElementById('adm-auth-close').addEventListener('click', () => {
+      authGate.style.display = 'none';
+      document.body.style.overflow = '';
+    });
+
+    document.getElementById('adm-close').addEventListener('click', () => {
+      adminPanel.classList.remove('open');
+      document.body.style.overflow = '';
+      window.location.hash = '';
+    });
+
+    // --- Open Admin Panel ---
+    async function openAdminPanel() {
+      try {
+        const resp = await fetch(ADM_CONFIG_URL + '?t=' + Date.now());
+        ADM_CONFIG = await resp.json();
+      } catch(e) {
+        admToast('Error cargando config.json', 'error');
+        return;
+      }
+      const saved = localStorage.getItem('dp_github_token');
+      if (saved) document.getElementById('adm-gh-token').value = saved;
+
+      adminPanel.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      renderAdmPanels();
+      lucide.createIcons();
+    }
+
+    // --- Tabs ---
+    document.querySelectorAll('.adm-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.adm-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.adm-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.admpanel).classList.add('active');
+      });
+    });
+
+    // --- Data binding ---
+    function admGet(obj, path) { return path.split('.').reduce((o,k) => (o && o[k] !== undefined) ? o[k] : '', obj); }
+    function admSet(obj, path, val) {
+      const keys = path.split('.'); const last = keys.pop();
+      const parent = keys.reduce((o,k) => { if(!o[k]) o[k]={}; return o[k]; }, obj);
+      parent[last] = val;
+    }
+
+    function bindAdmFields() {
+      document.querySelectorAll('[data-admbind]').forEach(el => {
+        const p = el.dataset.admbind;
+        el.value = admGet(ADM_CONFIG, p);
+        el.addEventListener('input', () => admSet(ADM_CONFIG, p, el.type === 'number' ? Number(el.value) : el.value));
+      });
+      document.querySelectorAll('[data-admbind-array]').forEach(el => {
+        const p = el.dataset['admbindArray'];
+        const arr = admGet(ADM_CONFIG, p);
+        el.value = Array.isArray(arr) ? arr.join('\n') : '';
+        el.addEventListener('input', () => admSet(ADM_CONFIG, p, el.value.split('\n').map(s=>s.trim()).filter(Boolean)));
+      });
+    }
+
+    function renderAdmPanels() {
+      bindAdmFields();
+      renderAdmServices();
+      renderAdmProjects();
+      renderAdmPricing();
+    }
+
+    // --- HTML escape ---
+    function aEsc(s) { const d=document.createElement('div'); d.textContent=s||''; return d.innerHTML; }
+    function aAttr(s) { return (s||'').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    // --- Render Services ---
+    function renderAdmServices() {
+      const c = document.getElementById('adm-services-list');
+      c.innerHTML = (ADM_CONFIG.services||[]).map((s,i) => `
+        <div class="adm-card">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-outfit font-bold text-sm text-neon">#${i+1} — ${aEsc(s.name)}</span>
+            <button class="text-red-400 hover:text-red-300 text-xs font-semibold" onclick="window._admRemove('services',${i})"><i data-lucide="trash-2" class="w-4 h-4 inline"></i> Eliminar</button>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div><label class="adm-label">Nombre</label><input class="admin-input" value="${aAttr(s.name)}" oninput="window._admCfg().services[${i}].name=this.value" /></div>
+            <div><label class="adm-label">ID</label><input class="admin-input" value="${aAttr(s.id)}" oninput="window._admCfg().services[${i}].id=this.value" /></div>
+            <div><label class="adm-label">Icono Lucide</label><input class="admin-input" value="${aAttr(s.icon)}" oninput="window._admCfg().services[${i}].icon=this.value" placeholder="bot, cloud, search..." /></div>
+            <div><label class="adm-label">Descripción</label><textarea class="admin-input" oninput="window._admCfg().services[${i}].description=this.value">${aEsc(s.description)}</textarea></div>
+          </div>
+          <div class="mt-3"><label class="adm-label">Mensaje WhatsApp</label><input class="admin-input" value="${aAttr(s.whatsapp_msg)}" oninput="window._admCfg().services[${i}].whatsapp_msg=this.value" /></div>
+        </div>`).join('');
+      lucide.createIcons();
+    }
+
+    // --- Render Projects ---
+    function renderAdmProjects() {
+      const c = document.getElementById('adm-projects-list');
+      c.innerHTML = (ADM_CONFIG.projects||[]).map((p,i) => `
+        <div class="adm-card">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-outfit font-bold text-sm text-neon">#${i+1} — ${aEsc(p.title)}</span>
+            <button class="text-red-400 hover:text-red-300 text-xs font-semibold" onclick="window._admRemove('projects',${i})"><i data-lucide="trash-2" class="w-4 h-4 inline"></i> Eliminar</button>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div><label class="adm-label">Título</label><input class="admin-input" value="${aAttr(p.title)}" oninput="window._admCfg().projects[${i}].title=this.value" /></div>
+            <div><label class="adm-label">Categoría</label><input class="admin-input" value="${aAttr(p.category)}" oninput="window._admCfg().projects[${i}].category=this.value" /></div>
+            <div><label class="adm-label">ID</label><input class="admin-input" value="${aAttr(p.id)}" oninput="window._admCfg().projects[${i}].id=this.value" /></div>
+            <div><label class="adm-label">URL Imagen</label><input class="admin-input" value="${aAttr(p.image)}" oninput="window._admCfg().projects[${i}].image=this.value" /></div>
+          </div>
+          <div class="mt-3"><label class="adm-label">Descripción</label><textarea class="admin-input" oninput="window._admCfg().projects[${i}].description=this.value">${aEsc(p.description)}</textarea></div>
+          ${p.image ? `<img src="${aAttr(p.image)}" class="mt-3 rounded-lg w-full max-h-40 object-cover opacity-60" alt="preview"/>` : ''}
+        </div>`).join('');
+      lucide.createIcons();
+    }
+
+    // --- Render Pricing ---
+    function renderAdmPricing() {
+      const c = document.getElementById('adm-pricing-list');
+      c.innerHTML = (ADM_CONFIG.pricing||[]).map((p,i) => `
+        <div class="adm-card">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-outfit font-bold text-sm text-neon">#${i+1} — ${aEsc(p.name)}</span>
+            <div class="flex items-center gap-4">
+              <label class="flex items-center gap-2 text-xs text-gray-400">
+                <label class="toggle-sw"><input type="checkbox" ${p.featured?'checked':''} onchange="window._admCfg().pricing[${i}].featured=this.checked" /><span class="toggle-sl"></span></label>
+                Destacado
+              </label>
+              <button class="text-red-400 hover:text-red-300 text-xs font-semibold" onclick="window._admRemove('pricing',${i})"><i data-lucide="trash-2" class="w-4 h-4 inline"></i> Eliminar</button>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div><label class="adm-label">Nombre</label><input class="admin-input" value="${aAttr(p.name)}" oninput="window._admCfg().pricing[${i}].name=this.value" /></div>
+            <div><label class="adm-label">Precio</label><input type="number" class="admin-input" value="${p.price}" oninput="window._admCfg().pricing[${i}].price=Number(this.value)" /></div>
+            <div><label class="adm-label">Moneda</label><input class="admin-input" value="${aAttr(p.currency)}" oninput="window._admCfg().pricing[${i}].currency=this.value" /></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+            <div><label class="adm-label">Icono</label><input class="admin-input" value="${aAttr(p.icon)}" oninput="window._admCfg().pricing[${i}].icon=this.value" /></div>
+            <div><label class="adm-label">Stripe Link</label><input class="admin-input" value="${aAttr(p.stripe_link)}" oninput="window._admCfg().pricing[${i}].stripe_link=this.value" /></div>
+          </div>
+          <div class="mt-3"><label class="adm-label">Descripción</label><input class="admin-input" value="${aAttr(p.description)}" oninput="window._admCfg().pricing[${i}].description=this.value" /></div>
+          <div class="mt-3"><label class="adm-label">Features (una por línea)</label><textarea class="admin-input" rows="4" oninput="window._admCfg().pricing[${i}].features=this.value.split('\\n').filter(Boolean)">${(p.features||[]).join('\n')}</textarea></div>
+        </div>`).join('');
+      lucide.createIcons();
+    }
+
+    // Expose config getter for inline handlers
+    window._admCfg = () => ADM_CONFIG;
+    window._admRemove = (section, idx) => {
+      if (!confirm('¿Eliminar este elemento?')) return;
+      ADM_CONFIG[section].splice(idx, 1);
+      if (section === 'services') renderAdmServices();
+      if (section === 'projects') renderAdmProjects();
+      if (section === 'pricing') renderAdmPricing();
+    };
+
+    // --- Add buttons ---
+    document.getElementById('adm-add-service').addEventListener('click', () => {
+      if (!ADM_CONFIG.services) ADM_CONFIG.services = [];
+      ADM_CONFIG.services.push({ id:'nuevo-'+Date.now(), name:'Nuevo Servicio', icon:'star', description:'Descripción...', whatsapp_msg:'Hola, me interesa el nuevo servicio.' });
+      renderAdmServices();
+    });
+    document.getElementById('adm-add-project').addEventListener('click', () => {
+      if (!ADM_CONFIG.projects) ADM_CONFIG.projects = [];
+      ADM_CONFIG.projects.push({ id:'nuevo-'+Date.now(), category:'Categoría', title:'Nuevo Proyecto', description:'Descripción...', image:'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop&q=80' });
+      renderAdmProjects();
+    });
+    document.getElementById('adm-add-pricing').addEventListener('click', () => {
+      if (!ADM_CONFIG.pricing) ADM_CONFIG.pricing = [];
+      ADM_CONFIG.pricing.push({ id:'nuevo-'+Date.now(), name:'Nuevo Plan', icon:'package', price:0, currency:'USD', description:'Descripción...', features:['Feature 1'], stripe_link:'', featured:false });
+      renderAdmPricing();
+    });
+
+    // --- Save token ---
+    document.getElementById('adm-save-token').addEventListener('click', () => {
+      const t = document.getElementById('adm-gh-token').value.trim();
+      if (!t) return admToast('Ingresa un token válido', 'error');
+      localStorage.setItem('dp_github_token', t);
+      admToast('Token guardado', 'success');
+    });
+
+    // --- Save & Publish ---
+    document.getElementById('adm-btn-save').addEventListener('click', async () => {
+      const token = localStorage.getItem('dp_github_token');
+      if (!token) return admToast('Configura tu GitHub Token primero', 'error');
+      const owner = ADM_CONFIG.admin?.github_owner;
+      const repo = ADM_CONFIG.admin?.github_repo;
+      const branch = ADM_CONFIG.admin?.github_branch || 'main';
+      if (!owner || !repo) return admToast('Falta github_owner/repo en config', 'error');
+
+      const btn = document.getElementById('adm-btn-save');
+      const sp = btn.querySelector('span');
+      const origText = sp.textContent;
+      btn.disabled = true; sp.textContent = 'Publicando...';
+
+      try {
+        const getR = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${ADM_CONFIG_PATH}?ref=${branch}`, {
+          headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
+        });
+        if (!getR.ok && getR.status !== 404) throw new Error('HTTP ' + getR.status);
+        const gData = getR.ok ? await getR.json() : null;
+        ADM_SHA = gData?.sha || null;
+
+        const content = JSON.stringify(ADM_CONFIG, null, 2);
+        const encoded = btoa(unescape(encodeURIComponent(content)));
+        const body = { message: '✏️ Admin: actualización de contenido', content: encoded, branch };
+        if (ADM_SHA) body.sha = ADM_SHA;
+
+        const putR = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${ADM_CONFIG_PATH}`, {
+          method: 'PUT',
+          headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+        if (!putR.ok) { const e = await putR.json().catch(()=>({})); throw new Error(e.message || 'HTTP ' + putR.status); }
+        const pData = await putR.json();
+        ADM_SHA = pData.content.sha;
+        admToast('¡Publicado! Vercel redesplegará en ~30s.', 'success');
+      } catch(err) {
+        admToast('Error: ' + err.message, 'error');
+      } finally {
+        btn.disabled = false; sp.textContent = origText;
+      }
+    });
+
+    // --- Toast ---
+    function admToast(msg, type) {
+      const t = document.getElementById('adm-toast');
+      t.textContent = msg; t.className = 'adm-toast ' + type + ' show';
+      setTimeout(() => t.classList.remove('show'), 4000);
+    }
+  })();
   </script>
 </body>
 </html>
