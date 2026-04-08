@@ -1663,8 +1663,10 @@
 
     // ===== DIGITALPRO OS — ANALYTICS TRACKING (public page) =====
     (function() {
-      const SUPA_URL = localStorage.getItem('dp_supa_url');
-      const SUPA_KEY = localStorage.getItem('dp_supa_key');
+      const _DP_SUPA_URL = 'https://cqbqyvcpymodxvkbctje.supabase.co';
+      const _DP_SUPA_KEY = 'sb_publishable_OBk96xRyem9rUFPn50LojQ_kq5DtBR9';
+      const SUPA_URL = localStorage.getItem('dp_supa_url') || _DP_SUPA_URL;
+      const SUPA_KEY = localStorage.getItem('dp_supa_key') || _DP_SUPA_KEY;
       // Also check for maintenance mode
       let _trackSupa = null;
       if (SUPA_URL && SUPA_KEY && window.supabase) {
@@ -2610,11 +2612,15 @@
     // ============================================================
     // DIGITALPRO OS — SUPABASE + SESSION SECURITY
     // ============================================================
+    const DP_SUPA_DEFAULTS = {
+      url: 'https://cqbqyvcpymodxvkbctje.supabase.co',
+      key: 'sb_publishable_OBk96xRyem9rUFPn50LojQ_kq5DtBR9'
+    };
     let SUPA = null; // Supabase client instance
 
     function initSupabase() {
-      const url = localStorage.getItem('dp_supa_url');
-      const key = localStorage.getItem('dp_supa_key');
+      const url = localStorage.getItem('dp_supa_url') || DP_SUPA_DEFAULTS.url;
+      const key = localStorage.getItem('dp_supa_key') || DP_SUPA_DEFAULTS.key;
       if (url && key && window.supabase) {
         try {
           SUPA = window.supabase.createClient(url, key);
@@ -3132,11 +3138,11 @@
     openAdminPanel = async function() {
       await origOpenAdmin();
       startSessionTimer();
-      // Load Supabase config
-      const savedUrl = localStorage.getItem('dp_supa_url');
-      const savedKey = localStorage.getItem('dp_supa_key');
-      if (savedUrl) document.getElementById('supa-url').value = savedUrl;
-      if (savedKey) document.getElementById('supa-anon-key').value = savedKey;
+      // Load Supabase config (hardcoded defaults + localStorage overrides)
+      const savedUrl = localStorage.getItem('dp_supa_url') || DP_SUPA_DEFAULTS.url;
+      const savedKey = localStorage.getItem('dp_supa_key') || DP_SUPA_DEFAULTS.key;
+      document.getElementById('supa-url').value = savedUrl;
+      document.getElementById('supa-anon-key').value = savedKey;
       if (initSupabase()) {
         try {
           const { error } = await SUPA.from('site_settings').select('key').limit(1);
