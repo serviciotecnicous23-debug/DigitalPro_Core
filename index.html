@@ -1772,7 +1772,7 @@
   <!-- ====== ADMIN PANEL (embedded overlay) ====== -->
   <style>
     .admin-overlay {
-      position: fixed; inset: 0; z-index: 10000; display: none;
+      position: fixed; inset: 0; z-index: 99999; display: none;
       background: rgba(5,5,16,0.98); backdrop-filter: blur(20px);
       overflow-y: auto;
     }
@@ -1824,9 +1824,8 @@
       <p class="text-gray-400 text-sm mb-8">Ingresa tu contraseña para gestionar el contenido</p>
       <form id="adm-auth-form" class="space-y-4">
         <input type="password" id="adm-auth-pw" placeholder="Contraseña" required class="admin-input text-center" autocomplete="current-password" />
-        <button type="submit" class="btn-neon w-full">
-          <i data-lucide="lock" class="w-4 h-4"></i>
-          Acceder
+        <button type="submit" class="btn-neon w-full" style="pointer-events:auto;cursor:pointer;">
+          🔐 Acceder
         </button>
       </form>
       <p id="adm-auth-error" class="text-red-400 text-sm mt-4 hidden">Contraseña incorrecta</p>
