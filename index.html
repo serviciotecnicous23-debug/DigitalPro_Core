@@ -73,6 +73,9 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
   <!-- JSON-LD Structured Data (Local Business) -->
   <script type="application/ld+json">
   {
@@ -626,12 +629,140 @@
       align-items: center; justify-content: center; gap: 2rem;
     }
     .mobile-menu.open { display: flex; }
+
+    /* ====== DIGITALPRO OS — CRM, Analytics & Tools CSS ====== */
+    /* Maintenance Overlay */
+    .maintenance-overlay {
+      position: fixed; inset: 0; z-index: 99998;
+      background: linear-gradient(135deg, #050510 0%, #0a0a2e 50%, #050510 100%);
+      display: none; align-items: center; justify-content: center;
+      flex-direction: column; text-align: center; padding: 2rem;
+    }
+    .maintenance-overlay.active { display: flex; }
+    .maintenance-pulse { animation: mPulse 2s ease-in-out infinite; }
+    @keyframes mPulse { 0%,100%{opacity:0.6;transform:scale(1)} 50%{opacity:1;transform:scale(1.05)} }
+
+    /* Supabase Config Card */
+    .supa-config-card {
+      background: linear-gradient(135deg, rgba(0,244,255,0.04), rgba(0,184,212,0.02));
+      border: 1px solid rgba(0,244,255,0.2); border-radius: 14px;
+      padding: 1.5rem; margin-bottom: 1.5rem;
+    }
+    .supa-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 8px; }
+    .supa-dot.connected { background: #10b981; box-shadow: 0 0 8px rgba(16,185,129,0.5); }
+    .supa-dot.disconnected { background: #ef4444; box-shadow: 0 0 8px rgba(239,68,68,0.5); }
+
+    /* CRM Traffic Light */
+    .tl-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;
+    }
+    .tl-green { background: rgba(16,185,129,0.15); color: #10b981; }
+    .tl-yellow { background: rgba(234,179,8,0.15); color: #eab308; }
+    .tl-red { background: rgba(239,68,68,0.15); color: #ef4444; }
+
+    /* CRM Status Badge */
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 3px 10px; border-radius: 16px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+    }
+    .status-active { background: rgba(16,185,129,0.12); color: #10b981; }
+    .status-paused { background: rgba(234,179,8,0.12); color: #eab308; }
+    .status-suspended { background: rgba(239,68,68,0.12); color: #ef4444; }
+    .status-completed { background: rgba(107,114,128,0.12); color: #6b7280; }
+
+    /* MRR Widget */
+    .mrr-widget {
+      background: linear-gradient(135deg, rgba(0,244,255,0.08), rgba(0,184,212,0.03));
+      border: 1px solid rgba(0,244,255,0.2); border-radius: 16px;
+      padding: 1.5rem; text-align: center;
+    }
+    .mrr-value { font-size: 2.5rem; font-weight: 800; color: #00f4ff; line-height: 1; }
+
+    /* Stats Cards (analytics) */
+    .stat-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px; padding: 1.25rem; text-align: center; transition: all 0.3s;
+    }
+    .stat-card:hover { border-color: rgba(0,244,255,0.25); }
+    .stat-value { font-size: 2rem; font-weight: 800; line-height: 1; margin-bottom: 4px; }
+    .stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* CRM Client Table */
+    .crm-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+    .crm-table th {
+      text-align: left; padding: 10px 14px; font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.4);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .crm-table td {
+      padding: 12px 14px; font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.04);
+      vertical-align: middle;
+    }
+    .crm-table tr:hover td { background: rgba(0,244,255,0.02); }
+    .crm-table .crm-actions { white-space: nowrap; }
+    .crm-action-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; border-radius: 8px; transition: all 0.2s; cursor: pointer;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.5);
+    }
+    .crm-action-btn:hover { border-color: rgba(0,244,255,0.3); color: #00f4ff; }
+
+    /* CRM Modal */
+    .crm-modal-overlay {
+      position: fixed; inset: 0; z-index: 10001;
+      background: rgba(5,5,16,0.85); backdrop-filter: blur(10px);
+      display: none; align-items: flex-start; justify-content: center;
+      padding: 2rem; overflow-y: auto;
+    }
+    .crm-modal-overlay.open { display: flex; }
+    .crm-modal-box {
+      background: rgba(15,15,35,0.98); border: 1px solid rgba(0,244,255,0.15);
+      border-radius: 16px; padding: 2rem; width: 100%; max-width: 640px; margin-top: 2rem;
+    }
+
+    /* Analytics bar */
+    .analytics-bar {
+      height: 8px; border-radius: 4px; background: rgba(255,255,255,0.06); overflow: hidden;
+    }
+    .analytics-bar-fill {
+      height: 100%; border-radius: 4px; transition: width 0.6s ease;
+    }
+
+    /* Herramientas toggle cards */
+    .tool-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px; padding: 1.25rem; transition: all 0.3s;
+    }
+    .tool-card:hover { border-color: rgba(0,244,255,0.2); }
+
+    /* Session timeout bar */
+    .session-bar {
+      height: 3px; background: linear-gradient(90deg, #00f4ff, #00b8d4);
+      position: fixed; top: 0; left: 0; z-index: 10002; transition: width 0.5s linear;
+    }
   </style>
 </head>
 <body class="font-inter text-white">
 
   <!-- Animated Mesh Gradient Background -->
   <div class="mesh-bg" aria-hidden="true"></div>
+
+  <!-- ====== MAINTENANCE MODE OVERLAY ====== -->
+  <div id="maintenance-overlay" class="maintenance-overlay" aria-hidden="true">
+    <div class="maintenance-pulse mb-6">
+      <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-neon to-neon-dark flex items-center justify-center mx-auto">
+        <span class="text-abyss font-outfit font-bold text-3xl">DP</span>
+      </div>
+    </div>
+    <h1 class="font-outfit font-bold text-4xl md:text-5xl mb-4">Volvemos pronto</h1>
+    <p class="text-gray-400 text-lg max-w-md">Estamos realizando mejoras para brindarte una mejor experiencia. Por favor, vuelve en unos minutos.</p>
+    <div class="mt-8 flex items-center gap-2 text-neon text-sm font-semibold">
+      <svg class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
+      Mantenimiento en progreso
+    </div>
+  </div>
 
   <!-- ====== NAVIGATION ====== -->
   <nav class="nav-glass fixed top-0 left-0 right-0 z-50 px-6 py-4">
@@ -1529,6 +1660,111 @@
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js').catch(() => {});
     }
+
+    // ===== DIGITALPRO OS — ANALYTICS TRACKING (public page) =====
+    (function() {
+      const SUPA_URL = localStorage.getItem('dp_supa_url');
+      const SUPA_KEY = localStorage.getItem('dp_supa_key');
+      // Also check for maintenance mode
+      let _trackSupa = null;
+      if (SUPA_URL && SUPA_KEY && window.supabase) {
+        try {
+          _trackSupa = window.supabase.createClient(SUPA_URL, SUPA_KEY);
+        } catch(e) {}
+      }
+
+      // Generate or retrieve session ID
+      let _sessionId = sessionStorage.getItem('dp_session_id');
+      if (!_sessionId) {
+        _sessionId = 'ses_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 8);
+        sessionStorage.setItem('dp_session_id', _sessionId);
+      }
+
+      async function trackEvent(type, data, page) {
+        if (!_trackSupa) return;
+        try {
+          await _trackSupa.from('analytics_events').insert({
+            event_type: type,
+            event_data: data || {},
+            page: page || window.location.pathname,
+            session_id: _sessionId
+          });
+        } catch(e) { /* silent */ }
+      }
+
+      // Check maintenance mode
+      if (_trackSupa) {
+        _trackSupa.from('site_settings').select('value').eq('key','maintenance_mode').single().then(({ data }) => {
+          if (data && data.value === 'true') {
+            // Only show maintenance to non-admin users
+            if (sessionStorage.getItem('dp_admin_auth') !== 'true') {
+              const overlay = document.getElementById('maintenance-overlay');
+              if (overlay) overlay.classList.add('active');
+            }
+          }
+        }).catch(() => {});
+
+        // Check SEO overrides
+        _trackSupa.from('site_settings').select('*').in('key',['seo_title','seo_description','seo_keywords']).then(({ data }) => {
+          if (!data) return;
+          data.forEach(s => {
+            if (s.key === 'seo_title' && s.value) document.querySelector('title').textContent = s.value;
+            if (s.key === 'seo_description' && s.value) { const m = document.querySelector('meta[name="description"]'); if(m) m.setAttribute('content', s.value); }
+            if (s.key === 'seo_keywords' && s.value) { const m = document.querySelector('meta[name="keywords"]'); if(m) m.setAttribute('content', s.value); }
+          });
+        }).catch(() => {});
+      }
+
+      // Track page view
+      trackEvent('page_view', { referrer: document.referrer });
+
+      // Track WhatsApp clicks
+      document.addEventListener('click', (e) => {
+        const waLink = e.target.closest('a[href*="wa.me"]');
+        if (waLink) trackEvent('whatsapp_click', { href: waLink.href });
+      });
+
+      // Track form submissions
+      const cForm = document.getElementById('contact-form');
+      if (cForm) {
+        cForm.addEventListener('submit', () => {
+          trackEvent('form_submit', { form: 'contact' });
+        });
+      }
+
+      // Track catalog card clicks
+      document.addEventListener('click', (e) => {
+        const card = e.target.closest('.catalog-card');
+        if (card) {
+          trackEvent('catalog_click', {
+            id: card.dataset.catalogId,
+            sector: card.dataset.sector,
+            region: card.dataset.region
+          });
+        }
+      });
+
+      // Track region toggle
+      const regToggle = document.getElementById('region-toggle');
+      if (regToggle) {
+        regToggle.addEventListener('click', (e) => {
+          const btn = e.target.closest('[data-region]');
+          if (btn) trackEvent('region_toggle', { region: btn.dataset.region });
+        });
+      }
+
+      // Track sector filter
+      const secTabs = document.getElementById('sector-tabs');
+      if (secTabs) {
+        secTabs.addEventListener('click', (e) => {
+          const tab = e.target.closest('[data-sector]');
+          if (tab) trackEvent('sector_filter', { sector: tab.dataset.sector });
+        });
+      }
+
+      // Expose for external use
+      window._dpTrack = trackEvent;
+    })();
   </script>
 
   <!-- ====== ADMIN PANEL (embedded overlay) ====== -->
@@ -1641,6 +1877,10 @@
         <button class="adm-tab" data-admpanel="adm-catalog"><i data-lucide="briefcase" class="w-4 h-4 inline mr-1"></i>Catálogo</button>
         <button class="adm-tab" data-admpanel="adm-booking"><i data-lucide="calendar" class="w-4 h-4 inline mr-1"></i>Booking</button>
         <button class="adm-tab" data-admpanel="adm-contact"><i data-lucide="mail" class="w-4 h-4 inline mr-1"></i>Contacto</button>
+        <div class="w-px h-6 bg-white/10 mx-1"></div>
+        <button class="adm-tab" data-admpanel="adm-crm"><i data-lucide="users" class="w-4 h-4 inline mr-1"></i>Clientes</button>
+        <button class="adm-tab" data-admpanel="adm-analytics"><i data-lucide="bar-chart-3" class="w-4 h-4 inline mr-1"></i>Analítica</button>
+        <button class="adm-tab" data-admpanel="adm-tools"><i data-lucide="wrench" class="w-4 h-4 inline mr-1"></i>Herramientas</button>
       </div>
 
       <!-- HERO -->
@@ -1726,6 +1966,330 @@
         <div class="glass p-6 space-y-4" style="border-color: rgba(0,244,255,0.15);">
           <div><label class="adm-label">Título</label><input type="text" data-admbind="contact.title" class="admin-input" /></div>
           <div><label class="adm-label">Subtítulo</label><textarea data-admbind="contact.subtitle" class="admin-input"></textarea></div>
+        </div>
+      </div>
+
+      <!-- ====== CRM: CLIENTES ====== -->
+      <div id="adm-crm" class="adm-panel">
+        <!-- Supabase connection notice -->
+        <div id="crm-no-supa" class="glass p-6 text-center mb-6" style="border-color: rgba(255,200,0,0.3); background: rgba(255,200,0,0.04);">
+          <i data-lucide="database" class="w-10 h-10 text-yellow-400 mx-auto mb-3"></i>
+          <h3 class="font-outfit font-bold text-lg mb-2 text-yellow-300">Conecta Supabase</h3>
+          <p class="text-sm text-gray-400 mb-4">Para usar el CRM, configura tu conexión a Supabase en la pestaña <strong class="text-neon">Herramientas</strong>.</p>
+          <button class="btn-neon text-sm !py-2 !px-6" onclick="document.querySelector('[data-admpanel=adm-tools]').click()">
+            <i data-lucide="settings" class="w-4 h-4"></i> Ir a Herramientas
+          </button>
+        </div>
+
+        <!-- CRM Content (shown when connected) -->
+        <div id="crm-content" style="display:none;">
+          <!-- MRR + Stats Row -->
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+            <div class="mrr-widget col-span-1">
+              <div class="text-xs text-gray-400 uppercase tracking-wider mb-1">MRR</div>
+              <div class="mrr-value" id="crm-mrr">$0</div>
+              <div class="text-xs text-gray-500 mt-1">Ingreso Mensual Recurrente</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value text-green-400" id="crm-active-count">0</div>
+              <div class="stat-label">Activos</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value text-yellow-400" id="crm-pending-count">0</div>
+              <div class="stat-label">Pago Pendiente</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value text-red-400" id="crm-overdue-count">0</div>
+              <div class="stat-label">Atrasados</div>
+            </div>
+          </div>
+
+          <!-- Actions bar -->
+          <div class="flex items-center justify-between mb-6 flex-wrap gap-3">
+            <h2 class="font-outfit font-bold text-xl flex items-center gap-2">
+              <i data-lucide="users" class="w-5 h-5 text-neon"></i> Mis Clientes
+            </h2>
+            <div class="flex items-center gap-3">
+              <select id="crm-filter-status" class="admin-input !w-auto !text-sm !py-2" style="min-width:140px;">
+                <option value="all">Todos los estados</option>
+                <option value="active">🟢 Activos</option>
+                <option value="paused">🟡 Pausados</option>
+                <option value="suspended">🔴 Suspendidos</option>
+                <option value="completed">⚫ Completados</option>
+              </select>
+              <select id="crm-filter-payment" class="admin-input !w-auto !text-sm !py-2" style="min-width:140px;">
+                <option value="all">Todos los pagos</option>
+                <option value="green">🟢 Al día</option>
+                <option value="yellow">🟡 Por vencer</option>
+                <option value="red">🔴 Atrasado</option>
+              </select>
+              <button id="crm-add-client" class="btn-neon text-xs !py-2 !px-4">
+                <i data-lucide="user-plus" class="w-4 h-4"></i> Nuevo Cliente
+              </button>
+            </div>
+          </div>
+
+          <!-- Client Table -->
+          <div class="glass p-0 overflow-x-auto" style="border-color: rgba(0,244,255,0.1);">
+            <table class="crm-table">
+              <thead>
+                <tr>
+                  <th>Cliente</th>
+                  <th>Plan</th>
+                  <th>Precio</th>
+                  <th>Estado</th>
+                  <th>Pago</th>
+                  <th>Próximo pago</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="crm-client-tbody">
+                <tr><td colspan="7" class="text-center text-gray-500 py-8">Cargando clientes...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====== CRM CLIENT MODAL ====== -->
+      <div id="crm-client-modal" class="crm-modal-overlay">
+        <div class="crm-modal-box">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="font-outfit font-bold text-xl flex items-center gap-2">
+              <i data-lucide="user-plus" class="w-5 h-5 text-neon"></i>
+              <span id="crm-modal-title">Nuevo Cliente</span>
+            </h3>
+            <button onclick="closeCrmModal()" class="text-gray-400 hover:text-white">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+          <form id="crm-client-form" class="space-y-4">
+            <input type="hidden" id="crm-edit-id" value="" />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div><label class="adm-label">Nombre del Negocio *</label><input type="text" id="crm-f-business" class="admin-input" required /></div>
+              <div><label class="adm-label">Nombre del Dueño</label><input type="text" id="crm-f-owner" class="admin-input" /></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div><label class="adm-label">Email</label><input type="email" id="crm-f-email" class="admin-input" /></div>
+              <div><label class="adm-label">WhatsApp</label><input type="text" id="crm-f-whatsapp" class="admin-input" placeholder="15125551234" /></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div><label class="adm-label">Región</label>
+                <select id="crm-f-region" class="admin-input">
+                  <option value="usa">🇺🇸 USA</option>
+                  <option value="latam">🌎 LATAM</option>
+                </select>
+              </div>
+              <div><label class="adm-label">Sector</label><input type="text" id="crm-f-sector" class="admin-input" placeholder="Ej: Barber, Dental..." /></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div><label class="adm-label">Tipo de Servicio</label>
+                <select id="crm-f-type" class="admin-input">
+                  <option value="subscription">Suscripción</option>
+                  <option value="one_time">Compra Única</option>
+                </select>
+              </div>
+              <div><label class="adm-label">Nombre del Plan</label><input type="text" id="crm-f-plan" class="admin-input" placeholder="Plan Pro" /></div>
+              <div><label class="adm-label">Precio</label><input type="number" id="crm-f-price" class="admin-input" step="0.01" placeholder="99.00" /></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div><label class="adm-label">Estado</label>
+                <select id="crm-f-status" class="admin-input">
+                  <option value="active">🟢 Activo</option>
+                  <option value="paused">🟡 Pausado</option>
+                  <option value="suspended">🔴 Suspendido</option>
+                  <option value="completed">⚫ Completado</option>
+                </select>
+              </div>
+              <div><label class="adm-label">Estado de Pago</label>
+                <select id="crm-f-payment" class="admin-input">
+                  <option value="green">🟢 Al día</option>
+                  <option value="yellow">🟡 Por vencer</option>
+                  <option value="red">🔴 Atrasado</option>
+                </select>
+              </div>
+              <div><label class="adm-label">Próximo Pago</label><input type="date" id="crm-f-nextpay" class="admin-input" /></div>
+            </div>
+            <div><label class="adm-label">Notas</label><textarea id="crm-f-notes" class="admin-input" rows="3"></textarea></div>
+            <div class="flex gap-3 pt-2">
+              <button type="submit" class="btn-neon flex-1">
+                <i data-lucide="save" class="w-4 h-4"></i> <span id="crm-modal-btn-text">Guardar Cliente</span>
+              </button>
+              <button type="button" onclick="closeCrmModal()" class="px-6 py-3 rounded-xl border border-white/10 text-sm text-gray-400 hover:border-neon/30 transition-colors">
+                Cancelar
+              </button>
+            </div>
+          </form>
+
+          <!-- Payment History (shown when editing) -->
+          <div id="crm-payment-section" class="mt-6 pt-6 border-t border-white/10" style="display:none;">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="font-outfit font-bold text-sm flex items-center gap-2">
+                <i data-lucide="receipt" class="w-4 h-4 text-neon"></i> Historial de Pagos
+              </h4>
+              <button type="button" id="crm-add-payment-btn" class="text-neon text-xs font-semibold hover:underline">+ Registrar Pago</button>
+            </div>
+            <!-- Add payment form -->
+            <div id="crm-add-payment-form" class="glass p-4 mb-4" style="display:none; border-color: rgba(0,244,255,0.15);">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div><label class="adm-label">Monto</label><input type="number" id="pay-f-amount" class="admin-input" step="0.01" /></div>
+                <div><label class="adm-label">Fecha</label><input type="date" id="pay-f-date" class="admin-input" /></div>
+                <div><label class="adm-label">Método</label>
+                  <select id="pay-f-method" class="admin-input">
+                    <option value="transfer">Transferencia</option>
+                    <option value="cash">Efectivo</option>
+                    <option value="zelle">Zelle</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="stripe">Stripe</option>
+                    <option value="other">Otro</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mt-3"><label class="adm-label">Nota</label><input type="text" id="pay-f-notes" class="admin-input" /></div>
+              <button type="button" id="crm-save-payment-btn" class="btn-neon text-xs !py-2 !px-4 mt-3">
+                <i data-lucide="check" class="w-3 h-3"></i> Registrar
+              </button>
+            </div>
+            <div id="crm-payments-list" class="space-y-2">
+              <p class="text-gray-500 text-sm">Sin pagos registrados</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====== ANALYTICS ====== -->
+      <div id="adm-analytics" class="adm-panel">
+        <div id="analytics-no-supa" class="glass p-6 text-center mb-6" style="border-color: rgba(255,200,0,0.3); background: rgba(255,200,0,0.04);">
+          <i data-lucide="bar-chart-3" class="w-10 h-10 text-yellow-400 mx-auto mb-3"></i>
+          <h3 class="font-outfit font-bold text-lg mb-2 text-yellow-300">Conecta Supabase</h3>
+          <p class="text-sm text-gray-400 mb-4">Para ver analíticas, configura tu conexión a Supabase en la pestaña <strong class="text-neon">Herramientas</strong>.</p>
+          <button class="btn-neon text-sm !py-2 !px-6" onclick="document.querySelector('[data-admpanel=adm-tools]').click()">
+            <i data-lucide="settings" class="w-4 h-4"></i> Ir a Herramientas
+          </button>
+        </div>
+
+        <div id="analytics-content" style="display:none;">
+          <div class="flex items-center justify-between mb-6 flex-wrap gap-3">
+            <h2 class="font-outfit font-bold text-xl flex items-center gap-2">
+              <i data-lucide="bar-chart-3" class="w-5 h-5 text-neon"></i> Panel de Analítica
+            </h2>
+            <div class="flex items-center gap-3">
+              <select id="analytics-period" class="admin-input !w-auto !text-sm !py-2">
+                <option value="7">Últimos 7 días</option>
+                <option value="30" selected>Últimos 30 días</option>
+                <option value="90">Últimos 90 días</option>
+                <option value="all">Todo el tiempo</option>
+              </select>
+              <button id="analytics-refresh" class="btn-neon text-xs !py-2 !px-4">
+                <i data-lucide="refresh-cw" class="w-4 h-4"></i> Actualizar
+              </button>
+            </div>
+          </div>
+
+          <!-- Stats Grid -->
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
+            <div class="stat-card"><div class="stat-value text-neon" id="ana-total-views">0</div><div class="stat-label">Total Visitas</div></div>
+            <div class="stat-card"><div class="stat-value text-purple-400" id="ana-unique-sessions">0</div><div class="stat-label">Sesiones Únicas</div></div>
+            <div class="stat-card"><div class="stat-value text-green-400" id="ana-wa-clicks">0</div><div class="stat-label">Clicks WhatsApp</div></div>
+            <div class="stat-card"><div class="stat-value text-blue-400" id="ana-form-submits">0</div><div class="stat-label">Forms Enviados</div></div>
+            <div class="stat-card"><div class="stat-value text-orange-400" id="ana-catalog-clicks">0</div><div class="stat-label">Clicks Catálogo</div></div>
+          </div>
+
+          <!-- Top Sectors + Recent Events -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Top 5 Sectors -->
+            <div class="glass p-6" style="border-color: rgba(0,244,255,0.1);">
+              <h3 class="font-outfit font-bold text-sm mb-4 flex items-center gap-2">
+                <i data-lucide="trending-up" class="w-4 h-4 text-neon"></i> Top 5 Sectores más visitados
+              </h3>
+              <div id="ana-top-sectors" class="space-y-3">
+                <p class="text-gray-500 text-sm">Cargando...</p>
+              </div>
+            </div>
+
+            <!-- Recent Events -->
+            <div class="glass p-6" style="border-color: rgba(0,244,255,0.1);">
+              <h3 class="font-outfit font-bold text-sm mb-4 flex items-center gap-2">
+                <i data-lucide="activity" class="w-4 h-4 text-neon"></i> Actividad Reciente
+              </h3>
+              <div id="ana-recent-events" class="space-y-2 max-h-64 overflow-y-auto">
+                <p class="text-gray-500 text-sm">Cargando...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====== HERRAMIENTAS (Super User Tools) ====== -->
+      <div id="adm-tools" class="adm-panel">
+        <h2 class="font-outfit font-bold text-xl mb-6 flex items-center gap-2">
+          <i data-lucide="wrench" class="w-5 h-5 text-neon"></i> Herramientas
+        </h2>
+
+        <!-- Supabase Configuration -->
+        <div class="supa-config-card mb-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-outfit font-bold text-base flex items-center gap-2">
+              <i data-lucide="database" class="w-5 h-5 text-neon"></i> Conexión Supabase
+            </h3>
+            <span id="supa-status-badge" class="flex items-center text-xs font-semibold">
+              <span class="supa-dot disconnected"></span> Desconectado
+            </span>
+          </div>
+          <p class="text-xs text-gray-400 mb-4">Conecta tu proyecto Supabase para activar CRM, Analítica y más. Crea uno gratis en <a href="https://supabase.com" target="_blank" class="text-neon underline">supabase.com</a> y ejecuta el archivo <code class="text-neon">supabase-setup.sql</code>.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div><label class="adm-label">Supabase URL</label><input type="url" id="supa-url" class="admin-input" placeholder="https://xyzcompany.supabase.co" /></div>
+            <div><label class="adm-label">Supabase Anon Key</label><input type="text" id="supa-anon-key" class="admin-input" placeholder="eyJhbGciOiJI..." /></div>
+          </div>
+          <div class="flex items-center gap-3 mt-4">
+            <button id="supa-save-btn" class="btn-neon text-xs !py-2 !px-6"><i data-lucide="plug" class="w-4 h-4"></i> Conectar y Guardar</button>
+            <button id="supa-test-btn" class="px-4 py-2 rounded-xl border border-white/10 text-xs text-gray-400 hover:border-neon/30 transition-colors">Probar Conexión</button>
+          </div>
+        </div>
+
+        <!-- Maintenance Mode -->
+        <div class="tool-card mb-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="font-outfit font-bold text-sm flex items-center gap-2">
+                <i data-lucide="hard-hat" class="w-4 h-4 text-yellow-400"></i> Modo Mantenimiento
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">Muestra una pantalla de "Volvemos pronto" a visitantes. El admin sigue accesible.</p>
+            </div>
+            <label class="toggle-sw">
+              <input type="checkbox" id="tool-maintenance-toggle" />
+              <span class="toggle-sl"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- SEO Metadata Editor -->
+        <div class="tool-card mb-4">
+          <h3 class="font-outfit font-bold text-sm mb-4 flex items-center gap-2">
+            <i data-lucide="search" class="w-4 h-4 text-neon"></i> Editor de SEO & Metadata
+          </h3>
+          <div class="space-y-4">
+            <div><label class="adm-label">Título SEO</label><input type="text" id="seo-title" class="admin-input" /></div>
+            <div><label class="adm-label">Descripción SEO</label><textarea id="seo-description" class="admin-input" rows="3"></textarea></div>
+            <div><label class="adm-label">Keywords</label><input type="text" id="seo-keywords" class="admin-input" placeholder="web design, ai, saas..." /></div>
+            <button id="seo-save-btn" class="btn-neon text-xs !py-2 !px-6"><i data-lucide="save" class="w-4 h-4"></i> Guardar SEO</button>
+          </div>
+        </div>
+
+        <!-- Session Info -->
+        <div class="tool-card">
+          <h3 class="font-outfit font-bold text-sm mb-3 flex items-center gap-2">
+            <i data-lucide="shield" class="w-4 h-4 text-neon"></i> Sesión & Seguridad
+          </h3>
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-xs text-gray-400">Sesión activa desde: <span id="session-start-time" class="text-white">—</span></p>
+              <p class="text-xs text-gray-400 mt-1">Expira por inactividad: <span class="text-yellow-400">30 minutos</span></p>
+            </div>
+            <button id="session-logout-btn" class="px-4 py-2 rounded-xl border border-red-400/30 text-xs text-red-400 hover:border-red-400 hover:bg-red-400/10 transition-colors">
+              <i data-lucide="log-out" class="w-3 h-3 inline mr-1"></i> Cerrar Sesión
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -2042,6 +2606,555 @@
       t.textContent = msg; t.className = 'adm-toast ' + type + ' show';
       setTimeout(() => t.classList.remove('show'), 4000);
     }
+
+    // ============================================================
+    // DIGITALPRO OS — SUPABASE + SESSION SECURITY
+    // ============================================================
+    let SUPA = null; // Supabase client instance
+
+    function initSupabase() {
+      const url = localStorage.getItem('dp_supa_url');
+      const key = localStorage.getItem('dp_supa_key');
+      if (url && key && window.supabase) {
+        try {
+          SUPA = window.supabase.createClient(url, key);
+          return true;
+        } catch(e) { console.error('Supabase init error', e); }
+      }
+      return false;
+    }
+
+    function updateSupaStatus(connected) {
+      const badge = document.getElementById('supa-status-badge');
+      if (!badge) return;
+      badge.innerHTML = connected
+        ? '<span class="supa-dot connected"></span> Conectado'
+        : '<span class="supa-dot disconnected"></span> Desconectado';
+      // Show/hide CRM and analytics content
+      const show = connected ? '' : 'none';
+      const hide = connected ? 'none' : '';
+      document.getElementById('crm-content').style.display = show;
+      document.getElementById('crm-no-supa').style.display = hide;
+      document.getElementById('analytics-content').style.display = show;
+      document.getElementById('analytics-no-supa').style.display = hide;
+    }
+
+    // Supabase config save button
+    document.getElementById('supa-save-btn').addEventListener('click', async () => {
+      const url = document.getElementById('supa-url').value.trim();
+      const key = document.getElementById('supa-anon-key').value.trim();
+      if (!url || !key) return admToast('Ingresa URL y Anon Key', 'error');
+      localStorage.setItem('dp_supa_url', url);
+      localStorage.setItem('dp_supa_key', key);
+      if (initSupabase()) {
+        // Test connection
+        try {
+          const { error } = await SUPA.from('site_settings').select('key').limit(1);
+          if (error) throw error;
+          updateSupaStatus(true);
+          admToast('¡Conectado a Supabase!', 'success');
+          loadCrmData();
+          loadAnalyticsData();
+          loadToolsData();
+        } catch(e) {
+          updateSupaStatus(false);
+          admToast('Error: ' + (e.message || 'No se pudo conectar'), 'error');
+        }
+      } else {
+        admToast('Error inicializando Supabase', 'error');
+      }
+    });
+
+    // Supabase test button
+    document.getElementById('supa-test-btn').addEventListener('click', async () => {
+      if (!SUPA) {
+        if (!initSupabase()) return admToast('Configura Supabase primero', 'error');
+      }
+      try {
+        const { data, error } = await SUPA.from('site_settings').select('key').limit(1);
+        if (error) throw error;
+        admToast('✅ Conexión exitosa — Tablas detectadas', 'success');
+      } catch(e) {
+        admToast('❌ Error: ' + (e.message || 'Sin conexión'), 'error');
+      }
+    });
+
+    // --- Session Security with timeout ---
+    const SESSION_TIMEOUT = 30 * 60 * 1000; // 30 minutes
+    let sessionTimer = null;
+    let sessionBarEl = null;
+    let sessionStartTs = null;
+
+    function startSessionTimer() {
+      sessionStartTs = Date.now();
+      const startEl = document.getElementById('session-start-time');
+      if (startEl) startEl.textContent = new Date().toLocaleTimeString('es-US');
+
+      // Create session bar
+      if (!sessionBarEl) {
+        sessionBarEl = document.createElement('div');
+        sessionBarEl.className = 'session-bar';
+        sessionBarEl.style.width = '100%';
+        document.body.appendChild(sessionBarEl);
+      }
+      sessionBarEl.style.display = 'block';
+      resetSessionTimer();
+    }
+
+    function resetSessionTimer() {
+      if (sessionTimer) clearTimeout(sessionTimer);
+      if (sessionBarEl) sessionBarEl.style.width = '100%';
+      sessionTimer = setTimeout(() => {
+        admToast('Sesión expirada por inactividad', 'error');
+        logoutAdmin();
+      }, SESSION_TIMEOUT);
+    }
+
+    function logoutAdmin() {
+      sessionStorage.removeItem('dp_admin_auth');
+      adminPanel.classList.remove('open');
+      document.body.style.overflow = '';
+      if (sessionBarEl) sessionBarEl.style.display = 'none';
+      if (sessionTimer) clearTimeout(sessionTimer);
+      window.location.hash = '';
+    }
+
+    // Reset timer on user activity within admin
+    ['click','keydown','mousemove','scroll'].forEach(evt => {
+      document.addEventListener(evt, () => {
+        if (sessionStorage.getItem('dp_admin_auth') === 'true') resetSessionTimer();
+      }, { passive: true });
+    });
+
+    document.getElementById('session-logout-btn').addEventListener('click', () => {
+      if (confirm('¿Cerrar sesión de admin?')) logoutAdmin();
+    });
+
+    // ============================================================
+    // DIGITALPRO OS — CRM ENGINE
+    // ============================================================
+    let CRM_CLIENTS = [];
+
+    async function loadCrmData() {
+      if (!SUPA) return;
+      try {
+        const { data, error } = await SUPA.from('clients').select('*').order('created_at', { ascending: false });
+        if (error) throw error;
+        CRM_CLIENTS = data || [];
+        renderCrmTable();
+        updateCrmStats();
+      } catch(e) {
+        admToast('Error cargando clientes: ' + e.message, 'error');
+      }
+    }
+
+    function updateCrmStats() {
+      const active = CRM_CLIENTS.filter(c => c.status === 'active');
+      const subscriptions = active.filter(c => c.service_type === 'subscription');
+      const mrr = subscriptions.reduce((sum, c) => sum + Number(c.plan_price || 0), 0);
+      document.getElementById('crm-mrr').textContent = '$' + mrr.toLocaleString('en-US', { minimumFractionDigits: 0 });
+      document.getElementById('crm-active-count').textContent = active.length;
+      document.getElementById('crm-pending-count').textContent = CRM_CLIENTS.filter(c => c.payment_status === 'yellow').length;
+      document.getElementById('crm-overdue-count').textContent = CRM_CLIENTS.filter(c => c.payment_status === 'red').length;
+    }
+
+    function renderCrmTable() {
+      const statusFilter = document.getElementById('crm-filter-status').value;
+      const paymentFilter = document.getElementById('crm-filter-payment').value;
+      let filtered = CRM_CLIENTS;
+      if (statusFilter !== 'all') filtered = filtered.filter(c => c.status === statusFilter);
+      if (paymentFilter !== 'all') filtered = filtered.filter(c => c.payment_status === paymentFilter);
+
+      const tbody = document.getElementById('crm-client-tbody');
+      if (!filtered.length) {
+        tbody.innerHTML = '<tr><td colspan="7" class="text-center text-gray-500 py-8">No hay clientes que mostrar</td></tr>';
+        return;
+      }
+      tbody.innerHTML = filtered.map(c => {
+        const regionFlag = c.region === 'usa' ? '🇺🇸' : c.region === 'latam' ? '🌎' : '🌍';
+        const statusCls = 'status-' + (c.status || 'active');
+        const statusLabel = { active:'Activo', paused:'Pausado', suspended:'Suspendido', completed:'Completado' }[c.status] || c.status;
+        const tlCls = 'tl-' + (c.payment_status || 'green');
+        const tlLabel = { green:'Al día', yellow:'Por vencer', red:'Atrasado' }[c.payment_status] || c.payment_status;
+        const nextPay = c.next_payment_date ? new Date(c.next_payment_date).toLocaleDateString('es-US') : '—';
+        const waNum = c.whatsapp || '';
+        const waMsg = encodeURIComponent(
+          'Hola ' + (c.owner_name || c.business_name) + ', te escribimos de DigitalPro. ' +
+          (c.payment_status === 'red' ? 'Tu pago está atrasado. ¿Podemos ayudarte a ponerte al día?' :
+           c.payment_status === 'yellow' ? 'Tu próximo pago se acerca. ¿Todo listo?' :
+           '¡Gracias por ser nuestro cliente! ¿Necesitas algo?')
+        );
+        return `<tr>
+          <td>
+            <div class="font-semibold text-sm">${regionFlag} ${aEsc(c.business_name)}</div>
+            <div class="text-xs text-gray-500">${aEsc(c.owner_name || '')} ${c.sector ? '· ' + aEsc(c.sector) : ''}</div>
+          </td>
+          <td class="text-sm">${aEsc(c.plan_name || '—')}</td>
+          <td class="font-semibold text-sm">$${Number(c.plan_price||0).toLocaleString()}<span class="text-gray-500 text-xs">${c.service_type === 'subscription' ? '/mes' : ''}</span></td>
+          <td><span class="status-badge ${statusCls}">${statusLabel}</span></td>
+          <td><span class="tl-badge ${tlCls}">● ${tlLabel}</span></td>
+          <td class="text-sm text-gray-400">${nextPay}</td>
+          <td class="crm-actions">
+            <div class="flex items-center gap-1">
+              <button class="crm-action-btn" title="Editar" onclick="openCrmEdit('${c.id}')"><i data-lucide="pencil" class="w-3.5 h-3.5"></i></button>
+              ${waNum ? `<a href="https://wa.me/${aEsc(waNum)}?text=${waMsg}" target="_blank" class="crm-action-btn" title="WhatsApp" style="color:#25d366;border-color:rgba(37,211,102,0.3);"><i data-lucide="message-circle" class="w-3.5 h-3.5"></i></a>` : ''}
+              <button class="crm-action-btn" title="${c.status==='active'?'Pausar':'Activar'}" onclick="toggleClientStatus('${c.id}')"><i data-lucide="${c.status==='active'?'pause':'play'}" class="w-3.5 h-3.5"></i></button>
+              <button class="crm-action-btn" title="Eliminar" onclick="deleteClient('${c.id}')" style="color:#ef4444;border-color:rgba(239,68,68,0.2);"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i></button>
+            </div>
+          </td>
+        </tr>`;
+      }).join('');
+      lucide.createIcons();
+    }
+
+    // CRM Filters
+    document.getElementById('crm-filter-status').addEventListener('change', renderCrmTable);
+    document.getElementById('crm-filter-payment').addEventListener('change', renderCrmTable);
+
+    // Open CRM modal for new client
+    document.getElementById('crm-add-client').addEventListener('click', () => {
+      document.getElementById('crm-edit-id').value = '';
+      document.getElementById('crm-modal-title').textContent = 'Nuevo Cliente';
+      document.getElementById('crm-modal-btn-text').textContent = 'Guardar Cliente';
+      document.getElementById('crm-client-form').reset();
+      document.getElementById('crm-payment-section').style.display = 'none';
+      document.getElementById('crm-client-modal').classList.add('open');
+      lucide.createIcons();
+    });
+
+    // Open CRM modal for editing
+    window.openCrmEdit = async function(clientId) {
+      const c = CRM_CLIENTS.find(x => x.id === clientId);
+      if (!c) return;
+      document.getElementById('crm-edit-id').value = c.id;
+      document.getElementById('crm-modal-title').textContent = 'Editar: ' + c.business_name;
+      document.getElementById('crm-modal-btn-text').textContent = 'Actualizar Cliente';
+      document.getElementById('crm-f-business').value = c.business_name || '';
+      document.getElementById('crm-f-owner').value = c.owner_name || '';
+      document.getElementById('crm-f-email').value = c.email || '';
+      document.getElementById('crm-f-whatsapp').value = c.whatsapp || '';
+      document.getElementById('crm-f-region').value = c.region || 'usa';
+      document.getElementById('crm-f-sector').value = c.sector || '';
+      document.getElementById('crm-f-type').value = c.service_type || 'subscription';
+      document.getElementById('crm-f-plan').value = c.plan_name || '';
+      document.getElementById('crm-f-price').value = c.plan_price || '';
+      document.getElementById('crm-f-status').value = c.status || 'active';
+      document.getElementById('crm-f-payment').value = c.payment_status || 'green';
+      document.getElementById('crm-f-nextpay').value = c.next_payment_date || '';
+      document.getElementById('crm-f-notes').value = c.notes || '';
+      // Show payment section
+      document.getElementById('crm-payment-section').style.display = '';
+      await loadPaymentHistory(c.id);
+      document.getElementById('crm-client-modal').classList.add('open');
+      lucide.createIcons();
+    };
+
+    window.closeCrmModal = function() {
+      document.getElementById('crm-client-modal').classList.remove('open');
+    };
+
+    // Save/Update client
+    document.getElementById('crm-client-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!SUPA) return admToast('Supabase no conectado', 'error');
+      const editId = document.getElementById('crm-edit-id').value;
+      const clientData = {
+        business_name: document.getElementById('crm-f-business').value.trim(),
+        owner_name: document.getElementById('crm-f-owner').value.trim(),
+        email: document.getElementById('crm-f-email').value.trim(),
+        whatsapp: document.getElementById('crm-f-whatsapp').value.trim(),
+        region: document.getElementById('crm-f-region').value,
+        sector: document.getElementById('crm-f-sector').value.trim(),
+        service_type: document.getElementById('crm-f-type').value,
+        plan_name: document.getElementById('crm-f-plan').value.trim(),
+        plan_price: Number(document.getElementById('crm-f-price').value) || 0,
+        status: document.getElementById('crm-f-status').value,
+        payment_status: document.getElementById('crm-f-payment').value,
+        next_payment_date: document.getElementById('crm-f-nextpay').value || null,
+        notes: document.getElementById('crm-f-notes').value.trim()
+      };
+
+      try {
+        if (editId) {
+          const { error } = await SUPA.from('clients').update(clientData).eq('id', editId);
+          if (error) throw error;
+          admToast('Cliente actualizado', 'success');
+        } else {
+          const { error } = await SUPA.from('clients').insert(clientData);
+          if (error) throw error;
+          admToast('Cliente creado', 'success');
+        }
+        closeCrmModal();
+        await loadCrmData();
+      } catch(e) {
+        admToast('Error: ' + e.message, 'error');
+      }
+    });
+
+    // Toggle client status (active <-> paused)
+    window.toggleClientStatus = async function(clientId) {
+      if (!SUPA) return;
+      const c = CRM_CLIENTS.find(x => x.id === clientId);
+      if (!c) return;
+      const newStatus = c.status === 'active' ? 'paused' : 'active';
+      try {
+        const { error } = await SUPA.from('clients').update({ status: newStatus }).eq('id', clientId);
+        if (error) throw error;
+        admToast(newStatus === 'active' ? 'Servicio activado' : 'Servicio pausado', 'success');
+        await loadCrmData();
+      } catch(e) {
+        admToast('Error: ' + e.message, 'error');
+      }
+    };
+
+    // Delete client
+    window.deleteClient = async function(clientId) {
+      if (!SUPA || !confirm('¿Eliminar este cliente y todos sus pagos?')) return;
+      try {
+        const { error } = await SUPA.from('clients').delete().eq('id', clientId);
+        if (error) throw error;
+        admToast('Cliente eliminado', 'success');
+        await loadCrmData();
+      } catch(e) {
+        admToast('Error: ' + e.message, 'error');
+      }
+    };
+
+    // Payment History
+    async function loadPaymentHistory(clientId) {
+      if (!SUPA) return;
+      try {
+        const { data, error } = await SUPA.from('payments').select('*').eq('client_id', clientId).order('payment_date', { ascending: false });
+        if (error) throw error;
+        const list = document.getElementById('crm-payments-list');
+        const totalPaid = (data || []).reduce((s, p) => s + Number(p.amount || 0), 0);
+        if (!data || !data.length) {
+          list.innerHTML = '<p class="text-gray-500 text-sm">Sin pagos registrados</p>';
+        } else {
+          list.innerHTML = `<p class="text-xs text-gray-400 mb-2">Total pagado: <strong class="text-neon">$${totalPaid.toLocaleString()}</strong></p>` +
+            data.map(p => `
+              <div class="flex items-center justify-between py-2 px-3 rounded-lg" style="background:rgba(255,255,255,0.02);">
+                <div>
+                  <span class="text-sm font-semibold text-green-400">+$${Number(p.amount).toLocaleString()}</span>
+                  <span class="text-xs text-gray-500 ml-2">${aEsc(p.method || '')}</span>
+                  ${p.notes ? `<span class="text-xs text-gray-600 ml-2">· ${aEsc(p.notes)}</span>` : ''}
+                </div>
+                <span class="text-xs text-gray-500">${new Date(p.payment_date).toLocaleDateString('es-US')}</span>
+              </div>
+            `).join('');
+        }
+        // Update client's total_paid
+        if (totalPaid > 0) {
+          await SUPA.from('clients').update({ total_paid: totalPaid }).eq('id', clientId);
+        }
+      } catch(e) { console.error('Payment history error', e); }
+    }
+
+    // Add payment form toggle
+    document.getElementById('crm-add-payment-btn').addEventListener('click', () => {
+      const f = document.getElementById('crm-add-payment-form');
+      f.style.display = f.style.display === 'none' ? '' : 'none';
+      document.getElementById('pay-f-date').value = new Date().toISOString().split('T')[0];
+    });
+
+    // Save payment
+    document.getElementById('crm-save-payment-btn').addEventListener('click', async () => {
+      const clientId = document.getElementById('crm-edit-id').value;
+      if (!clientId || !SUPA) return;
+      const amount = Number(document.getElementById('pay-f-amount').value);
+      if (!amount) return admToast('Ingresa un monto', 'error');
+      try {
+        const { error } = await SUPA.from('payments').insert({
+          client_id: clientId,
+          amount: amount,
+          payment_date: document.getElementById('pay-f-date').value || new Date().toISOString().split('T')[0],
+          method: document.getElementById('pay-f-method').value,
+          notes: document.getElementById('pay-f-notes').value.trim()
+        });
+        if (error) throw error;
+        admToast('Pago registrado', 'success');
+        document.getElementById('crm-add-payment-form').style.display = 'none';
+        document.getElementById('pay-f-amount').value = '';
+        document.getElementById('pay-f-notes').value = '';
+        await loadPaymentHistory(clientId);
+      } catch(e) {
+        admToast('Error: ' + e.message, 'error');
+      }
+    });
+
+    // ============================================================
+    // DIGITALPRO OS — ANALYTICS ENGINE
+    // ============================================================
+    async function loadAnalyticsData() {
+      if (!SUPA) return;
+      const periodEl = document.getElementById('analytics-period');
+      const days = periodEl.value === 'all' ? 99999 : parseInt(periodEl.value);
+      const since = new Date();
+      since.setDate(since.getDate() - days);
+      const sinceISO = since.toISOString();
+
+      try {
+        let query = SUPA.from('analytics_events').select('*');
+        if (days < 99999) query = query.gte('created_at', sinceISO);
+        const { data, error } = await query.order('created_at', { ascending: false });
+        if (error) throw error;
+        const events = data || [];
+
+        // Compute stats
+        const pageViews = events.filter(e => e.event_type === 'page_view');
+        const uniqueSessions = new Set(events.map(e => e.session_id)).size;
+        const waClicks = events.filter(e => e.event_type === 'whatsapp_click').length;
+        const formSubmits = events.filter(e => e.event_type === 'form_submit').length;
+        const catalogClicks = events.filter(e => e.event_type === 'catalog_click').length;
+
+        document.getElementById('ana-total-views').textContent = pageViews.length.toLocaleString();
+        document.getElementById('ana-unique-sessions').textContent = uniqueSessions.toLocaleString();
+        document.getElementById('ana-wa-clicks').textContent = waClicks.toLocaleString();
+        document.getElementById('ana-form-submits').textContent = formSubmits.toLocaleString();
+        document.getElementById('ana-catalog-clicks').textContent = catalogClicks.toLocaleString();
+
+        // Top 5 sectors
+        const sectorCounts = {};
+        events.filter(e => e.event_type === 'catalog_click' && e.event_data?.sector).forEach(e => {
+          const s = e.event_data.sector;
+          sectorCounts[s] = (sectorCounts[s] || 0) + 1;
+        });
+        const topSectors = Object.entries(sectorCounts).sort((a,b)=>b[1]-a[1]).slice(0,5);
+        const maxSectorCount = topSectors[0]?.[1] || 1;
+        const topSectorsEl = document.getElementById('ana-top-sectors');
+        const barColors = ['#00f4ff','#a78bfa','#34d399','#f59e0b','#f87171'];
+        if (topSectors.length) {
+          topSectorsEl.innerHTML = topSectors.map(([sector, count], i) => `
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-sm font-medium">${aEsc(sector)}</span>
+                <span class="text-xs text-gray-400">${count} clicks</span>
+              </div>
+              <div class="analytics-bar">
+                <div class="analytics-bar-fill" style="width: ${(count/maxSectorCount*100)}%; background: ${barColors[i]};"></div>
+              </div>
+            </div>
+          `).join('');
+        } else {
+          topSectorsEl.innerHTML = '<p class="text-gray-500 text-sm">Aún no hay datos de sectores</p>';
+        }
+
+        // Recent events
+        const recentEl = document.getElementById('ana-recent-events');
+        const recent = events.slice(0, 20);
+        const eventIcons = { page_view:'eye', whatsapp_click:'message-circle', form_submit:'mail', catalog_click:'briefcase', region_toggle:'globe', sector_filter:'filter' };
+        const eventLabels = { page_view:'Visita', whatsapp_click:'WhatsApp', form_submit:'Formulario', catalog_click:'Catálogo', region_toggle:'Región', sector_filter:'Sector' };
+        if (recent.length) {
+          recentEl.innerHTML = recent.map(e => {
+            const icon = eventIcons[e.event_type] || 'activity';
+            const label = eventLabels[e.event_type] || e.event_type;
+            const detail = e.event_data?.name || e.event_data?.sector || e.event_data?.region || e.page || '';
+            const time = new Date(e.created_at).toLocaleString('es-US', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
+            return `<div class="flex items-center gap-3 py-1.5 text-sm">
+              <i data-lucide="${icon}" class="w-3.5 h-3.5 text-neon flex-shrink-0"></i>
+              <span class="text-gray-300 flex-1">${aEsc(label)}${detail ? ' · <span class="text-gray-500">' + aEsc(detail) + '</span>' : ''}</span>
+              <span class="text-xs text-gray-600 flex-shrink-0">${time}</span>
+            </div>`;
+          }).join('');
+        } else {
+          recentEl.innerHTML = '<p class="text-gray-500 text-sm">Sin actividad registrada aún</p>';
+        }
+        lucide.createIcons();
+      } catch(e) {
+        admToast('Error cargando analítica: ' + e.message, 'error');
+      }
+    }
+
+    document.getElementById('analytics-period').addEventListener('change', loadAnalyticsData);
+    document.getElementById('analytics-refresh').addEventListener('click', loadAnalyticsData);
+
+    // ============================================================
+    // DIGITALPRO OS — SUPER USER TOOLS
+    // ============================================================
+    async function loadToolsData() {
+      if (!SUPA) return;
+      try {
+        const { data, error } = await SUPA.from('site_settings').select('*');
+        if (error) throw error;
+        const settings = {};
+        (data || []).forEach(s => { settings[s.key] = s.value; });
+        document.getElementById('tool-maintenance-toggle').checked = settings.maintenance_mode === 'true';
+        document.getElementById('seo-title').value = settings.seo_title || '';
+        document.getElementById('seo-description').value = settings.seo_description || '';
+        document.getElementById('seo-keywords').value = settings.seo_keywords || '';
+      } catch(e) {
+        console.error('Tools load error', e);
+      }
+    }
+
+    // Maintenance mode toggle
+    document.getElementById('tool-maintenance-toggle').addEventListener('change', async function() {
+      if (!SUPA) return admToast('Supabase no conectado', 'error');
+      const enabled = this.checked;
+      try {
+        const { error } = await SUPA.from('site_settings').upsert({ key: 'maintenance_mode', value: String(enabled) }, { onConflict: 'key' });
+        if (error) throw error;
+        admToast(enabled ? '🔧 Modo mantenimiento ACTIVADO' : '✅ Modo mantenimiento desactivado', 'success');
+      } catch(e) {
+        admToast('Error: ' + e.message, 'error');
+        this.checked = !enabled;
+      }
+    });
+
+    // SEO save button
+    document.getElementById('seo-save-btn').addEventListener('click', async () => {
+      if (!SUPA) return admToast('Supabase no conectado', 'error');
+      try {
+        const updates = [
+          { key: 'seo_title', value: document.getElementById('seo-title').value.trim() },
+          { key: 'seo_description', value: document.getElementById('seo-description').value.trim() },
+          { key: 'seo_keywords', value: document.getElementById('seo-keywords').value.trim() }
+        ];
+        for (const u of updates) {
+          const { error } = await SUPA.from('site_settings').upsert(u, { onConflict: 'key' });
+          if (error) throw error;
+        }
+        // Also update meta tags live
+        const titleEl = document.querySelector('title');
+        const descEl = document.querySelector('meta[name="description"]');
+        const kwEl = document.querySelector('meta[name="keywords"]');
+        if (titleEl && updates[0].value) titleEl.textContent = updates[0].value;
+        if (descEl && updates[1].value) descEl.setAttribute('content', updates[1].value);
+        if (kwEl && updates[2].value) kwEl.setAttribute('content', updates[2].value);
+        admToast('SEO actualizado', 'success');
+      } catch(e) {
+        admToast('Error: ' + e.message, 'error');
+      }
+    });
+
+    // --- Initialize Supabase on admin open ---
+    const origOpenAdmin = openAdminPanel;
+    openAdminPanel = async function() {
+      await origOpenAdmin();
+      startSessionTimer();
+      // Load Supabase config
+      const savedUrl = localStorage.getItem('dp_supa_url');
+      const savedKey = localStorage.getItem('dp_supa_key');
+      if (savedUrl) document.getElementById('supa-url').value = savedUrl;
+      if (savedKey) document.getElementById('supa-anon-key').value = savedKey;
+      if (initSupabase()) {
+        try {
+          const { error } = await SUPA.from('site_settings').select('key').limit(1);
+          if (!error) {
+            updateSupaStatus(true);
+            loadCrmData();
+            loadAnalyticsData();
+            loadToolsData();
+          } else {
+            updateSupaStatus(false);
+          }
+        } catch(e) {
+          updateSupaStatus(false);
+        }
+      } else {
+        updateSupaStatus(false);
+      }
+    };
   })();
   </script>
 </body>
