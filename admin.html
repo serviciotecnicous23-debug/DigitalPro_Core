@@ -335,7 +335,8 @@
     // ===== ADMIN ENGINE =====
     let CONFIG = null;
     let CONFIG_SHA = null; // GitHub file SHA for updates
-    const CONFIG_PATH = 'src/data/config.json';
+    const CONFIG_PATH = 'public/data/config.json'; // path in GitHub repo
+    const CONFIG_URL = '/data/config.json';         // served URL (Vite public dir)
     const PASSWORD_HASH = '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8'; // sha256('password')
 
     // --- AUTH ---
@@ -375,7 +376,7 @@
     // --- INIT ---
     async function init() {
       try {
-        const resp = await fetch('/' + CONFIG_PATH + '?t=' + Date.now());
+        const resp = await fetch(CONFIG_URL + '?t=' + Date.now());
         CONFIG = await resp.json();
       } catch (e) {
         showToast('Error cargando config.json', 'error');

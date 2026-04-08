@@ -147,7 +147,7 @@
     "github_owner": "serviciotecnicous23-debug",
     "github_repo": "DigitalPro_Core",
     "github_branch": "main",
-    "config_path": "src/data/config.json",
+    "config_path": "public/data/config.json",
     "vercel_analytics_url": "https://vercel.com/serviciotecnicous23-debug/digitalpro-core/analytics",
     "formspree_dashboard_url": "https://formspree.io/forms/xnjordqg/submissions"
   }

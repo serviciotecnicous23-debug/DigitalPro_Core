@@ -660,7 +660,7 @@
     (async function() {
       let CONFIG;
       try {
-        const resp = await fetch('/src/data/config.json');
+        const resp = await fetch('/data/config.json');
         CONFIG = await resp.json();
       } catch(e) {
         console.error('Failed to load config.json', e);
