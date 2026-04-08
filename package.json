@@ -1,5 +1,11 @@
 {
   "name": "digitalpro-core",
   "version": "1.0.0",
-  "private": true
+  "private": true,
+  "scripts": {
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "vite": "^8.0.7"
+  }
 }
