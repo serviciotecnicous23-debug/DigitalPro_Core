@@ -1,4 +1,4 @@
-const CACHE_NAME = 'digitalpro-v2';
+const CACHE_NAME = 'digitalpro-v3';
 const ASSETS = [
   '/',
   '/index.html',
