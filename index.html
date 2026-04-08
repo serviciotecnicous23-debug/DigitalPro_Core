@@ -377,6 +377,42 @@
       color: #00f4ff;
     }
 
+    /* WEB-TO-APP (PWA) SECTION */
+    .pwa-feature-card {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1.25rem; border-radius: 14px;
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.4s ease;
+    }
+    .pwa-feature-card:hover {
+      border-color: rgba(0,244,255,0.2); transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0,244,255,0.08);
+    }
+    .pwa-feature-icon {
+      width: 48px; height: 48px; min-width: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, rgba(0,244,255,0.15), rgba(0,100,180,0.1));
+      color: #00f4ff;
+    }
+    .pwa-mockup {
+      position: relative; max-width: 280px; margin: 0 auto;
+    }
+    .pwa-mockup-frame {
+      background: linear-gradient(145deg, #1a1a3e, #0d0d25);
+      border: 2px solid rgba(0,244,255,0.2); border-radius: 32px;
+      padding: 12px; box-shadow: 0 25px 60px rgba(0,0,0,0.5), 0 0 40px rgba(0,244,255,0.08);
+    }
+    .pwa-mockup-screen {
+      background: linear-gradient(180deg, #0f0f2e, #050515);
+      border-radius: 22px; padding: 2rem 1.5rem; text-align: center;
+      min-height: 320px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 1rem;
+    }
+    .pwa-mockup-notch {
+      width: 120px; height: 24px; background: #050510;
+      border-radius: 0 0 16px 16px; margin: 0 auto -6px; position: relative; z-index: 1;
+    }
+
     /* CATALOG MODAL */
     .catalog-modal {
       position: fixed; inset: 0; z-index: 9999; display: none;
@@ -541,6 +577,7 @@
       <div class="hidden md:flex items-center gap-8">
         <a href="#servicios" class="text-sm text-gray-300 hover:text-neon transition-colors">Servicios</a>
         <a href="#catalogo" class="text-sm text-gray-300 hover:text-neon transition-colors">Catálogo</a>
+        <a href="#web-to-app" class="text-sm text-gray-300 hover:text-neon transition-colors">Apps</a>
         <a href="#agendar" class="text-sm text-gray-300 hover:text-neon transition-colors">Agendar</a>
         <a href="#contacto" class="btn-neon text-sm !py-2 !px-5">
           <span class="btn-text">Empezar Proyecto</span>
@@ -558,6 +595,7 @@
     <button id="close-menu" class="absolute top-6 right-6 text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
     <a href="#servicios" class="text-xl font-semibold hover:text-neon transition-colors mobile-link">Servicios</a>
     <a href="#catalogo" class="text-xl font-semibold hover:text-neon transition-colors mobile-link">Catálogo</a>
+    <a href="#web-to-app" class="text-xl font-semibold hover:text-neon transition-colors mobile-link">Apps</a>
     <a href="#agendar" class="text-xl font-semibold hover:text-neon transition-colors mobile-link">Agendar</a>
     <a href="#contacto" class="btn-neon mobile-link">Empezar Proyecto</a>
   </div>
@@ -624,7 +662,7 @@
           Soluciones para <span class="text-neon">tu tipo de negocio</span>
         </h2>
         <p data-aos="fade-up" data-aos-delay="200" class="text-gray-400 mt-4 max-w-2xl mx-auto">
-          No vendemos código. Vendemos la transformación de tu negocio. Encuentra tu sector y descubre lo que podemos hacer por ti.
+          No te hacemos una web — te instalamos un sistema de crecimiento. Encuentra tu sector y descubre cómo transformamos negocios como el tuyo.
         </p>
       </div>
 
@@ -658,6 +696,66 @@
       <div id="catalog-modal-content"></div>
     </div>
   </div>
+
+  <!-- ====== WEB-TO-APP (PWA) SECTION ====== -->
+  <section id="web-to-app" class="relative z-10 py-24 px-6" data-section="web-to-app">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- Left: Content -->
+        <div>
+          <span data-aos="fade-up" class="section-label" id="pwa-badge">
+            <i data-lucide="smartphone" class="w-3.5 h-3.5"></i>
+            Servicio Premium
+          </span>
+          <h2 data-aos="fade-up" data-aos-delay="100" class="font-outfit font-bold text-3xl md:text-5xl mt-4" id="pwa-title">
+            Transformamos tu idea en una <span class="text-neon">App</span>
+          </h2>
+          <p data-aos="fade-up" data-aos-delay="200" class="text-gray-400 mt-4 text-lg leading-relaxed" id="pwa-subtitle">
+            No te hacemos una web — te instalamos un sistema de crecimiento en el bolsillo de tu cliente.
+          </p>
+          <p data-aos="fade-up" data-aos-delay="250" class="text-gray-500 mt-3 text-sm leading-relaxed" id="pwa-description">
+            Creamos Progressive Web Apps (PWA): páginas que se instalan en el iPhone o Android como aplicaciones reales, funcionan sin internet y envían notificaciones push. Sin App Store, sin esperas, sin comisiones de Apple.
+          </p>
+          <div data-aos="fade-up" data-aos-delay="300" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8" id="pwa-features-grid">
+            <!-- Rendered by JS from config.json -->
+          </div>
+          <div data-aos="fade-up" data-aos-delay="400" class="mt-8">
+            <a id="pwa-cta" href="#" target="_blank" rel="noopener" class="btn-neon">
+              <i data-lucide="download" class="w-5 h-5"></i>
+              <span class="btn-text">Quiero mi App</span>
+            </a>
+          </div>
+        </div>
+        <!-- Right: Phone Mockup -->
+        <div data-aos="zoom-in" data-aos-delay="300" class="pwa-mockup">
+          <div class="pwa-mockup-frame">
+            <div class="pwa-mockup-notch"></div>
+            <div class="pwa-mockup-screen">
+              <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center mb-2">
+                <i data-lucide="rocket" class="w-8 h-8 text-white"></i>
+              </div>
+              <p class="font-outfit font-bold text-lg text-white">Tu App</p>
+              <p class="text-xs text-gray-400">Instalada en tu celular</p>
+              <div class="w-full mt-4 space-y-2">
+                <div class="flex items-center gap-2 text-left px-4 py-2 rounded-lg" style="background:rgba(0,244,255,0.08);">
+                  <i data-lucide="wifi-off" class="w-4 h-4 text-neon"></i>
+                  <span class="text-xs text-gray-300">Funciona offline</span>
+                </div>
+                <div class="flex items-center gap-2 text-left px-4 py-2 rounded-lg" style="background:rgba(0,244,255,0.08);">
+                  <i data-lucide="bell" class="w-4 h-4 text-neon"></i>
+                  <span class="text-xs text-gray-300">Push notifications</span>
+                </div>
+                <div class="flex items-center gap-2 text-left px-4 py-2 rounded-lg" style="background:rgba(0,244,255,0.08);">
+                  <i data-lucide="zap" class="w-4 h-4 text-neon"></i>
+                  <span class="text-xs text-gray-300">Carga instantánea</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ====== BOOKING: PRE-QUALIFICATION + CALENDLY EMBED ====== -->
   <section id="agendar" class="relative z-10 py-24 px-6" data-section="agendar">
@@ -955,6 +1053,38 @@
             </div>
           </div>
         `}).join('');
+      }
+
+      // --- WEB-TO-APP (PWA) SECTION ---
+      const pwa = CONFIG.web_to_app;
+      if (pwa) {
+        const pwaBadge = document.getElementById('pwa-badge');
+        if (pwaBadge) pwaBadge.innerHTML = `<i data-lucide="smartphone" class="w-3.5 h-3.5"></i> ${esc(pwa.badge)}`;
+        const pwaTitle = document.getElementById('pwa-title');
+        if (pwaTitle) pwaTitle.innerHTML = pwa.title.replace(/App/g, '<span class="text-neon">App</span>');
+        const pwaSub = document.getElementById('pwa-subtitle');
+        if (pwaSub) pwaSub.textContent = pwa.subtitle;
+        const pwaDesc = document.getElementById('pwa-description');
+        if (pwaDesc) pwaDesc.textContent = pwa.description;
+        const pwaGrid = document.getElementById('pwa-features-grid');
+        if (pwaGrid && pwa.features) {
+          pwaGrid.innerHTML = pwa.features.map((f, idx) => `
+            <div class="pwa-feature-card" data-aos="fade-up" data-aos-delay="${idx * 80}">
+              <div class="pwa-feature-icon"><i data-lucide="${esc(f.icon)}" class="w-6 h-6"></i></div>
+              <div>
+                <h4 class="font-outfit font-bold text-sm mb-1">${esc(f.title)}</h4>
+                <p class="text-xs text-gray-400 leading-relaxed">${esc(f.desc)}</p>
+              </div>
+            </div>
+          `).join('');
+        }
+        const pwaCta = document.getElementById('pwa-cta');
+        if (pwaCta) {
+          const waNum = (CONFIG.business && CONFIG.business.whatsapp) || '15125551234';
+          pwaCta.href = `https://wa.me/${esc(waNum)}?text=${encodeURIComponent(pwa.cta_whatsapp_msg)}`;
+          const ctaSpan = pwaCta.querySelector('.btn-text');
+          if (ctaSpan) ctaSpan.textContent = pwa.cta_text;
+        }
       }
 
       // --- BOOKING OPTIONS ---

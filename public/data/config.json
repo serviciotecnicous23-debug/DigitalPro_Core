@@ -3,7 +3,7 @@
     "badge": "Agencia Digital en Austin, TX",
     "title_line1": "Soluciones Digitales",
     "title_line2": "que Escalan Negocios",
-    "subtitle": "Transformamos ideas en productos digitales de alto impacto. Automatización, SaaS, Auditoría IA y desarrollo Full-Stack para empresas que quieren dominar.",
+    "subtitle": "No te hacemos una web — te instalamos un sistema de crecimiento. Automatización, apps, auditoría IA y desarrollo para negocios que quieren dominar su mercado.",
     "cta_primary": "Agendar Auditoría Gratis",
     "cta_secondary": "Ver Portafolio"
   },
@@ -68,6 +68,41 @@
       "emoji": "💼",
       "subtitle": "Consultores, Abogados, Contadores y más",
       "color": "#3b82f6"
+    },
+    {
+      "id": "barberias",
+      "name": "Barberías & Estética",
+      "emoji": "💈",
+      "subtitle": "Grooming System: Reservas, Catálogo de Cortes y Galería",
+      "color": "#eab308"
+    },
+    {
+      "id": "restaurantes",
+      "name": "Restaurantes & Gastronomía",
+      "emoji": "🍽️",
+      "subtitle": "Menu & Order: Menú Digital, QR y Pedidos por WhatsApp",
+      "color": "#ef4444"
+    },
+    {
+      "id": "iglesias",
+      "name": "Comunidades & Iglesias",
+      "emoji": "⛪",
+      "subtitle": "Faith Connect: Transmisiones, Eventos y Donaciones",
+      "color": "#8b5cf6"
+    },
+    {
+      "id": "trading",
+      "name": "Trading & Finanzas",
+      "emoji": "📈",
+      "subtitle": "Live Markets: Dashboards, Señales y Áreas de Miembros",
+      "color": "#22c55e"
+    },
+    {
+      "id": "marketing",
+      "name": "Publicidad & Marketing",
+      "emoji": "🎯",
+      "subtitle": "Creative Engine: Portafolio, Métricas y Contacto VIP",
+      "color": "#ec4899"
     }
   ],
   "catalog_value_props": [
@@ -231,6 +266,266 @@
       "whatsapp_msg": "Hola DigitalPro, necesito un sistema a medida para mi empresa. Me interesa el *Sistema Operativo a tu Medida*.",
       "formspree_subject": "Empresa interesada en: Sistema Operativo a tu Medida",
       "featured": false
+    },
+    {
+      "id": "barberia-pro",
+      "name": "Tu Barbería con Sistema VIP",
+      "tagline": "Reservas online, catálogo de cortes y galería de transformaciones",
+      "sector": "barberias",
+      "category": "Barberías & Estética",
+      "image": "https://images.unsplash.com/photo-1585747860019-8e8ef2e54a5c?w=600&h=400&fit=crop&q=80",
+      "description_short": "Tus clientes reservan turno desde el celular, ven tu catálogo de cortes y tu barbería se llena sola.",
+      "description_full": "Imagina que un cliente ve tu trabajo en Instagram, toca un link y en 3 toques ya tiene turno reservado en TU barbería. Sin llamadas, sin DMs que se pierden. Construimos un sistema completo: página con tu identidad oscura y elegante, catálogo visual de cortes y estilos, galería de transformaciones antes/después, y sistema de reservas automático que se sincroniza con tu agenda. Tu cliente recibe recordatorio por WhatsApp y tú no pierdes ni un turno.",
+      "includes": ["Sistema de reservas automático", "Catálogo visual de cortes y estilos", "Galería de transformaciones antes/después", "Recordatorios automáticos por WhatsApp", "Página con diseño elegante y oscuro"],
+      "subscription": {
+        "price": 69,
+        "period": "/mes",
+        "label": "Plan Emprendedor",
+        "benefits": ["Reservas ilimitadas al mes", "Recordatorios automáticos a clientes", "Actualización de catálogo de cortes", "Soporte directo por WhatsApp", "Reportes de turnos mensuales"]
+      },
+      "one_time": {
+        "price": 1100,
+        "label": "Plan Crecimiento",
+        "benefits": ["Sistema completo tuyo para siempre", "90 días de soporte incluido", "Capacitación para tu equipo", "Diseño personalizado con tu marca"]
+      },
+      "currency": "USD",
+      "whatsapp_msg": "Hola DigitalPro, tengo una barbería y me interesa el paquete *Tu Barbería con Sistema VIP*. Quiero más detalles.",
+      "formspree_subject": "Barbería interesada en: Tu Barbería con Sistema VIP",
+      "featured": false
+    },
+    {
+      "id": "salon-belleza-digital",
+      "name": "Salón de Belleza Digital",
+      "tagline": "Portafolio visual, agendamiento y fidelización de clientas",
+      "sector": "barberias",
+      "category": "Barberías & Estética",
+      "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&h=400&fit=crop&q=80",
+      "description_short": "Tu salón con presencia profesional: portafolio de trabajos, reservas online y programa de lealtad para que tus clientas regresen.",
+      "description_full": "Tu talento merece verse en una pantalla, no solo en un espejo. Creamos una página impresionante con galerías de tu mejor trabajo, sistema de reservas por servicio (uñas, color, corte, tratamiento), y un programa de fidelización donde tus clientas acumulan puntos. Cada vez que publicas en redes, llevas tráfico a TU página — no a la de la competencia. Diseño elegante que refleja la calidad de tu trabajo.",
+      "includes": ["Galería profesional de trabajos", "Reservas por tipo de servicio", "Programa de puntos/fidelización", "Integración con Instagram y Facebook", "Diseño premium personalizado"],
+      "subscription": {
+        "price": 89,
+        "period": "/mes",
+        "label": "Plan Emprendedor",
+        "benefits": ["Actualización de portafolio ilimitada", "Sistema de puntos activo", "Soporte y diseño continuo", "Promociones automáticas", "Reportes de rendimiento"]
+      },
+      "one_time": {
+        "price": 1500,
+        "label": "Plan Crecimiento",
+        "benefits": ["Plataforma completa tuya", "120 días de soporte", "Sesión fotográfica incluida", "Capacitación de administración"]
+      },
+      "currency": "USD",
+      "whatsapp_msg": "Hola DigitalPro, tengo un salón de belleza y me interesa *Salón de Belleza Digital*. Quiero más detalles.",
+      "formspree_subject": "Salón interesado en: Salón de Belleza Digital",
+      "featured": false
+    },
+    {
+      "id": "menu-digital-qr",
+      "name": "Menú Digital + Pedidos QR",
+      "tagline": "Tu menú interactivo con fotos que dan hambre y pedidos por WhatsApp",
+      "sector": "restaurantes",
+      "category": "Restaurantes & Gastronomía",
+      "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop&q=80",
+      "description_short": "Menú digital con fotos irresistibles, código QR en cada mesa y pedidos directos a tu cocina por WhatsApp.",
+      "description_full": "Olvídate de los menús de cartón que se ensucian y no puedes actualizar. Con nuestro menú digital, tu cliente escanea un QR en la mesa y ve TUS platillos con fotos vibrantes que dan hambre, precios actualizados al instante y botón de 'Pedir por WhatsApp'. Cambias precios, agregas platillos del día y todo se actualiza en segundos. Tus clientes piden más porque VEN más. Y tú ahorras en impresión de menús para siempre.",
+      "includes": ["Menú digital con fotos HD", "Código QR personalizado para mesas", "Pedidos directos por WhatsApp", "Panel para actualizar platillos al instante", "Categorías: entradas, fuertes, bebidas, postres"],
+      "subscription": {
+        "price": 59,
+        "period": "/mes",
+        "label": "Plan Emprendedor",
+        "benefits": ["Cambios ilimitados en el menú", "QR codes nuevos cuando quieras", "Soporte por WhatsApp", "Platillos del día destacados", "Estadísticas de platillos más vistos"]
+      },
+      "one_time": {
+        "price": 900,
+        "label": "Plan Crecimiento",
+        "benefits": ["Menú digital tuyo para siempre", "60 días de soporte", "Sesión fotográfica de platillos", "QR impresos incluidos (50 unidades)"]
+      },
+      "currency": "USD",
+      "whatsapp_msg": "Hola DigitalPro, tengo un restaurante y me interesa el *Menú Digital + Pedidos QR*. Quiero más detalles.",
+      "formspree_subject": "Restaurante interesado en: Menú Digital + Pedidos QR",
+      "featured": true
+    },
+    {
+      "id": "restaurante-delivery",
+      "name": "Sistema de Delivery Propio",
+      "tagline": "Deja de pagar comisiones a apps — tus pedidos, tu ganancia",
+      "sector": "restaurantes",
+      "category": "Restaurantes & Gastronomía",
+      "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=400&fit=crop&q=80",
+      "description_short": "Tu propia plataforma de delivery: sin comisiones de Uber Eats, tus clientes piden directo y tú te quedas con toda la ganancia.",
+      "description_full": "¿Cuánto le pagas a Uber Eats o DoorDash por cada pedido? ¿30%? Con tu propio sistema de delivery, cada peso que paga tu cliente va a TU bolsillo. Construimos una web de pedidos con tu menú completo, zona de entrega por mapa, tracking de pedido y pagos online. Tu cliente se la instala como app en su celular (PWA) y la próxima vez pide directo. Es TU marca, TU cliente, TU ganancia.",
+      "includes": ["Plataforma de pedidos propia", "Zona de entrega configurable", "Pagos con tarjeta integrados", "Notificaciones push de pedidos", "Instalable como app (PWA)"],
+      "subscription": {
+        "price": 149,
+        "period": "/mes",
+        "label": "Plan Crecimiento",
+        "benefits": ["Sin comisiones por pedido", "Actualizaciones de funciones", "Soporte técnico prioritario", "Nuevas integraciones cada mes", "Marketing digital incluido"]
+      },
+      "one_time": {
+        "price": 3000,
+        "label": "Plan Elite",
+        "benefits": ["Plataforma 100% tuya", "Código fuente incluido", "120 días de soporte dedicado", "Capacitación completa para tu equipo"]
+      },
+      "currency": "USD",
+      "whatsapp_msg": "Hola DigitalPro, tengo un restaurante y me interesa el *Sistema de Delivery Propio*. Quiero más detalles.",
+      "formspree_subject": "Restaurante interesado en: Sistema de Delivery Propio",
+      "featured": false
+    },
+    {
+      "id": "iglesia-conectada",
+      "name": "Tu Iglesia Conectada 24/7",
+      "tagline": "Transmisiones en vivo, eventos, donaciones y comunidad digital",
+      "sector": "iglesias",
+      "category": "Comunidades & Iglesias",
+      "image": "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=600&h=400&fit=crop&q=80",
+      "description_short": "Tu congregación conectada las 24 horas: transmisiones en vivo, calendario de eventos, ofrendas online y devocionarios.",
+      "description_full": "Tu ministerio no se detiene el domingo. Con Faith Connect, tu iglesia tiene presencia digital las 24 horas. Página limpia e inspiradora con sección de transmisiones en vivo (YouTube/Facebook Live integrado), calendario de eventos interactivo, sistema de ofrendas y diezmos online seguro, y sección de devocionarios semanales. Tus miembros se mantienen conectados aunque no puedan asistir. La comunidad crece más allá de las cuatro paredes.",
+      "includes": ["Transmisiones en vivo integradas", "Calendario de eventos interactivo", "Sistema de ofrendas online seguro", "Sección de devocionarios/podcasts", "Diseño limpio e inspirador"],
+      "subscription": {
+        "price": 79,
+        "period": "/mes",
+        "label": "Plan Emprendedor",
+        "benefits": ["Transmisiones ilimitadas", "Actualización de eventos semanal", "Soporte dedicado al ministerio", "Reportes de donaciones", "Notificaciones a miembros"]
+      },
+      "one_time": {
+        "price": 1400,
+        "label": "Plan Crecimiento",
+        "benefits": ["Plataforma tuya para siempre", "90 días de soporte", "Capacitación para el equipo pastoral", "Migración de contenidos existentes"]
+      },
+      "currency": "USD",
+      "whatsapp_msg": "Hola DigitalPro, represento una iglesia/comunidad y me interesa *Tu Iglesia Conectada 24/7*. Quiero más detalles.",
+      "formspree_subject": "Iglesia interesada en: Tu Iglesia Conectada 24/7",
+      "featured": false
+    },
+    {
+      "id": "ministerio-app",
+      "name": "App del Ministerio",
+      "tagline": "Tu iglesia como app instalable con notificaciones y grupos",
+      "sector": "iglesias",
+      "category": "Comunidades & Iglesias",
+      "image": "https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=600&h=400&fit=crop&q=80",
+      "description_short": "App instalable en el celular de cada miembro: devocionales diarios, push notifications de eventos y grupos de oración.",
+      "description_full": "Lleva tu ministerio al bolsillo de cada miembro. Creamos una Progressive Web App que se instala en iPhone y Android sin App Store, con notificaciones push para avisos de eventos, devocionales diarios automatizados, grupos de oración por chat, directorio de miembros y calendario sincronizado. Funciona sin internet para leer devocionales pre-cargados. Tu congregación más unida que nunca, sin importar la distancia.",
+      "includes": ["App instalable (PWA) para iOS y Android", "Notificaciones push automatizadas", "Devocionales diarios pre-programados", "Grupos de oración por chat", "Directorio de miembros privado"],
+      "subscription": {
+        "price": 129,
+        "period": "/mes",
+        "label": "Plan Crecimiento",
+        "benefits": ["Notificaciones push ilimitadas", "Nuevas funciones cada mes", "Soporte técnico dedicado", "Analítica de engagement", "Respaldos automáticos"]
+      },
+      "one_time": {
+        "price": 2800,
+        "label": "Plan Elite",
+        "benefits": ["App completa tuya", "Código fuente incluido", "120 días de soporte", "Capacitación para administradores"]
+      },
+      "currency": "USD",
+      "whatsapp_msg": "Hola DigitalPro, represento un ministerio y me interesa la *App del Ministerio*. Quiero más detalles.",
+      "formspree_subject": "Ministerio interesado en: App del Ministerio",
+      "featured": false
+    },
+    {
+      "id": "trading-dashboard",
+      "name": "Dashboard de Trading Profesional",
+      "tagline": "Tu plataforma tipo Bloomberg con gráficas neón en tiempo real",
+      "sector": "trading",
+      "category": "Trading & Finanzas",
+      "image": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=400&fit=crop&q=80",
+      "description_short": "Dashboard modo oscuro con gráficas en tiempo real, señales de trading y área de miembros para tu comunidad financiera.",
+      "description_full": "Si vendes señales, cursos o mentorías de trading, necesitas una plataforma que se vea TAN profesional como tus resultados. Construimos un dashboard estilo Bloomberg: modo oscuro extremo, gráficas neón en tiempo real conectadas a APIs de mercado, área de miembros con niveles (free/premium/VIP), chat de comunidad, y sección de señales con historial de rendimiento. Tus miembros pagan con tarjeta y acceden instantáneamente. Tu marca irradia autoridad financiera.",
+      "includes": ["Dashboard modo oscuro profesional", "Gráficas en tiempo real (TradingView)", "Área de miembros con niveles", "Sistema de pagos recurrentes", "Chat de comunidad integrado"],
+      "subscription": {
+        "price": 199,
+        "period": "/mes",
+        "label": "Plan Elite",
+        "benefits": ["APIs de mercado actualizadas", "Nuevas funciones mensuales", "Soporte técnico 24/7", "Gestión de miembros ilimitada", "Analítica avanzada de engagement"]
+      },
+      "one_time": {
+        "price": 4500,
+        "label": "Plan Elite",
+        "benefits": ["Plataforma completa tuya", "Código fuente y documentación", "180 días de soporte", "Integraciones personalizadas"]
+      },
+      "currency": "USD",
+      "whatsapp_msg": "Hola DigitalPro, soy trader/mentor financiero y me interesa el *Dashboard de Trading Profesional*. Quiero más detalles.",
+      "formspree_subject": "Trader interesado en: Dashboard de Trading Profesional",
+      "featured": false
+    },
+    {
+      "id": "finanzas-landing",
+      "name": "Landing de Cursos & Señales",
+      "tagline": "Página de alto impacto para vender tus cursos y membresías financieras",
+      "sector": "trading",
+      "category": "Trading & Finanzas",
+      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&h=400&fit=crop&q=80",
+      "description_short": "Landing page de alta conversión para vender cursos de trading, membresías de señales y mentorías — con pruebas sociales y pago directo.",
+      "description_full": "Los mejores traders no solo operan — también enseñan. Y para vender tu conocimiento necesitas una página que CONVIERTA. Creamos un landing page de impacto con testimonios en video, contador de alumnos en tiempo real, sección de resultados con capturas, sistema de pago directo (Stripe), y embudo de email marketing automatizado. Todo con diseño oscuro, neón y animaciones que transmiten profesionalismo del mundo financiero.",
+      "includes": ["Landing page de alta conversión", "Integración con Stripe para pagos", "Testimonios en video integrados", "Contador de alumnos en vivo", "Email marketing automatizado"],
+      "subscription": {
+        "price": 99,
+        "period": "/mes",
+        "label": "Plan Crecimiento",
+        "benefits": ["A/B testing para maximizar ventas", "Optimización mensual de conversión", "Soporte de embudo de ventas", "Actualizaciones de diseño", "Analítica de conversión"]
+      },
+      "one_time": {
+        "price": 1800,
+        "label": "Plan Crecimiento",
+        "benefits": ["Landing completa tuya", "90 días de soporte", "Embudo configurado", "Capacitación de gestión"]
+      },
+      "currency": "USD",
+      "whatsapp_msg": "Hola DigitalPro, me interesa la *Landing de Cursos & Señales* para mi negocio de trading. Quiero más detalles.",
+      "formspree_subject": "Mentor financiero interesado en: Landing de Cursos & Señales",
+      "featured": false
+    },
+    {
+      "id": "agencia-portafolio",
+      "name": "Portafolio de Impacto Creativo",
+      "tagline": "Tu agencia con métricas reales, casos de éxito y formularios de contacto VIP",
+      "sector": "marketing",
+      "category": "Publicidad & Marketing",
+      "image": "https://images.unsplash.com/photo-1542744094-3a31f272c490?w=600&h=400&fit=crop&q=80",
+      "description_short": "Web de agencia que cierra clientes: portafolio de campañas con métricas reales, casos de éxito y formulario de contacto de alta prioridad.",
+      "description_full": "Si tu agencia no tiene una web que impresione, estás perdiendo clientes frente a agencias con menos talento pero mejor presencia. Construimos una web con portafolio visual de campañas (imágenes, videos, métricas de ROI), casos de éxito filtrados por industria, sección de servicios con animaciones fluidas, y formulario de contacto inteligente que califica leads automáticamente. Colores audaces, tipografía grande, animaciones que demuestran que sabes de diseño.",
+      "includes": ["Portafolio visual de campañas", "Métricas de éxito interactivas", "Formulario de contacto VIP inteligente", "Sección de servicios animada", "Blog/noticias para SEO"],
+      "subscription": {
+        "price": 109,
+        "period": "/mes",
+        "label": "Plan Crecimiento",
+        "benefits": ["Actualización de portafolio ilimitada", "SEO mensual para agencias", "Soporte de contenido", "Nuevas animaciones y features", "Analítica de leads"]
+      },
+      "one_time": {
+        "price": 2200,
+        "label": "Plan Crecimiento",
+        "benefits": ["Web completa de agencia", "90 días de soporte", "Kit de contenido inicial", "Integración CRM"]
+      },
+      "currency": "USD",
+      "whatsapp_msg": "Hola DigitalPro, tengo una agencia de marketing y me interesa el *Portafolio de Impacto Creativo*. Quiero más detalles.",
+      "formspree_subject": "Agencia interesada en: Portafolio de Impacto Creativo",
+      "featured": false
+    },
+    {
+      "id": "marketing-automatizado",
+      "name": "Motor de Marketing Automatizado",
+      "tagline": "Embudos, email marketing, landing pages y analítica — todo en uno",
+      "sector": "marketing",
+      "category": "Publicidad & Marketing",
+      "image": "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=600&h=400&fit=crop&q=80",
+      "description_short": "Sistema completo de marketing digital: embudos de venta, email marketing, landing pages A/B y dashboard de métricas en tiempo real.",
+      "description_full": "Deja de usar 10 herramientas separadas para tu marketing. Combinamos todo en un solo sistema: constructor de landing pages con A/B testing, embudos de venta automatizados, email marketing con secuencias inteligentes, y un dashboard central donde ves el rendimiento de TODO. Cada lead entra al embudo correcto, recibe los emails correctos, y tú cierras más ventas durmiendo. Esto no es una página web — es un motor de crecimiento.",
+      "includes": ["Constructor de landing pages", "Email marketing automatizado", "Embudos de venta configurados", "Dashboard de analítica central", "Integración con redes sociales"],
+      "subscription": {
+        "price": 199,
+        "period": "/mes",
+        "label": "Plan Elite",
+        "benefits": ["Embudos y emails ilimitados", "A/B testing continuo", "Soporte estratégico semanal", "Nuevas integraciones mensuales", "Optimización de conversión"]
+      },
+      "one_time": {
+        "price": 4800,
+        "label": "Plan Elite",
+        "benefits": ["Sistema completo tuyo", "Código fuente y documentación", "180 días de soporte", "3 embudos ya configurados"]
+      },
+      "currency": "USD",
+      "whatsapp_msg": "Hola DigitalPro, me interesa el *Motor de Marketing Automatizado*. Quiero más detalles.",
+      "formspree_subject": "Interesado en: Motor de Marketing Automatizado",
+      "featured": false
     }
   ],
   "booking": {
@@ -248,8 +543,23 @@
       "Plataforma SaaS",
       "Auditoría Digital",
       "Desarrollo Full-Stack",
+      "Web-to-App (PWA)",
       "Otro"
     ]
+  },
+  "web_to_app": {
+    "badge": "Servicio Premium",
+    "title": "Transformamos tu idea en una App",
+    "subtitle": "No te hacemos una web — te instalamos un sistema de crecimiento en el bolsillo de tu cliente.",
+    "description": "Creamos Progressive Web Apps (PWA): páginas que se instalan en el iPhone o Android como aplicaciones reales, funcionan sin internet y envían notificaciones push. Sin App Store, sin esperas, sin comisiones de Apple.",
+    "features": [
+      { "icon": "smartphone", "title": "Se instala como App", "desc": "Tu cliente la agrega a su pantalla de inicio y parece una app nativa. Sin descargas de la App Store." },
+      { "icon": "wifi-off", "title": "Funciona sin Internet", "desc": "Contenido pre-cargado disponible offline. Tu cliente te ve aunque no tenga señal." },
+      { "icon": "bell", "title": "Notificaciones Push", "desc": "Envía avisos, promociones y recordatorios directo al celular de tu cliente." },
+      { "icon": "zap", "title": "Ultra Rápida", "desc": "Carga en menos de 1 segundo. Google la posiciona mejor que una web lenta." }
+    ],
+    "cta_text": "Quiero mi App",
+    "cta_whatsapp_msg": "Hola DigitalPro, me interesa convertir mi web en una App (PWA). Quiero más detalles."
   },
   "contact": {
     "title": "¿Listo para despegar?",
