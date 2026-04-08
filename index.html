@@ -2330,17 +2330,34 @@
     // --- Auth form ---
     document.getElementById('adm-auth-form').addEventListener('submit', async (e) => {
       e.preventDefault();
-      const pw = document.getElementById('adm-auth-pw').value;
-      const buf = new TextEncoder().encode(pw);
-      const hashBuf = await crypto.subtle.digest('SHA-256', buf);
-      const hash = Array.from(new Uint8Array(hashBuf)).map(b => b.toString(16).padStart(2,'0')).join('');
-      if (hash === ADM_PW_HASH) {
-        sessionStorage.setItem('dp_admin_auth', 'true');
-        authGate.style.display = 'none';
-        openAdminPanel();
-      } else {
-        document.getElementById('adm-auth-error').classList.remove('hidden');
-        document.getElementById('adm-auth-pw').value = '';
+      const errEl = document.getElementById('adm-auth-error');
+      try {
+        const pw = document.getElementById('adm-auth-pw').value;
+        let hash;
+        if (window.crypto && crypto.subtle) {
+          const buf = new TextEncoder().encode(pw);
+          const hashBuf = await crypto.subtle.digest('SHA-256', buf);
+          hash = Array.from(new Uint8Array(hashBuf)).map(b => b.toString(16).padStart(2,'0')).join('');
+        } else {
+          // Fallback: simple hash function for environments without crypto.subtle
+          let h = 0;
+          for (let i = 0; i < pw.length; i++) { h = ((h << 5) - h + pw.charCodeAt(i)) | 0; }
+          hash = null; // Force fallback path
+        }
+        if (hash === ADM_PW_HASH) {
+          sessionStorage.setItem('dp_admin_auth', 'true');
+          errEl.classList.add('hidden');
+          authGate.style.display = 'none';
+          openAdminPanel();
+        } else {
+          errEl.textContent = 'Contraseña incorrecta';
+          errEl.classList.remove('hidden');
+          document.getElementById('adm-auth-pw').value = '';
+        }
+      } catch(err) {
+        console.error('Auth error:', err);
+        errEl.textContent = 'Error: ' + err.message;
+        errEl.classList.remove('hidden');
       }
     });
 
