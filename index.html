@@ -338,9 +338,26 @@
     .catalog-card-prices .price-label { font-size: 0.65rem; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 600; letter-spacing: 0.05em; }
     .catalog-card-prices .price-val { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.15rem; color: #00f4ff; }
     .catalog-card-prices .price-period { font-size: 0.7rem; color: rgba(255,255,255,0.35); }
+    .catalog-card-includes {
+      margin-top: 0.75rem; padding: 0.75rem; border-radius: 10px;
+      background: rgba(0,244,255,0.03); border: 1px solid rgba(0,244,255,0.08);
+    }
+    .catalog-card-includes .inc-title {
+      font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+      color: rgba(0,244,255,0.7); letter-spacing: 0.06em; margin-bottom: 0.4rem;
+      display: flex; align-items: center; gap: 0.3rem;
+    }
+    .catalog-card-includes li {
+      font-size: 0.72rem; color: rgba(255,255,255,0.55); padding: 1.5px 0;
+      display: flex; align-items: center; gap: 0.35rem;
+    }
+    .catalog-card-includes li i { color: #00f4ff; flex-shrink: 0; }
+    .catalog-card-actions {
+      display: flex; gap: 0.5rem; margin-top: 0.75rem;
+    }
     .catalog-card-cta {
       display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-      width: 100%; margin-top: 1rem; padding: 12px;
+      flex: 1; padding: 12px;
       border-radius: 12px; font-weight: 700; font-size: 0.85rem;
       background: linear-gradient(135deg, rgba(0,244,255,0.15), rgba(0,100,180,0.1));
       color: #00f4ff; border: 1px solid rgba(0,244,255,0.2);
@@ -349,7 +366,40 @@
     .catalog-card:hover .catalog-card-cta {
       background: linear-gradient(135deg, #00f4ff, #00b8d4); color: #050510;
     }
+    .catalog-card-share {
+      display: flex; align-items: center; justify-content: center;
+      width: 44px; border-radius: 12px;
+      background: rgba(37,211,102,0.1); border: 1px solid rgba(37,211,102,0.25);
+      color: #25D366; cursor: pointer; transition: all 0.3s; text-decoration: none;
+    }
+    .catalog-card-share:hover {
+      background: #25D366; color: #fff;
+      box-shadow: 0 0 15px rgba(37,211,102,0.3);
+    }
+    .catalog-card-disclaimer {
+      font-size: 0.6rem; color: rgba(255,255,255,0.3); text-align: center;
+      margin-top: 0.5rem; line-height: 1.4;
+    }
     .catalog-card.hidden-card { display: none; }
+    .catalog-share-bar {
+      display: flex; align-items: center; justify-content: center; gap: 1rem;
+      margin-top: 2rem; padding: 1rem; border-radius: 14px;
+      background: rgba(37,211,102,0.05); border: 1px solid rgba(37,211,102,0.15);
+    }
+    .catalog-share-bar a, .catalog-share-bar button {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 10px 20px; border-radius: 10px; font-weight: 700; font-size: 0.82rem;
+      cursor: pointer; transition: all 0.3s; text-decoration: none; border: none;
+    }
+    .share-wa-btn {
+      background: #25D366; color: #fff;
+    }
+    .share-wa-btn:hover { box-shadow: 0 0 20px rgba(37,211,102,0.4); transform: translateY(-1px); }
+    .share-copy-btn {
+      background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.1) !important;
+    }
+    .share-copy-btn:hover { background: rgba(255,255,255,0.12); color: #fff; }
 
     /* === REGION-DIFFERENTIATED STYLES === */
 
@@ -816,11 +866,11 @@
       <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"
          class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed" id="hero-subtitle">
         Transformamos ideas en productos digitales de alto impacto.
-        Automatización, SaaS, Auditoría IA y desarrollo Full-Stack para empresas que quieren dominar.
+        Automatización, SaaS, desarrollo Full-Stack y soluciones a medida para empresas que quieren dominar.
       </p>
       <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300" class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="#agendar" class="btn-neon text-base" id="hero-cta1">
-          <span class="btn-text">Agendar Auditoría Gratis</span>
+          <span class="btn-text">Agendar Cita Gratis</span>
           <i data-lucide="calendar" class="w-5 h-5"></i>
         </a>
         <a href="#catalogo" class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl border border-white/10 text-white/80 hover:border-neon/30 hover:text-neon transition-all font-semibold" id="hero-cta2">
@@ -890,6 +940,24 @@
       <div id="catalog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Rendered by JS from config.json -->
       </div>
+
+      <!-- Share Full Catalog Bar -->
+      <div data-aos="fade-up" class="catalog-share-bar" id="catalog-share-bar">
+        <span class="text-sm text-gray-400 font-semibold">📋 Comparte nuestro catálogo</span>
+        <a id="share-catalog-wa" href="#" target="_blank" rel="noopener" class="share-wa-btn">
+          <svg viewBox="0 0 32 32" width="14" height="14" fill="#fff"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.9 15.9 0 0016.004 32C24.826 32 32 24.826 32 16.004 32 7.176 24.826 0 16.004 0z"/></svg>
+          Enviar por WhatsApp
+        </a>
+        <button onclick="navigator.clipboard.writeText('https://digital-pro-core.vercel.app/#catalogo').then(()=>{this.textContent='✅ Copiado!';setTimeout(()=>{this.innerHTML='<i data-lucide=&quot;link&quot; class=&quot;w-3.5 h-3.5&quot;></i> Copiar Link';lucide.createIcons();},2000)})" class="share-copy-btn">
+          <i data-lucide="link" class="w-3.5 h-3.5"></i> Copiar Link
+        </button>
+      </div>
+
+      <!-- Pricing disclaimer -->
+      <p data-aos="fade-up" class="text-center text-xs text-gray-500 mt-6 max-w-2xl mx-auto leading-relaxed">
+        <i data-lucide="info" class="w-3 h-3 inline mr-1"></i>
+        Cada modelo es una <strong>idea base</strong> y varía de acuerdo a la necesidad de cada rubro. Según las exigencias y complejidad del sistema, el monto final puede variar. Solicita tu cotización personalizada sin compromiso.
+      </p>
     </div>
   </section>
 
@@ -966,66 +1034,58 @@
 
   <!-- ====== BOOKING: PRE-QUALIFICATION + CALENDLY EMBED ====== -->
   <section id="agendar" class="relative z-10 py-24 px-6" data-section="agendar">
-    <div class="max-w-3xl mx-auto">
+    <div class="max-w-2xl mx-auto">
       <div class="text-center mb-12">
         <span data-aos="fade-up" class="section-label">
           <i data-lucide="calendar-check" class="w-3.5 h-3.5"></i>
-          Agenda tu Auditoría IA
+          Agenda tu Cita
         </span>
         <h2 data-aos="fade-up" data-aos-delay="100" class="font-outfit font-bold text-3xl md:text-5xl mt-4" id="booking-title">
           Reserva tu <span class="text-neon">consulta gratuita</span>
         </h2>
         <p data-aos="fade-up" data-aos-delay="200" class="text-gray-400 mt-4 max-w-lg mx-auto" id="booking-subtitle">
-          Responde 2 preguntas rápidas y accede al calendario para agendar.
+          Cuéntanos sobre tu proyecto y agendamos una llamada sin compromiso para evaluar la mejor solución para tu negocio.
         </p>
       </div>
 
       <div data-aos="fade-up" data-aos-delay="300" class="glass p-8 md:p-10" style="border-color: rgba(0,244,255,0.2);">
-        <!-- Step 1: Budget -->
-        <div id="q-step-1" class="qualifier-step active">
-          <h3 class="font-outfit font-bold text-lg mb-1 flex items-center gap-2">
-            <span class="w-7 h-7 rounded-lg bg-neon/15 flex items-center justify-center text-neon text-sm font-bold">1</span>
-            ¿Cuál es tu presupuesto aproximado?
-          </h3>
-          <p class="text-gray-400 text-sm mb-5 ml-9">Esto nos ayuda a preparar una propuesta ajustada a tu inversión.</p>
-          <div class="space-y-0 ml-9" id="budget-options">
-            <!-- Rendered by JS from config.json -->
+        <form id="booking-form" class="space-y-5">
+          <div class="form-field">
+            <input type="text" name="name" placeholder="Tu nombre completo" required class="form-input" />
+            <span class="icon-wrap"><i data-lucide="user" class="w-5 h-5"></i></span>
           </div>
-          <button id="q-next-1" disabled class="btn-neon mt-6 ml-9 opacity-50 cursor-not-allowed transition-opacity">
-            <span class="btn-text">Siguiente</span><i data-lucide="arrow-right" class="w-4 h-4"></i>
+          <div class="form-field">
+            <input type="tel" name="whatsapp" placeholder="Tu WhatsApp (con código de país)" required class="form-input" />
+            <span class="icon-wrap"><i data-lucide="phone" class="w-5 h-5"></i></span>
+          </div>
+          <div class="form-field">
+            <input type="email" name="email" placeholder="Tu correo electrónico" class="form-input" />
+            <span class="icon-wrap"><i data-lucide="at-sign" class="w-5 h-5"></i></span>
+          </div>
+          <div>
+            <label class="text-sm text-gray-400 font-semibold mb-2 block">¿Qué tipo de negocio tienes?</label>
+            <div class="form-field">
+              <input type="text" name="business_type" placeholder="Ej: Taller mecánico, barbería, restaurante..." required class="form-input" />
+              <span class="icon-wrap"><i data-lucide="building-2" class="w-5 h-5"></i></span>
+            </div>
+          </div>
+          <div>
+            <label class="text-sm text-gray-400 font-semibold mb-2 block">¿Qué necesitas?</label>
+            <div class="form-field">
+              <textarea name="message" rows="3" placeholder="Cuéntanos brevemente: ¿página web, app, sistema de citas, catálogo online...?" required class="form-input !pt-4" style="padding-left: 48px;"></textarea>
+              <span class="icon-wrap" style="top: 16px;"><i data-lucide="message-square" class="w-5 h-5"></i></span>
+            </div>
+          </div>
+          <button type="submit" class="btn-neon w-full text-base">
+            <span class="btn-text">Solicitar Cita Gratis</span>
+            <span class="spinner"></span>
+            <i data-lucide="calendar-check" class="w-5 h-5 btn-icon"></i>
           </button>
-        </div>
-
-        <!-- Step 2: Service -->
-        <div id="q-step-2" class="qualifier-step">
-          <h3 class="font-outfit font-bold text-lg mb-1 flex items-center gap-2">
-            <span class="w-7 h-7 rounded-lg bg-neon/15 flex items-center justify-center text-neon text-sm font-bold">2</span>
-            ¿Qué servicio te interesa?
-          </h3>
-          <p class="text-gray-400 text-sm mb-5 ml-9">Selecciona el que mejor se ajuste a lo que necesitas.</p>
-          <div class="space-y-0 ml-9" id="service-options">
-            <!-- Rendered by JS from config.json -->
-          </div>
-          <div class="flex gap-3 mt-6 ml-9">
-            <button id="q-back-2" class="px-5 py-3 rounded-xl border border-white/10 text-sm text-gray-400 hover:border-neon/30 transition-colors">
-              ← Atrás
-            </button>
-            <button id="q-next-2" disabled class="btn-neon opacity-50 cursor-not-allowed transition-opacity">
-              <span class="btn-text">Ver Calendario</span><i data-lucide="calendar" class="w-4 h-4"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Step 3: Calendly Embed -->
-        <div id="q-step-3" class="qualifier-step">
-          <div class="flex items-center gap-2 mb-4">
-            <i data-lucide="check-circle" class="w-5 h-5 text-green-400"></i>
-            <span class="text-green-400 font-semibold text-sm">¡Listo! Elige tu horario</span>
-          </div>
-          <div id="calendly-container" class="rounded-xl overflow-hidden bg-white" style="min-height: 650px;">
-            <!-- Calendly inline widget loaded dynamically -->
-          </div>
-        </div>
+        </form>
+        <p class="text-center text-xs text-gray-500 mt-4">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5 inline-block mr-1 text-neon/50"></i>
+          Te contactamos en menos de 24h para agendar tu llamada. Sin compromiso.
+        </p>
       </div>
     </div>
   </section>
@@ -1125,6 +1185,7 @@
       try {
         const resp = await fetch('/data/config.json');
         CONFIG = await resp.json();
+        window._SITE_CONFIG = CONFIG;
       } catch(e) {
         console.error('Failed to load config.json', e);
         return;
@@ -1282,18 +1343,27 @@
         catalogGrid.innerHTML = CONFIG.catalog.map((item, i) => {
           const sColor = sectorColorMap[item.sector] || '#00f4ff';
           const regionCls = item.region ? ' region-' + item.region : '';
+          const topIncludes = (item.includes || []).slice(0, 4);
+          const moreCount = (item.includes || []).length - 4;
+          const shareMsg = encodeURIComponent('🚀 Mira esta solución digital de DigitalPro:\n\n*' + item.name + '*\n' + item.tagline + '\n\n💰 Desde $' + item.subscription.price + item.subscription.period + ' o $' + item.one_time.price + ' compra única\n\n✅ Incluye: ' + (item.includes || []).slice(0,3).join(', ') + '\n\n👉 Ver más: ' + 'https://digital-pro-core.vercel.app/#catalogo');
           return `
           <div data-aos="zoom-in-up" data-aos-delay="${Math.min(i * 60, 400)}" data-aos-duration="700"
-               class="catalog-card${item.featured ? ' featured' : ''}${regionCls}" data-catalog-id="${esc(item.id)}" data-sector="${esc(item.sector || '')}" data-region="${esc(item.region || '')}"
-               onclick="openCatalogModal('${esc(item.id)}')">
-            <div style="overflow:hidden; border-radius: 16px 16px 0 0;">
+               class="catalog-card${item.featured ? ' featured' : ''}${regionCls}" data-catalog-id="${esc(item.id)}" data-sector="${esc(item.sector || '')}" data-region="${esc(item.region || '')}">
+            <div style="overflow:hidden; border-radius: 16px 16px 0 0;" onclick="openCatalogModal('${esc(item.id)}')">
               <img src="${esc(item.image)}" alt="${esc(item.name)}" loading="lazy" class="catalog-card-img" />
             </div>
-            <div class="catalog-card-body">
+            <div class="catalog-card-body" onclick="openCatalogModal('${esc(item.id)}')">
               <span class="catalog-card-tag" style="background: ${sColor}15; color: ${sColor}; border: 1px solid ${sColor}30;">${esc(item.category)}</span>
               <h3 class="font-outfit font-bold text-xl mb-1">${esc(item.name)}</h3>
               <p class="text-xs text-gray-500 font-semibold mb-2">${esc(item.tagline)}</p>
               <p class="text-sm text-gray-400 leading-relaxed">${esc(item.description_short)}</p>
+              <div class="catalog-card-includes">
+                <div class="inc-title"><i data-lucide="package" class="w-3 h-3"></i> Lo que obtienes</div>
+                <ul>
+                  ${topIncludes.map(inc => '<li><i data-lucide="check" class="w-3 h-3"></i> ' + esc(inc) + '</li>').join('')}
+                  ${moreCount > 0 ? '<li style="color:rgba(0,244,255,0.5);font-weight:600;">+ ' + moreCount + ' más incluidos</li>' : ''}
+                </ul>
+              </div>
               <div class="catalog-card-prices">
                 <div>
                   <div class="price-label">${esc(item.subscription.label || 'Suscripción')}</div>
@@ -1306,10 +1376,18 @@
                   <span class="price-period"> ${esc(item.currency)}</span>
                 </div>
               </div>
-              <div class="catalog-card-cta">
-                <i data-lucide="eye" class="w-4 h-4"></i>
-                ${item.region === 'latam' ? '🔥 Ver Detalles y Pedir' : 'Ver Detalles y Solicitar'}
+            </div>
+            <div style="padding: 0 1.5rem 1.5rem;">
+              <div class="catalog-card-actions">
+                <div class="catalog-card-cta" onclick="openCatalogModal('${esc(item.id)}')">
+                  <i data-lucide="eye" class="w-4 h-4"></i>
+                  ${item.region === 'latam' ? '🔥 Ver Detalles' : 'Ver Detalles'}
+                </div>
+                <a class="catalog-card-share" href="https://wa.me/?text=${shareMsg}" target="_blank" rel="noopener" title="Compartir por WhatsApp" onclick="event.stopPropagation();">
+                  <svg viewBox="0 0 32 32" width="16" height="16" fill="currentColor"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.9 15.9 0 0016.004 32C24.826 32 32 24.826 32 16.004 32 7.176 24.826 0 16.004 0z"/></svg>
+                </a>
               </div>
+              <p class="catalog-card-disclaimer">* Modelo base. El precio final varía según las necesidades de cada rubro.</p>
             </div>
           </div>
         `}).join('');
@@ -1347,31 +1425,7 @@
         }
       }
 
-      // --- BOOKING OPTIONS ---
-      const bk = CONFIG.booking;
-      if (bk) {
-        // Budget options
-        const budgetEl = document.getElementById('budget-options');
-        if (budgetEl && bk.budget_options) {
-          const emojis = ['💡', '🚀', '⚡', '🏆', '💎', '✨'];
-          budgetEl.innerHTML = bk.budget_options.map((opt, i) =>
-            `<label class="radio-option"><input type="radio" name="budget" value="${esc(opt)}" class="hidden" /><span class="text-sm text-gray-300">${emojis[i] || '•'} ${esc(opt)}</span></label>`
-          ).join('');
-        }
-        // Service options
-        const serviceEl = document.getElementById('service-options');
-        if (serviceEl && bk.service_options) {
-          const emojis2 = ['🤖', '☁️', '🔍', '💻', '📋', '🎯', '🧩'];
-          serviceEl.innerHTML = bk.service_options.map((opt, i) =>
-            `<label class="radio-option"><input type="radio" name="service" value="${esc(opt)}" class="hidden" /><span class="text-sm text-gray-300">${emojis2[i] || '•'} ${esc(opt)}</span></label>`
-          ).join('');
-        }
-        // Calendly
-        const calContainer = document.getElementById('calendly-container');
-        if (calContainer && bk.calendly_url) {
-          calContainer.innerHTML = `<div class="calendly-inline-widget" data-url="${esc(bk.calendly_url)}?hide_gdpr_banner=1" style="min-width:100%;height:650px;"></div>`;
-        }
-      }
+      // --- BOOKING OPTIONS (removed wizard - simple form now) ---
 
       // --- CONTACT FORM (Formspree action) ---
       const contactForm = document.getElementById('contact-form');
@@ -1392,6 +1446,29 @@
       const WA_NUMBER = (CONFIG.business && CONFIG.business.whatsapp) || '15125551234';
       setupWhatsApp(WA_NUMBER, CONFIG.services || []);
 
+      // --- SHARE FULL CATALOG via WhatsApp ---
+      const shareCatalogBtn = document.getElementById('share-catalog-wa');
+      if (shareCatalogBtn && CONFIG.catalog) {
+        const items = CONFIG.catalog;
+        let catalogMsg = '📋 *Catálogo DigitalPro — Soluciones Digitales*\n\n';
+        const grouped = {};
+        items.forEach(item => {
+          const rLabel = item.region === 'usa' ? '🇺🇸 USA' : item.region === 'latam' ? '🌎 LATAM' : '🌍';
+          if (!grouped[rLabel]) grouped[rLabel] = [];
+          grouped[rLabel].push(item);
+        });
+        Object.entries(grouped).forEach(([region, list]) => {
+          catalogMsg += '*' + region + '*\n';
+          list.forEach(item => {
+            catalogMsg += '• ' + item.name + ' — desde $' + item.subscription.price + item.subscription.period + '\n';
+          });
+          catalogMsg += '\n';
+        });
+        catalogMsg += '📌 _Cada modelo es una idea base. El precio varía según tu rubro._\n\n';
+        catalogMsg += '👉 Ver catálogo completo: https://digital-pro-core.vercel.app/#catalogo';
+        shareCatalogBtn.href = 'https://wa.me/?text=' + encodeURIComponent(catalogMsg);
+      }
+
       // Re-init Lucide icons for dynamically added elements
       lucide.createIcons();
 
@@ -1399,7 +1476,8 @@
       AOS.refreshHard();
 
       // Wire up booking wizard radio buttons (they were just rendered)
-      wireBookingWizard();
+      // Wire up booking form submission
+      wireBookingForm();
     })();
 
     // ===== UTILITY: HTML-escape =====
@@ -1419,42 +1497,24 @@
       link.addEventListener('click', () => mobileMenu.classList.remove('open'));
     });
 
-    // ===== PRE-QUALIFICATION WIZARD =====
-    function wireBookingWizard() {
-      const step1 = document.getElementById('q-step-1');
-      const step2 = document.getElementById('q-step-2');
-      const step3 = document.getElementById('q-step-3');
-      const next1 = document.getElementById('q-next-1');
-      const next2 = document.getElementById('q-next-2');
-      const back2 = document.getElementById('q-back-2');
+    // ===== BOOKING FORM HANDLER =====
+    function wireBookingForm() {
+      const form = document.getElementById('booking-form');
+      if (!form) return;
+      // Set Formspree action dynamically
+      const formspreeId = (window._SITE_CONFIG && window._SITE_CONFIG.business && window._SITE_CONFIG.business.formspree_id) || 'xnjordqg';
+      form.action = 'https://formspree.io/f/' + formspreeId;
+      form.method = 'POST';
 
-      document.querySelectorAll('input[name="budget"]').forEach(r => {
-        r.addEventListener('change', () => {
-          next1.disabled = false;
-          next1.classList.remove('opacity-50', 'cursor-not-allowed');
-        });
-      });
-
-      document.querySelectorAll('input[name="service"]').forEach(r => {
-        r.addEventListener('change', () => {
-          next2.disabled = false;
-          next2.classList.remove('opacity-50', 'cursor-not-allowed');
-        });
-      });
-
-      next1.addEventListener('click', () => {
-        step1.classList.remove('active');
-        step2.classList.add('active');
-      });
-
-      back2.addEventListener('click', () => {
-        step2.classList.remove('active');
-        step1.classList.add('active');
-      });
-
-      next2.addEventListener('click', () => {
-        step2.classList.remove('active');
-        step3.classList.add('active');
+      form.addEventListener('submit', function(e) {
+        const btn = this.querySelector('button[type="submit"]');
+        const icon = btn.querySelector('.btn-icon');
+        btn.classList.add('loading');
+        if (icon) icon.style.display = 'none';
+        setTimeout(() => {
+          btn.classList.remove('loading');
+          if (icon) icon.style.display = '';
+        }, 4000);
       });
     }
 
@@ -1479,7 +1539,7 @@
         'hero':        'Hola DigitalPro, vengo de la web y quiero más información sobre sus servicios.',
         'servicios':   'Hola DigitalPro, vengo de la web y me interesa conocer sus servicios en detalle.',
         'catalogo':    'Hola DigitalPro, vengo de la web y me interesa su catálogo de soluciones.',
-        'agendar':     'Hola DigitalPro, vengo de la web y quiero agendar una auditoría IA.',
+        'agendar':     'Hola DigitalPro, vengo de la web y quiero agendar una cita para mi negocio.',
         'contacto':    'Hola DigitalPro, vengo de la web y quiero hablar sobre mi proyecto.'
       };
 
@@ -1547,10 +1607,24 @@
       const waNum = window._CATALOG_WA || '15125551234';
       const formUrl = window._CATALOG_FORMSPREE || '#contacto';
 
+      const shareText = '🚀 *' + item.name + '*\\n' + item.tagline + '\\n\\n💰 Suscripción: $' + item.subscription.price + item.subscription.period + ' | Compra Única: $' + item.one_time.price + '\\n\\n✅ Incluye:\\n' + (item.includes || []).map(x => '• ' + x).join('\\n') + '\\n\\n📌 _Modelo base — el precio varía según tu rubro._\\n\\n👉 Ver más: https://digital-pro-core.vercel.app/#catalogo';
+      const encodedShare = encodeURIComponent(shareText);
+
       content.innerHTML = `
         <img src="${esc(item.image)}" alt="${esc(item.name)}" class="modal-hero-img" />
-        <span class="catalog-card-tag" style="background: rgba(0,244,255,0.1); color: #00f4ff; border: 1px solid rgba(0,244,255,0.15);">${esc(item.category)}</span>
-        <h2 class="font-outfit font-bold text-2xl md:text-3xl mt-2 mb-1">${esc(item.name)}</h2>
+        <div class="flex items-center justify-between mb-2">
+          <span class="catalog-card-tag" style="background: rgba(0,244,255,0.1); color: #00f4ff; border: 1px solid rgba(0,244,255,0.15);">${esc(item.category)}</span>
+          <div class="flex gap-2">
+            <a href="https://wa.me/?text=${encodedShare}" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-green-500/10 text-green-400 border border-green-400/20 hover:bg-green-500 hover:text-white transition-all" title="Compartir por WhatsApp">
+              <svg viewBox="0 0 32 32" width="12" height="12" fill="currentColor"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.9 15.9 0 0016.004 32C24.826 32 32 24.826 32 16.004 32 7.176 24.826 0 16.004 0z"/></svg>
+              Compartir
+            </a>
+            <button onclick="navigator.clipboard.writeText('https://digital-pro-core.vercel.app/#catalogo');this.textContent='✅';setTimeout(()=>{this.textContent='🔗'},1500)"
+               class="px-2.5 py-1.5 rounded-lg text-xs bg-white/5 border border-white/10 hover:bg-white/10 transition-all cursor-pointer" title="Copiar enlace">🔗</button>
+          </div>
+        </div>
+        <h2 class="font-outfit font-bold text-2xl md:text-3xl mt-1 mb-1">${esc(item.name)}</h2>
         <p class="text-neon font-semibold text-sm mb-4">${esc(item.tagline)}</p>
         <p class="text-gray-300 leading-relaxed text-sm mb-2">${esc(item.description_full)}</p>
 
@@ -1626,6 +1700,12 @@
           <i data-lucide="shield-check" class="w-3 h-3 inline mr-1"></i>
           Sin compromisos. Te respondemos en menos de 24h.
         </p>
+        <div class="mt-4 p-3 rounded-lg" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);">
+          <p class="text-xs text-gray-500 text-center leading-relaxed">
+            <i data-lucide="info" class="w-3 h-3 inline mr-1 text-gray-600"></i>
+            <strong>Nota:</strong> Este es un modelo base. Cada solución se adapta a las necesidades específicas de tu rubro. El monto final puede variar según la complejidad y exigencias del sistema.
+          </p>
+        </div>
       `;
 
       modal.classList.add('open');
