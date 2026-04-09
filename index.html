@@ -2400,6 +2400,7 @@
   <script>
   // ====== ADMIN ENGINE (embedded) ======
   (function() {
+  try {
     var ADM_CONFIG_PATH = 'public/data/config.json';
     var ADM_CONFIG_URL = '/data/config.json';
     var ADM_PW_DEFAULT = '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8';
@@ -2407,7 +2408,7 @@
     var ADM_CONFIG = null;
     var ADM_SHA = null;
 
-    const adminPanel = document.getElementById('admin-panel');
+    var adminPanel = document.getElementById('admin-panel');
 
     document.getElementById('adm-close').addEventListener('click', () => {
       adminPanel.classList.remove('open');
@@ -2415,26 +2416,49 @@
       window.location.hash = '';
     });
 
-    // --- Open Admin Panel ---
+    // --- Open Admin Panel (full version with Supabase init) ---
     async function openAdminPanel() {
       try {
-        const resp = await fetch(ADM_CONFIG_URL + '?t=' + Date.now());
+        var resp = await fetch(ADM_CONFIG_URL + '?t=' + Date.now());
         ADM_CONFIG = await resp.json();
       } catch(e) {
         admToast('Error cargando config.json', 'error');
         return;
       }
-      const saved = localStorage.getItem('dp_github_token');
+      var saved = localStorage.getItem('dp_github_token');
       if (saved) document.getElementById('adm-gh-token').value = saved;
 
       adminPanel.classList.add('open');
       document.body.style.overflow = 'hidden';
       renderAdmPanels();
-      lucide.createIcons();
-    }
+      if (typeof lucide !== 'undefined') lucide.createIcons();
 
-    // Expose globally so failsafe and other scripts can use it
-    window._dpOpenAdmin = openAdminPanel;
+      // Session timer
+      startSessionTimer();
+
+      // Supabase auto-connect
+      var savedUrl = localStorage.getItem('dp_supa_url') || DP_SUPA_DEFAULTS.url;
+      var savedKey = localStorage.getItem('dp_supa_key') || DP_SUPA_DEFAULTS.key;
+      document.getElementById('supa-url').value = savedUrl;
+      document.getElementById('supa-anon-key').value = savedKey;
+      if (initSupabase()) {
+        try {
+          var result = await SUPA.from('site_settings').select('key').limit(1);
+          if (!result.error) {
+            updateSupaStatus(true);
+            loadCrmData();
+            loadAnalyticsData();
+            loadToolsData();
+          } else {
+            updateSupaStatus(false);
+          }
+        } catch(e2) {
+          updateSupaStatus(false);
+        }
+      } else {
+        updateSupaStatus(false);
+      }
+    }
 
     // --- Tabs ---
     document.querySelectorAll('.adm-tab').forEach(tab => {
@@ -3194,34 +3218,12 @@
       }
     });
 
-    // --- Initialize Supabase on admin open ---
-    const origOpenAdmin = openAdminPanel;
-    openAdminPanel = async function() {
-      await origOpenAdmin();
-      startSessionTimer();
-      // Load Supabase config (hardcoded defaults + localStorage overrides)
-      const savedUrl = localStorage.getItem('dp_supa_url') || DP_SUPA_DEFAULTS.url;
-      const savedKey = localStorage.getItem('dp_supa_key') || DP_SUPA_DEFAULTS.key;
-      document.getElementById('supa-url').value = savedUrl;
-      document.getElementById('supa-anon-key').value = savedKey;
-      if (initSupabase()) {
-        try {
-          const { error } = await SUPA.from('site_settings').select('key').limit(1);
-          if (!error) {
-            updateSupaStatus(true);
-            loadCrmData();
-            loadAnalyticsData();
-            loadToolsData();
-          } else {
-            updateSupaStatus(false);
-          }
-        } catch(e) {
-          updateSupaStatus(false);
-        }
-      } else {
-        updateSupaStatus(false);
-      }
-    };
+    // Expose globally AFTER all definitions
+    window._dpOpenAdmin = openAdminPanel;
+    console.log('[DigitalPro] Admin engine loaded OK');
+  } catch(engineErr) {
+    console.error('[DigitalPro] ADMIN ENGINE ERROR:', engineErr);
+  }
   })();
   </script>
 
