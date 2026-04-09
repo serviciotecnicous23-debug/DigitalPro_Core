@@ -3191,5 +3191,74 @@
     };
   })();
   </script>
+
+  <!-- FAILSAFE ADMIN ACCESS — independent of all other scripts -->
+  <script>
+  (function() {
+    var gate = document.getElementById('admin-auth-gate');
+    var panel = document.getElementById('admin-panel');
+    var btn = document.getElementById('open-admin-btn');
+    var form = document.getElementById('adm-auth-form');
+    var HASH = '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8';
+
+    function showGate() {
+      if (!gate) return;
+      gate.style.display = 'flex';
+      gate.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Backup click handler (re-attaches in case the main one failed)
+    if (btn) {
+      btn.onclick = function() {
+        if (sessionStorage.getItem('dp_admin_auth') === 'true') {
+          if (panel) { panel.classList.add('open'); document.body.style.overflow = 'hidden'; }
+        } else {
+          showGate();
+        }
+      };
+    }
+
+    // Backup form handler
+    if (form) {
+      form.onsubmit = function(e) {
+        e.preventDefault();
+        var pw = document.getElementById('adm-auth-pw').value;
+        var errEl = document.getElementById('adm-auth-error');
+        if (window.crypto && window.crypto.subtle) {
+          crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw)).then(function(buf) {
+            var hash = Array.from(new Uint8Array(buf)).map(function(b) { return b.toString(16).padStart(2,'0'); }).join('');
+            if (hash === HASH) {
+              sessionStorage.setItem('dp_admin_auth', 'true');
+              gate.style.display = 'none';
+              if (panel) { panel.classList.add('open'); }
+              // Try to call original openAdminPanel if it exists
+              if (typeof openAdminPanel === 'function') { try { openAdminPanel(); } catch(ex) {} }
+            } else {
+              if (errEl) { errEl.textContent = 'Contraseña incorrecta'; errEl.classList.remove('hidden'); }
+              document.getElementById('adm-auth-pw').value = '';
+            }
+          });
+        } else {
+          if (errEl) { errEl.textContent = 'Tu navegador no soporta crypto. Usa Chrome/Edge/Firefox.'; errEl.classList.remove('hidden'); }
+        }
+        return false;
+      };
+    }
+
+    // Auto-open on #admin hash
+    if (window.location.hash === '#admin') {
+      setTimeout(function() {
+        if (sessionStorage.getItem('dp_admin_auth') === 'true') {
+          if (panel) { panel.classList.add('open'); document.body.style.overflow = 'hidden'; }
+        } else {
+          showGate();
+        }
+      }, 500);
+    }
+
+    console.log('[DigitalPro] Failsafe admin script loaded OK');
+  })();
+  </script>
 </body>
 </html>
