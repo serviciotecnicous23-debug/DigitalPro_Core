@@ -1090,8 +1090,8 @@
       <p class="text-sm text-gray-500" id="footer-location">Austin, TX &mdash; Soluciones Digitales de Alto Nivel</p>
       <div class="flex items-center gap-3">
         <p class="text-xs text-gray-600" id="footer-copy">&copy; 2026 DigitalPro. Todos los derechos reservados.</p>
-        <button id="open-admin-btn" class="text-gray-700 hover:text-neon transition-colors" title="Admin" aria-label="Panel de administración">
-          <i data-lucide="settings" class="w-4 h-4"></i>
+        <button id="open-admin-btn" class="text-gray-500 hover:text-neon transition-colors flex items-center gap-1" title="Admin" aria-label="Panel de administración" style="cursor:pointer;pointer-events:auto;padding:6px 10px;border:1px solid rgba(255,255,255,0.1);border-radius:8px;">
+          ⚙️ <span style="font-size:0.7rem;font-weight:600;">Admin</span>
         </button>
       </div>
     </div>
@@ -2324,8 +2324,21 @@
 
     // Also open via URL hash #admin
     if (window.location.hash === '#admin') {
-      openBtn.click();
+      if (sessionStorage.getItem('dp_admin_auth') === 'true') {
+        openAdminPanel();
+      } else {
+        authGate.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
     }
+
+    // Keyboard shortcut: Ctrl+Shift+A
+    document.addEventListener('keydown', (e) => {
+      if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+        e.preventDefault();
+        openBtn.click();
+      }
+    });
 
     // --- Auth form ---
     document.getElementById('adm-auth-form').addEventListener('submit', async (e) => {
