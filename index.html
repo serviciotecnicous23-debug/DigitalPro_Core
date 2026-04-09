@@ -2277,6 +2277,19 @@
           </div>
         </div>
 
+        <!-- Change Password -->
+        <div class="tool-card mb-4">
+          <h3 class="font-outfit font-bold text-sm mb-4 flex items-center gap-2">
+            <i data-lucide="key" class="w-4 h-4 text-neon"></i> Cambiar Contraseña
+          </h3>
+          <div class="space-y-3">
+            <div><label class="adm-label">Nueva contraseña</label><input type="password" id="new-pw-input" class="admin-input" placeholder="Mínimo 6 caracteres" /></div>
+            <div><label class="adm-label">Confirmar contraseña</label><input type="password" id="new-pw-confirm" class="admin-input" placeholder="Repite la contraseña" /></div>
+            <button id="change-pw-btn" class="btn-neon text-xs !py-2 !px-6">🔑 Cambiar Contraseña</button>
+            <p id="pw-change-msg" class="text-xs mt-2 hidden"></p>
+          </div>
+        </div>
+
         <!-- Session Info -->
         <div class="tool-card">
           <h3 class="font-outfit font-bold text-sm mb-3 flex items-center gap-2">
@@ -2304,7 +2317,8 @@
   (function() {
     const ADM_CONFIG_PATH = 'public/data/config.json';
     const ADM_CONFIG_URL = '/data/config.json';
-    const ADM_PW_HASH = '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8';
+    const ADM_PW_DEFAULT = '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8';
+    let ADM_PW_HASH = localStorage.getItem('dp_admin_pw_hash') || ADM_PW_DEFAULT;
     let ADM_CONFIG = null;
     let ADM_SHA = null;
 
@@ -2402,6 +2416,9 @@
       renderAdmPanels();
       lucide.createIcons();
     }
+
+    // Expose globally so failsafe and other scripts can use it
+    window._dpOpenAdmin = openAdminPanel;
 
     // --- Tabs ---
     document.querySelectorAll('.adm-tab').forEach(tab => {
@@ -3192,72 +3209,57 @@
   })();
   </script>
 
-  <!-- FAILSAFE ADMIN ACCESS — independent of all other scripts -->
+  <!-- FAILSAFE: #admin auto-open + password change handler -->
   <script>
   (function() {
-    var gate = document.getElementById('admin-auth-gate');
-    var panel = document.getElementById('admin-panel');
-    var btn = document.getElementById('open-admin-btn');
-    var form = document.getElementById('adm-auth-form');
-    var HASH = '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8';
-
-    function showGate() {
-      if (!gate) return;
-      gate.style.display = 'flex';
-      gate.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    // Backup click handler (re-attaches in case the main one failed)
-    if (btn) {
-      btn.onclick = function() {
-        if (sessionStorage.getItem('dp_admin_auth') === 'true') {
-          if (panel) { panel.classList.add('open'); document.body.style.overflow = 'hidden'; }
-        } else {
-          showGate();
+    // --- Password change handler ---
+    var changePwBtn = document.getElementById('change-pw-btn');
+    if (changePwBtn) {
+      changePwBtn.addEventListener('click', async function() {
+        var pw1 = document.getElementById('new-pw-input').value;
+        var pw2 = document.getElementById('new-pw-confirm').value;
+        var msg = document.getElementById('pw-change-msg');
+        msg.classList.remove('hidden');
+        if (pw1.length < 6) {
+          msg.textContent = '❌ La contraseña debe tener al menos 6 caracteres';
+          msg.style.color = '#ef4444';
+          return;
         }
-      };
-    }
-
-    // Backup form handler
-    if (form) {
-      form.onsubmit = function(e) {
-        e.preventDefault();
-        var pw = document.getElementById('adm-auth-pw').value;
-        var errEl = document.getElementById('adm-auth-error');
-        if (window.crypto && window.crypto.subtle) {
-          crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw)).then(function(buf) {
-            var hash = Array.from(new Uint8Array(buf)).map(function(b) { return b.toString(16).padStart(2,'0'); }).join('');
-            if (hash === HASH) {
-              sessionStorage.setItem('dp_admin_auth', 'true');
-              gate.style.display = 'none';
-              if (panel) { panel.classList.add('open'); }
-              // Try to call original openAdminPanel if it exists
-              if (typeof openAdminPanel === 'function') { try { openAdminPanel(); } catch(ex) {} }
-            } else {
-              if (errEl) { errEl.textContent = 'Contraseña incorrecta'; errEl.classList.remove('hidden'); }
-              document.getElementById('adm-auth-pw').value = '';
-            }
-          });
-        } else {
-          if (errEl) { errEl.textContent = 'Tu navegador no soporta crypto. Usa Chrome/Edge/Firefox.'; errEl.classList.remove('hidden'); }
+        if (pw1 !== pw2) {
+          msg.textContent = '❌ Las contraseñas no coinciden';
+          msg.style.color = '#ef4444';
+          return;
         }
-        return false;
-      };
+        var buf = new TextEncoder().encode(pw1);
+        var hashBuf = await crypto.subtle.digest('SHA-256', buf);
+        var newHash = Array.from(new Uint8Array(hashBuf)).map(function(b) { return b.toString(16).padStart(2,'0'); }).join('');
+        localStorage.setItem('dp_admin_pw_hash', newHash);
+        msg.textContent = '✅ Contraseña cambiada exitosamente';
+        msg.style.color = '#10b981';
+        document.getElementById('new-pw-input').value = '';
+        document.getElementById('new-pw-confirm').value = '';
+      });
     }
 
-    // Auto-open on #admin hash
+    // --- Auto-open on #admin hash ---
     if (window.location.hash === '#admin') {
       setTimeout(function() {
+        var gate = document.getElementById('admin-auth-gate');
         if (sessionStorage.getItem('dp_admin_auth') === 'true') {
-          if (panel) { panel.classList.add('open'); document.body.style.overflow = 'hidden'; }
-        } else {
-          showGate();
+          if (window._dpOpenAdmin) { window._dpOpenAdmin(); }
+          else {
+            var p = document.getElementById('admin-panel');
+            if (p) { p.classList.add('open'); document.body.style.overflow = 'hidden'; }
+          }
+        } else if (gate) {
+          gate.style.display = 'flex';
+          gate.classList.add('open');
+          document.body.style.overflow = 'hidden';
         }
-      }, 500);
+      }, 300);
     }
 
-    console.log('[DigitalPro] Failsafe admin script loaded OK');
+    console.log('[DigitalPro] Admin helpers loaded OK');
   })();
   </script>
 </body>
