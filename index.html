@@ -16,7 +16,7 @@
   <meta property="og:title" content="DigitalPro | Soluciones Digitales que Escalan Negocios" />
   <meta property="og:description" content="Agencia digital premium en Austin, TX. Automatización IA, SaaS, auditoría digital y desarrollo Full-Stack." />
   <meta property="og:image" content="/icons/icon-512.png" />
-  <meta property="og:url" content="https://digitalpro.dev" />
+  <meta property="og:url" content="https://digital-pro-core.vercel.app" />
   <meta property="og:locale" content="es_US" />
 
   <!-- Twitter Card -->
@@ -39,7 +39,7 @@
   <link rel="apple-touch-icon" href="/icons/icon-192.png" />
 
   <!-- Canonical -->
-  <link rel="canonical" href="https://digitalpro.dev/" />
+  <link rel="canonical" href="https://digital-pro-core.vercel.app/" />
 
   <!-- Google Fonts: Inter + Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -83,8 +83,8 @@
     "@type": "ProfessionalService",
     "name": "DigitalPro",
     "description": "Agencia digital premium en Austin, TX. Diseño web, automatización IA, SaaS y auditoría digital.",
-    "url": "https://digitalpro.dev",
-    "telephone": "+15125551234",
+    "url": "https://digital-pro-core.vercel.app",
+    "telephone": "+15127796346",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Austin",
@@ -825,7 +825,7 @@
       </a>
       <div class="hidden md:flex items-center gap-8">
         <a href="#servicios" class="text-sm text-gray-300 hover:text-neon transition-colors">Servicios</a>
-        <a href="#catalogo" class="text-sm text-gray-300 hover:text-neon transition-colors">Catálogo</a>
+        <a href="/catalogo" class="text-sm text-gray-300 hover:text-neon transition-colors">Catálogo 3D</a>
         <a href="#web-to-app" class="text-sm text-gray-300 hover:text-neon transition-colors">Apps</a>
         <a href="#agendar" class="text-sm text-gray-300 hover:text-neon transition-colors">Agendar</a>
         <a href="#contacto" class="btn-neon text-sm !py-2 !px-5">
@@ -843,7 +843,7 @@
   <div id="mobile-menu" class="mobile-menu">
     <button id="close-menu" class="absolute top-6 right-6 text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
     <a href="#servicios" class="text-xl font-semibold hover:text-neon transition-colors mobile-link">Servicios</a>
-    <a href="#catalogo" class="text-xl font-semibold hover:text-neon transition-colors mobile-link">Catálogo</a>
+    <a href="/catalogo" class="text-xl font-semibold hover:text-neon transition-colors mobile-link">Catálogo 3D</a>
     <a href="#web-to-app" class="text-xl font-semibold hover:text-neon transition-colors mobile-link">Apps</a>
     <a href="#agendar" class="text-xl font-semibold hover:text-neon transition-colors mobile-link">Agendar</a>
     <a href="#contacto" class="btn-neon mobile-link">Empezar Proyecto</a>
@@ -873,8 +873,8 @@
           <span class="btn-text">Agendar Cita Gratis</span>
           <i data-lucide="calendar" class="w-5 h-5"></i>
         </a>
-        <a href="#catalogo" class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl border border-white/10 text-white/80 hover:border-neon/30 hover:text-neon transition-all font-semibold" id="hero-cta2">
-          <span>Ver Portafolio</span>
+        <a href="/catalogo" class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl border border-white/10 text-white/80 hover:border-neon/30 hover:text-neon transition-all font-semibold" id="hero-cta2">
+          <span>Ver Catálogo 3D</span>
           <i data-lucide="eye" class="w-4 h-4"></i>
         </a>
       </div>
@@ -913,6 +913,10 @@
         <p data-aos="fade-up" data-aos-delay="200" class="text-gray-400 mt-4 max-w-2xl mx-auto">
           No te hacemos una web — te instalamos un sistema de crecimiento. Elige tu región y encuentra la solución perfecta para tu negocio.
         </p>
+        <a href="/catalogo" data-aos="fade-up" data-aos-delay="250" class="inline-flex items-center gap-2 mt-4 px-6 py-3 rounded-xl text-sm font-bold bg-neon/10 text-neon border border-neon/20 hover:bg-neon hover:text-abyss transition-all">
+          <i data-lucide="sparkles" class="w-4 h-4"></i> Explorar Catálogo 3D Interactivo
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
       </div>
 
       <!-- Region Toggle (USA / LATAM) -->
@@ -948,7 +952,7 @@
           <svg viewBox="0 0 32 32" width="14" height="14" fill="#fff"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.9 15.9 0 0016.004 32C24.826 32 32 24.826 32 16.004 32 7.176 24.826 0 16.004 0z"/></svg>
           Enviar por WhatsApp
         </a>
-        <button onclick="navigator.clipboard.writeText('https://digital-pro-core.vercel.app/catalogo').then(()=>{this.textContent='✅ Copiado!';setTimeout(()=>{this.innerHTML='<i data-lucide=&quot;link&quot; class=&quot;w-3.5 h-3.5&quot;></i> Copiar Link';lucide.createIcons();},2000)})" class="share-copy-btn">
+        <button onclick="navigator.clipboard.writeText(window.location.origin + ').then(()=>{this.textContent='✅ Copiado!';setTimeout(()=>{this.innerHTML='<i data-lucide=&quot;link&quot; class=&quot;w-3.5 h-3.5&quot;></i> Copiar Link';lucide.createIcons();},2000)})" class="share-copy-btn">
           <i data-lucide="link" class="w-3.5 h-3.5"></i> Copiar Link
         </button>
       </div>
@@ -1149,8 +1153,8 @@
       </div>
       <p class="text-sm text-gray-500" id="footer-location">Austin, TX &mdash; Soluciones Digitales de Alto Nivel</p>
       <div class="flex items-center gap-3">
-        <p class="text-xs text-gray-600" id="footer-copy">&copy; 2026 DigitalPro. Todos los derechos reservados.</p>
-        <button id="open-admin-btn" class="text-gray-500 hover:text-neon transition-colors flex items-center gap-1" title="Admin" aria-label="Panel de administración" style="cursor:pointer;pointer-events:auto;padding:6px 10px;border:1px solid rgba(255,255,255,0.1);border-radius:8px;">
+        <p class="text-xs text-gray-600" id="footer-copy" style="cursor:default;user-select:none;">&copy; 2026 DigitalPro. Todos los derechos reservados.</p>
+        <button id="open-admin-btn" class="text-gray-500 hover:text-neon transition-colors flex items-center gap-1" title="Admin" aria-label="Panel de administración" style="cursor:pointer;pointer-events:auto;padding:6px 10px;border:1px solid rgba(255,255,255,0.1);border-radius:8px;display:none;">
           ⚙️ <span style="font-size:0.7rem;font-weight:600;">Admin</span>
         </button>
       </div>
@@ -1345,7 +1349,7 @@
           const regionCls = item.region ? ' region-' + item.region : '';
           const topIncludes = (item.includes || []).slice(0, 4);
           const moreCount = (item.includes || []).length - 4;
-          const shareMsg = encodeURIComponent('🚀 Mira esta solución digital de DigitalPro:\n\n*' + item.name + '*\n' + item.tagline + '\n\n💰 Desde $' + item.subscription.price + item.subscription.period + ' o $' + item.one_time.price + ' compra única\n\n✅ Incluye: ' + (item.includes || []).slice(0,3).join(', ') + '\n\n👉 Ver más: ' + 'https://digital-pro-core.vercel.app/catalogo?producto=' + item.id);
+          const shareMsg = encodeURIComponent('🚀 Mira esta solución digital de DigitalPro:\n\n*' + item.name + '*\n' + item.tagline + '\n\n💰 Desde $' + item.subscription.price + item.subscription.period + ' o $' + item.one_time.price + ' compra única\n\n✅ Incluye: ' + (item.includes || []).slice(0,3).join(', ') + '\n\n👉 Ver más: ' + window.location.origin + 'producto=' + item.id);
           return `
           <div data-aos="zoom-in-up" data-aos-delay="${Math.min(i * 60, 400)}" data-aos-duration="700"
                class="catalog-card${item.featured ? ' featured' : ''}${regionCls}" data-catalog-id="${esc(item.id)}" data-sector="${esc(item.sector || '')}" data-region="${esc(item.region || '')}">
@@ -1383,6 +1387,9 @@
                   <i data-lucide="eye" class="w-4 h-4"></i>
                   ${item.region === 'latam' ? '🔥 Ver Detalles' : 'Ver Detalles'}
                 </div>
+                <a class="catalog-card-cta" href="/catalogo?producto=${esc(item.id)}" style="text-decoration:none;background:rgba(0,244,255,0.06);color:#00f4ff;border:1px solid rgba(0,244,255,0.15);" title="Ver en catálogo 3D interactivo">
+                  <i data-lucide="box" class="w-4 h-4"></i> 3D
+                </a>
                 <a class="catalog-card-share" href="https://wa.me/?text=${shareMsg}" target="_blank" rel="noopener" title="Compartir por WhatsApp" onclick="event.stopPropagation();">
                   <svg viewBox="0 0 32 32" width="16" height="16" fill="currentColor"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.9 15.9 0 0016.004 32C24.826 32 32 24.826 32 16.004 32 7.176 24.826 0 16.004 0z"/></svg>
                 </a>
@@ -1465,7 +1472,7 @@
           catalogMsg += '\n';
         });
         catalogMsg += '📌 _Cada modelo es una idea base. El precio varía según tu rubro._\n\n';
-        catalogMsg += '👉 Ver catálogo completo: https://digital-pro-core.vercel.app/catalogo';
+        catalogMsg += '👉 Ver catálogo completo: ' + window.location.origin + '/catalogo';
         shareCatalogBtn.href = 'https://wa.me/?text=' + encodeURIComponent(catalogMsg);
       }
 
@@ -1587,15 +1594,19 @@
 
     // ===== CATALOG MODAL CONFIGURATOR =====
     let _CATALOG_DATA = null;
-    // Store catalog data reference once loaded
-    (async function() {
-      try {
-        const r = await fetch('/data/config.json');
-        const cfg = await r.json();
-        _CATALOG_DATA = cfg.catalog || [];
-        window._CATALOG_WA = (cfg.business && cfg.business.whatsapp) || '15125551234';
-        window._CATALOG_FORMSPREE = cfg.business && cfg.business.formspree_id ? 'https://formspree.io/f/' + cfg.business.formspree_id : '#contacto';
-      } catch(e) {}
+    // Reuse config already loaded by the main IIFE
+    (function() {
+      function initCatalogData() {
+        if (window._SITE_CONFIG) {
+          var cfg = window._SITE_CONFIG;
+          _CATALOG_DATA = cfg.catalog || [];
+          window._CATALOG_WA = (cfg.business && cfg.business.whatsapp) || '15125551234';
+          window._CATALOG_FORMSPREE = cfg.business && cfg.business.formspree_id ? 'https://formspree.io/f/' + cfg.business.formspree_id : '#contacto';
+        } else {
+          setTimeout(initCatalogData, 200);
+        }
+      }
+      initCatalogData();
     })();
 
     function openCatalogModal(itemId) {
@@ -1607,7 +1618,7 @@
       const waNum = window._CATALOG_WA || '15125551234';
       const formUrl = window._CATALOG_FORMSPREE || '#contacto';
 
-      const shareText = '🚀 *' + item.name + '*\\n' + item.tagline + '\\n\\n💰 Suscripción: $' + item.subscription.price + item.subscription.period + ' | Compra Única: $' + item.one_time.price + '\\n\\n✅ Incluye:\\n' + (item.includes || []).map(x => '• ' + x).join('\\n') + '\\n\\n📌 _Modelo base — el precio varía según tu rubro._\\n\\n👉 Ver más: https://digital-pro-core.vercel.app/catalogo?producto=' + item.id;
+      const shareText = '🚀 *' + item.name + '*\n' + item.tagline + '\n\n💰 Suscripción: $' + item.subscription.price + item.subscription.period + ' | Compra Única: $' + item.one_time.price + '\n\n✅ Incluye:\n' + (item.includes || []).map(x => '• ' + x).join('\n') + '\n\n📌 _Modelo base — el precio varía según tu rubro._\n\n👉 Ver más: ' + window.location.origin + '/catalogo?producto=' + item.id;
       const encodedShare = encodeURIComponent(shareText);
 
       content.innerHTML = `
@@ -1616,11 +1627,11 @@
           <span class="catalog-card-tag" style="background: rgba(0,244,255,0.1); color: #00f4ff; border: 1px solid rgba(0,244,255,0.15);">${esc(item.category)}</span>
           <div class="flex gap-2">
             <a href="https://wa.me/?text=${encodedShare}" target="_blank" rel="noopener"
-               class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-green-500/10 text-green-400 border border-green-400/20 hover:bg-green-500 hover:text-white transition-all" title="Compartir por WhatsApp">
+               class="inline-flex items-center gap-1.5 px-3window.location.origin + ' bg-green-500/10 text-green-400 border border-green-400/20 hover:bg-green-500 hover:text-white transition-all" title="Compartir por WhatsApp">
               <svg viewBox="0 0 32 32" width="12" height="12" fill="currentColor"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.9 15.9 0 0016.004 32C24.826 32 32 24.826 32 16.004 32 7.176 24.826 0 16.004 0z"/></svg>
               Compartir
             </a>
-            <button onclick="navigator.clipboard.writeText('https://digital-pro-core.vercel.app/catalogo?producto=' + '${esc(item.id)}');this.textContent='✅';setTimeout(()=>{this.textContent='🔗'},1500)"
+            <button onclick="navigator.clipboard.writeText(window.location.origin + '/catalogo?producto=' + '${esc(item.id)}');this.textContent='✅';setTimeout(()=>{this.textContent='🔗'},1500)"
                class="px-2.5 py-1.5 rounded-lg text-xs bg-white/5 border border-white/10 hover:bg-white/10 transition-all cursor-pointer" title="Copiar enlace">🔗</button>
           </div>
         </div>
@@ -2414,6 +2425,21 @@
         adminPanel.classList.add('open');
         document.body.style.overflow = 'hidden';
       }
+    }
+
+    // Triple-click on footer copyright to reveal admin button
+    var footerCopy = document.getElementById('footer-copy');
+    var _adminClickCount = 0, _adminClickTimer = null;
+    if (footerCopy) {
+      footerCopy.addEventListener('click', function() {
+        _adminClickCount++;
+        clearTimeout(_adminClickTimer);
+        _adminClickTimer = setTimeout(function() { _adminClickCount = 0; }, 800);
+        if (_adminClickCount >= 3) {
+          openBtn.style.display = '';
+          _adminClickCount = 0;
+        }
+      });
     }
 
     // Button click

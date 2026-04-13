@@ -1,8 +1,9 @@
-const CACHE_NAME = 'digitalpro-v8';
+const CACHE_NAME = 'digitalpro-v9';
 const ASSETS = [
   '/',
   '/index.html',
-  '/content.json',
+  '/catalogo.html',
+  '/data/config.json',
   '/manifest.json'
 ];
 

@@ -248,7 +248,7 @@
     'use strict';
 
     var esc = function(s) { return typeof s === 'string' ? s.replace(/[&<>"']/g, function(c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }) : s; };
-    var BASE_URL = 'https://digital-pro-core.vercel.app';
+    var BASE_URL = window.location.origin;
     var WA_SVG = '<svg viewBox="0 0 32 32" width="16" height="16" fill="currentColor"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.9 15.9 0 0016.004 32C24.826 32 32 24.826 32 16.004 32 7.176 24.826 0 16.004 0z"/></svg>';
     var WA_SVG_SM = '<svg viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.9 15.9 0 0016.004 32C24.826 32 32 24.826 32 16.004 32 7.176 24.826 0 16.004 0z"/></svg>';
 
