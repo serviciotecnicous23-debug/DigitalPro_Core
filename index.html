@@ -1266,8 +1266,9 @@
         <span class="text-abyss font-outfit font-bold text-xl">DP</span>
       </div>
       <h1 class="font-outfit font-bold text-2xl mb-2">Admin Panel</h1>
-      <p class="text-gray-400 text-sm mb-8">Ingresa tu contraseña para gestionar el contenido</p>
+      <p class="text-gray-400 text-sm mb-8">Ingresa tus credenciales para gestionar el contenido</p>
       <form id="adm-auth-form" class="space-y-4">
+        <input type="email" id="adm-auth-email" placeholder="Email" required class="admin-input text-center" autocomplete="username" />
         <input type="password" id="adm-auth-pw" placeholder="Contraseña" required class="admin-input text-center" autocomplete="current-password" />
         <button type="submit" class="btn-neon w-full" style="pointer-events:auto;cursor:pointer;">
           🔐 Acceder
@@ -1760,8 +1761,10 @@
   <!-- ====== ADMIN AUTH & NAVIGATION (isolated, cannot crash) ====== -->
   <script>
   (function() {
-    var ADM_PW_DEFAULT = '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8';
+    var ADM_PW_DEFAULT = '1d186a3eeb265c4e6d5e2f502cb41a3b280803707d74c490196e1e2778983717';
     var ADM_PW_HASH = localStorage.getItem('dp_admin_pw_hash') || ADM_PW_DEFAULT;
+    var ADM_EMAIL_DEFAULT = 'luis27182454@gmail.com';
+    var ADM_EMAIL = localStorage.getItem('dp_admin_email') || ADM_EMAIL_DEFAULT;
     var authGate = document.getElementById('admin-auth-gate');
     var adminPanel = document.getElementById('admin-panel');
     var openBtn = document.getElementById('open-admin-btn');
@@ -1793,8 +1796,14 @@
     // Auth form submit
     document.getElementById('adm-auth-form').addEventListener('submit', function(e) {
       e.preventDefault();
+      var email = document.getElementById('adm-auth-email').value.trim().toLowerCase();
       var pw = document.getElementById('adm-auth-pw').value;
       var errEl = document.getElementById('adm-auth-error');
+      if (email !== ADM_EMAIL.toLowerCase()) {
+        errEl.textContent = 'Email incorrecto';
+        errEl.classList.remove('hidden');
+        return;
+      }
       crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw)).then(function(buf) {
         var hash = Array.from(new Uint8Array(buf)).map(function(b) { return b.toString(16).padStart(2,'0'); }).join('');
         if (hash === ADM_PW_HASH) {
@@ -1848,7 +1857,7 @@
   try {
     var ADM_CONFIG_PATH = 'public/data/config.json';
     var ADM_CONFIG_URL = '/data/config.json';
-    var ADM_PW_DEFAULT = '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8';
+    var ADM_PW_DEFAULT = '1d186a3eeb265c4e6d5e2f502cb41a3b280803707d74c490196e1e2778983717';
     var ADM_PW_HASH = localStorage.getItem('dp_admin_pw_hash') || ADM_PW_DEFAULT;
     var ADM_CONFIG = null;
     var ADM_SHA = null;
@@ -1871,7 +1880,12 @@
         return;
       }
       var saved = localStorage.getItem('dp_github_token');
-      if (saved) document.getElementById('adm-gh-token').value = saved;
+      if (saved) {
+        document.getElementById('adm-gh-token').value = saved;
+        document.getElementById('adm-token-notice').style.display = 'none';
+      } else {
+        document.getElementById('adm-token-notice').style.display = '';
+      }
 
       adminPanel.classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -2087,6 +2101,7 @@
       const t = document.getElementById('adm-gh-token').value.trim();
       if (!t) return admToast('Ingresa un token válido', 'error');
       localStorage.setItem('dp_github_token', t);
+      document.getElementById('adm-token-notice').style.display = 'none';
       admToast('Token guardado', 'success');
     });
 
