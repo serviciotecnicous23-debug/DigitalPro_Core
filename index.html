@@ -302,201 +302,7 @@
       padding: 4px 40px; transform: rotate(45deg);
     }
 
-    /* CATALOG CARD */
-    .catalog-card {
-      position: relative; border-radius: 16px; overflow: hidden;
-      background: rgba(255,255,255,0.04); backdrop-filter: blur(12px);
-      border: 1px solid rgba(0,244,255,0.1);
-      transition: all 0.5s cubic-bezier(0.4,0,0.2,1); cursor: pointer;
-    }
-    .catalog-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      border-color: rgba(0,244,255,0.35);
-      box-shadow: 0 25px 60px rgba(0,244,255,0.12), 0 0 60px rgba(0,244,255,0.06);
-    }
-    .catalog-card.featured { border-color: rgba(0,244,255,0.3); background: rgba(0,244,255,0.06); }
-    .catalog-card.featured::after {
-      content: '⭐ RECOMENDADO'; position: absolute; top: 12px; right: -30px;
-      background: linear-gradient(135deg, #00f4ff, #00b8d4);
-      color: #050510; font-size: 0.6rem; font-weight: 800;
-      padding: 4px 40px; transform: rotate(45deg); z-index: 5;
-      letter-spacing: 0.05em;
-    }
-    .catalog-card-img { width: 100%; height: 200px; object-fit: cover; transition: transform 0.6s ease; }
-    .catalog-card:hover .catalog-card-img { transform: scale(1.08); }
-    .catalog-card-body { padding: 1.5rem; }
-    .catalog-card-tag {
-      display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.7rem;
-      font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
-      margin-bottom: 0.75rem;
-    }
-    .catalog-card-prices {
-      display: flex; gap: 1rem; margin-top: 1rem; padding-top: 1rem;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-    .catalog-card-prices > div { flex: 1; }
-    .catalog-card-prices .price-label { font-size: 0.65rem; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 600; letter-spacing: 0.05em; }
-    .catalog-card-prices .price-val { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.15rem; color: #00f4ff; }
-    .catalog-card-prices .price-period { font-size: 0.7rem; color: rgba(255,255,255,0.35); }
-    .catalog-card-includes {
-      margin-top: 0.75rem; padding: 0.75rem; border-radius: 10px;
-      background: rgba(0,244,255,0.03); border: 1px solid rgba(0,244,255,0.08);
-    }
-    .catalog-card-includes .inc-title {
-      font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
-      color: rgba(0,244,255,0.7); letter-spacing: 0.06em; margin-bottom: 0.4rem;
-      display: flex; align-items: center; gap: 0.3rem;
-    }
-    .catalog-card-includes li {
-      font-size: 0.72rem; color: rgba(255,255,255,0.55); padding: 1.5px 0;
-      display: flex; align-items: center; gap: 0.35rem;
-    }
-    .catalog-card-includes li i { color: #00f4ff; flex-shrink: 0; }
-    .catalog-card-actions {
-      display: flex; gap: 0.5rem; margin-top: 0.75rem;
-    }
-    .catalog-card-cta {
-      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-      flex: 1; padding: 12px;
-      border-radius: 12px; font-weight: 700; font-size: 0.85rem;
-      background: linear-gradient(135deg, rgba(0,244,255,0.15), rgba(0,100,180,0.1));
-      color: #00f4ff; border: 1px solid rgba(0,244,255,0.2);
-      transition: all 0.3s ease;
-    }
-    .catalog-card:hover .catalog-card-cta {
-      background: linear-gradient(135deg, #00f4ff, #00b8d4); color: #050510;
-    }
-    .catalog-card-share {
-      display: flex; align-items: center; justify-content: center;
-      width: 44px; border-radius: 12px;
-      background: rgba(37,211,102,0.1); border: 1px solid rgba(37,211,102,0.25);
-      color: #25D366; cursor: pointer; transition: all 0.3s; text-decoration: none;
-    }
-    .catalog-card-share:hover {
-      background: #25D366; color: #fff;
-      box-shadow: 0 0 15px rgba(37,211,102,0.3);
-    }
-    .catalog-card-disclaimer {
-      font-size: 0.6rem; color: rgba(255,255,255,0.3); text-align: center;
-      margin-top: 0.5rem; line-height: 1.4;
-    }
-    .catalog-card.hidden-card { display: none; }
-    .catalog-share-bar {
-      display: flex; align-items: center; justify-content: center; gap: 1rem;
-      margin-top: 2rem; padding: 1rem; border-radius: 14px;
-      background: rgba(37,211,102,0.05); border: 1px solid rgba(37,211,102,0.15);
-    }
-    .catalog-share-bar a, .catalog-share-bar button {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 10px 20px; border-radius: 10px; font-weight: 700; font-size: 0.82rem;
-      cursor: pointer; transition: all 0.3s; text-decoration: none; border: none;
-    }
-    .share-wa-btn {
-      background: #25D366; color: #fff;
-    }
-    .share-wa-btn:hover { box-shadow: 0 0 20px rgba(37,211,102,0.4); transform: translateY(-1px); }
-    .share-copy-btn {
-      background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.7);
-      border: 1px solid rgba(255,255,255,0.1) !important;
-    }
-    .share-copy-btn:hover { background: rgba(255,255,255,0.12); color: #fff; }
 
-    /* === REGION-DIFFERENTIATED STYLES === */
-
-    /* USA cards: clean, corporate, Apple/Stripe feel */
-    .catalog-card.region-usa {
-      border-color: rgba(59,130,246,0.12);
-      background: rgba(255,255,255,0.03);
-    }
-    .catalog-card.region-usa:hover {
-      border-color: rgba(59,130,246,0.35);
-      box-shadow: 0 20px 50px rgba(59,130,246,0.10), 0 0 40px rgba(59,130,246,0.05);
-    }
-    .catalog-card.region-usa .catalog-card-cta {
-      background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(37,99,235,0.08));
-      color: #60a5fa; border-color: rgba(59,130,246,0.2);
-      font-size: 0.82rem;
-    }
-    .catalog-card.region-usa:hover .catalog-card-cta {
-      background: linear-gradient(135deg, #3b82f6, #2563eb); color: #fff;
-    }
-    .catalog-card.region-usa .catalog-card-prices .price-val { color: #60a5fa; }
-
-    /* LATAM cards: vibrant, bold, mobile-first feel */
-    .catalog-card.region-latam {
-      border-color: rgba(249,115,22,0.15);
-      background: rgba(255,255,255,0.04);
-    }
-    .catalog-card.region-latam:hover {
-      border-color: rgba(249,115,22,0.4);
-      box-shadow: 0 25px 60px rgba(249,115,22,0.12), 0 0 50px rgba(249,115,22,0.06);
-      transform: translateY(-10px) scale(1.03);
-    }
-    .catalog-card.region-latam .catalog-card-cta {
-      background: linear-gradient(135deg, rgba(249,115,22,0.15), rgba(234,88,12,0.1));
-      color: #fb923c; border-color: rgba(249,115,22,0.25);
-      font-size: 0.9rem; font-weight: 800; padding: 14px;
-    }
-    .catalog-card.region-latam:hover .catalog-card-cta {
-      background: linear-gradient(135deg, #f97316, #ea580c); color: #fff;
-    }
-    .catalog-card.region-latam .catalog-card-prices .price-val { color: #fb923c; }
-    .catalog-card.region-latam .catalog-card-body { padding: 1.25rem 1.5rem 1.5rem; }
-
-    /* Region Toggle Switch */
-    .region-toggle {
-      display: flex; align-items: center; justify-content: center; gap: 0;
-      margin-bottom: 1.5rem; position: relative;
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 14px; padding: 4px; max-width: 480px; margin-left: auto; margin-right: auto;
-    }
-    .region-toggle-btn {
-      flex: 1; padding: 12px 24px; border-radius: 11px; font-size: 0.9rem; font-weight: 700;
-      cursor: pointer; transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
-      color: rgba(255,255,255,0.45); background: transparent;
-      border: none; text-align: center; position: relative; z-index: 1;
-    }
-    .region-toggle-btn:hover { color: rgba(255,255,255,0.7); }
-    .region-toggle-btn.active-usa {
-      color: #fff; background: linear-gradient(135deg, #3b82f6, #2563eb);
-      box-shadow: 0 4px 20px rgba(59,130,246,0.3);
-    }
-    .region-toggle-btn.active-latam {
-      color: #fff; background: linear-gradient(135deg, #f97316, #ea580c);
-      box-shadow: 0 4px 20px rgba(249,115,22,0.3);
-    }
-    .region-toggle-divider {
-      width: 1px; height: 28px; background: rgba(255,255,255,0.08); flex-shrink: 0;
-    }
-
-    /* SECTOR FILTER TABS */
-    .sector-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 2.5rem; }
-    .sector-tab {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 10px 20px; border-radius: 12px; font-size: 0.85rem; font-weight: 600;
-      cursor: pointer; transition: all 0.3s ease;
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-      color: rgba(255,255,255,0.5);
-    }
-    .sector-tab:hover { background: rgba(255,255,255,0.08); color: #fff; }
-    .sector-tab.active { color: #050510; border-color: transparent; }
-
-    /* VALUE PROPS */
-    .value-prop-card {
-      text-align: center; padding: 2rem 1.5rem;
-      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 16px; transition: all 0.4s ease;
-    }
-    .value-prop-card:hover {
-      border-color: rgba(0,244,255,0.2); transform: translateY(-4px);
-      box-shadow: 0 15px 40px rgba(0,244,255,0.08);
-    }
-    .value-prop-icon {
-      width: 56px; height: 56px; border-radius: 16px; margin: 0 auto 1rem;
-      display: flex; align-items: center; justify-content: center;
-      background: linear-gradient(135deg, rgba(0,244,255,0.15), rgba(0,100,180,0.1));
-      color: #00f4ff;
-    }
 
     /* WEB-TO-APP (PWA) SECTION */
     .pwa-feature-card {
@@ -534,78 +340,6 @@
       border-radius: 0 0 16px 16px; margin: 0 auto -6px; position: relative; z-index: 1;
     }
 
-    /* CATALOG MODAL */
-    .catalog-modal {
-      position: fixed; inset: 0; z-index: 9999; display: none;
-      align-items: center; justify-content: flex-end;
-    }
-    .catalog-modal.open { display: flex; }
-    .catalog-modal-backdrop {
-      position: absolute; inset: 0;
-      background: rgba(5,5,16,0.85); backdrop-filter: blur(8px);
-    }
-    .catalog-modal-panel {
-      position: relative; z-index: 1;
-      width: 100%; max-width: 640px; height: 100vh; overflow-y: auto;
-      background: rgba(10,10,46,0.98); backdrop-filter: blur(20px);
-      border-left: 1px solid rgba(0,244,255,0.15);
-      padding: 2rem; animation: slideInRight 0.4s ease;
-    }
-    @media (max-width: 768px) {
-      .catalog-modal-panel {
-        max-width: 100%; border-left: none; padding: 1.5rem;
-      }
-    }
-    @keyframes slideInRight {
-      from { transform: translateX(100%); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-    .catalog-modal-close {
-      position: sticky; top: 0; float: right;
-      width: 40px; height: 40px; border-radius: 12px;
-      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
-      color: #fff; display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: all 0.3s; z-index: 2;
-    }
-    .catalog-modal-close:hover { background: rgba(0,244,255,0.15); border-color: #00f4ff; color: #00f4ff; }
-
-    .modal-hero-img { width: 100%; height: 240px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem; }
-    .modal-includes {
-      background: rgba(0,244,255,0.04); border: 1px solid rgba(0,244,255,0.1);
-      border-radius: 12px; padding: 1.25rem; margin: 1.5rem 0;
-    }
-    .modal-includes summary {
-      cursor: pointer; font-weight: 700; font-size: 0.85rem; color: #00f4ff;
-      list-style: none; display: flex; align-items: center; gap: 0.5rem;
-    }
-    .modal-includes summary::-webkit-details-marker { display: none; }
-    .modal-includes[open] summary .chevron-icon { transform: rotate(180deg); }
-    .modal-pricing-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
-    @media (max-width: 480px) { .modal-pricing-cols { grid-template-columns: 1fr; } }
-    .modal-pricing-box {
-      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 14px; padding: 1.5rem; transition: all 0.3s;
-    }
-    .modal-pricing-box:hover { border-color: rgba(0,244,255,0.25); }
-    .modal-pricing-box.recommended { border-color: rgba(0,244,255,0.3); background: rgba(0,244,255,0.04); }
-    .modal-pricing-box .box-label {
-      display: inline-block; font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.08em; padding: 3px 10px; border-radius: 6px; margin-bottom: 0.75rem;
-    }
-    .modal-btn-wa {
-      display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%;
-      padding: 12px; border-radius: 10px; font-weight: 700; font-size: 0.8rem;
-      background: #25D366; color: #fff; border: none; cursor: pointer; transition: all 0.3s;
-      text-decoration: none;
-    }
-    .modal-btn-wa:hover { box-shadow: 0 0 20px rgba(37,211,102,0.4); transform: translateY(-1px); }
-    .modal-btn-form {
-      display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%;
-      padding: 12px; border-radius: 10px; font-weight: 700; font-size: 0.8rem;
-      background: linear-gradient(135deg, #00f4ff, #00b8d4); color: #050510;
-      border: none; cursor: pointer; transition: all 0.3s; text-decoration: none;
-    }
-    .modal-btn-form:hover { box-shadow: 0 0 20px rgba(0,244,255,0.4); transform: translateY(-1px); }
 
     /* QUALIFIER FORM */
     .qualifier-step { display: none; }
@@ -899,82 +633,46 @@
     </div>
   </section>
 
-  <!-- ====== CATÁLOGO SECTORIAL DE SOLUCIONES ====== -->
+  <!-- ====== CATÁLOGO — CTA AL CATÁLOGO 3D ====== -->
   <section id="catalogo" class="relative z-10 py-24 px-6" data-section="catalogo">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-10">
-        <span data-aos="fade-up" class="section-label">
-          <i data-lucide="briefcase" class="w-3.5 h-3.5"></i>
-          Nichos de Éxito
-        </span>
-        <h2 data-aos="fade-up" data-aos-delay="100" class="font-outfit font-bold text-3xl md:text-5xl mt-4">
-          Soluciones para <span class="text-neon">tu tipo de negocio</span>
-        </h2>
-        <p data-aos="fade-up" data-aos-delay="200" class="text-gray-400 mt-4 max-w-2xl mx-auto">
-          No te hacemos una web — te instalamos un sistema de crecimiento. Elige tu región y encuentra la solución perfecta para tu negocio.
-        </p>
-        <a href="/catalogo" data-aos="fade-up" data-aos-delay="250" class="inline-flex items-center gap-2 mt-4 px-6 py-3 rounded-xl text-sm font-bold bg-neon/10 text-neon border border-neon/20 hover:bg-neon hover:text-abyss transition-all">
-          <i data-lucide="sparkles" class="w-4 h-4"></i> Explorar Catálogo 3D Interactivo
-          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+    <div class="max-w-4xl mx-auto text-center">
+      <span data-aos="fade-up" class="section-label">
+        <i data-lucide="briefcase" class="w-3.5 h-3.5"></i>
+        Catálogo de Soluciones
+      </span>
+      <h2 data-aos="fade-up" data-aos-delay="100" class="font-outfit font-bold text-3xl md:text-5xl mt-4">
+        Explora nuestras <span class="text-neon">soluciones digitales</span>
+      </h2>
+      <p data-aos="fade-up" data-aos-delay="200" class="text-gray-400 mt-4 max-w-2xl mx-auto text-lg">
+        Descubre más de 30 soluciones personalizadas por sector y región en nuestra experiencia interactiva 3D con previsualizaciones y precios transparentes.
+      </p>
+      <div data-aos="fade-up" data-aos-delay="300" class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/catalogo" class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl text-base font-bold bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 transition-all duration-300">
+          <i data-lucide="box" class="w-5 h-5"></i> Explorar Catálogo 3D Interactivo
+          <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </a>
+        <a href="#contacto" class="inline-flex items-center gap-2 px-6 py-4 rounded-2xl text-sm font-semibold text-gray-400 border border-white/10 hover:border-white/25 hover:text-white transition-all">
+          <i data-lucide="message-circle" class="w-4 h-4"></i> ¿No sabes cuál elegir? Contáctanos
         </a>
       </div>
-
-      <!-- Region Toggle (USA / LATAM) -->
-      <div data-aos="fade-up" data-aos-delay="220" id="region-toggle" class="region-toggle">
-        <!-- Rendered by JS from config.json -->
-      </div>
-
-      <!-- Region subtitle -->
-      <p data-aos="fade-up" data-aos-delay="230" id="region-subtitle" class="text-center text-sm text-gray-500 mb-6 font-semibold"></p>
-
-      <!-- Sector Filter Tabs -->
-      <div data-aos="fade-up" data-aos-delay="250" id="sector-tabs" class="sector-tabs">
-        <!-- Rendered by JS from config.json -->
-      </div>
-
-      <!-- Value Props: ¿Qué te llevas realmente? -->
-      <div data-aos="fade-up" data-aos-delay="280" class="mb-12">
-        <h3 class="text-center font-outfit font-bold text-xl mb-6 text-gray-300">¿Qué te llevas <span class="text-neon">realmente</span>?</h3>
-        <div id="value-props-grid" class="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <!-- Rendered by JS from config.json -->
+      <!-- Quick stats -->
+      <div data-aos="fade-up" data-aos-delay="400" class="mt-12 grid grid-cols-3 gap-6 max-w-md mx-auto">
+        <div class="text-center">
+          <div class="font-outfit font-bold text-2xl text-neon" id="catalog-count">30+</div>
+          <div class="text-xs text-gray-500 mt-1">Soluciones</div>
+        </div>
+        <div class="text-center">
+          <div class="font-outfit font-bold text-2xl text-neon">2</div>
+          <div class="text-xs text-gray-500 mt-1">Regiones</div>
+        </div>
+        <div class="text-center">
+          <div class="font-outfit font-bold text-2xl text-neon">36</div>
+          <div class="text-xs text-gray-500 mt-1">Sectores</div>
         </div>
       </div>
-
-      <!-- Catalog Cards Grid -->
-      <div id="catalog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Rendered by JS from config.json -->
-      </div>
-
-      <!-- Share Full Catalog Bar -->
-      <div data-aos="fade-up" class="catalog-share-bar" id="catalog-share-bar">
-        <span class="text-sm text-gray-400 font-semibold">📋 Comparte nuestro catálogo</span>
-        <a id="share-catalog-wa" href="#" target="_blank" rel="noopener" class="share-wa-btn">
-          <svg viewBox="0 0 32 32" width="14" height="14" fill="#fff"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.9 15.9 0 0016.004 32C24.826 32 32 24.826 32 16.004 32 7.176 24.826 0 16.004 0z"/></svg>
-          Enviar por WhatsApp
-        </a>
-        <button onclick="navigator.clipboard.writeText(window.location.origin + ').then(()=>{this.textContent='✅ Copiado!';setTimeout(()=>{this.innerHTML='<i data-lucide=&quot;link&quot; class=&quot;w-3.5 h-3.5&quot;></i> Copiar Link';lucide.createIcons();},2000)})" class="share-copy-btn">
-          <i data-lucide="link" class="w-3.5 h-3.5"></i> Copiar Link
-        </button>
-      </div>
-
-      <!-- Pricing disclaimer -->
-      <p data-aos="fade-up" class="text-center text-xs text-gray-500 mt-6 max-w-2xl mx-auto leading-relaxed">
-        <i data-lucide="info" class="w-3 h-3 inline mr-1"></i>
-        Cada modelo es una <strong>idea base</strong> y varía de acuerdo a la necesidad de cada rubro. Según las exigencias y complejidad del sistema, el monto final puede variar. Solicita tu cotización personalizada sin compromiso.
-      </p>
     </div>
   </section>
 
-  <!-- ====== CATALOG DETAIL MODAL ====== -->
-  <div id="catalog-modal" class="catalog-modal" role="dialog" aria-hidden="true">
-    <div class="catalog-modal-backdrop" onclick="closeCatalogModal()"></div>
-    <div class="catalog-modal-panel">
-      <button class="catalog-modal-close" onclick="closeCatalogModal()" aria-label="Cerrar">
-        <i data-lucide="x" class="w-6 h-6"></i>
-      </button>
-      <div id="catalog-modal-content"></div>
-    </div>
-  </div>
 
   <!-- ====== WEB-TO-APP (PWA) SECTION ====== -->
   <section id="web-to-app" class="relative z-10 py-24 px-6" data-section="web-to-app">
@@ -1153,9 +851,9 @@
       </div>
       <p class="text-sm text-gray-500" id="footer-location">Austin, TX &mdash; Soluciones Digitales de Alto Nivel</p>
       <div class="flex items-center gap-3">
-        <p class="text-xs text-gray-600" id="footer-copy" style="cursor:default;user-select:none;">&copy; 2026 DigitalPro. Todos los derechos reservados.</p>
-        <button id="open-admin-btn" class="text-gray-500 hover:text-neon transition-colors flex items-center gap-1" title="Admin" aria-label="Panel de administración" style="cursor:pointer;pointer-events:auto;padding:6px 10px;border:1px solid rgba(255,255,255,0.1);border-radius:8px;display:none;">
-          ⚙️ <span style="font-size:0.7rem;font-weight:600;">Admin</span>
+        <p class="text-xs text-gray-600" id="footer-copy">&copy; 2026 DigitalPro. Todos los derechos reservados.</p>
+        <button id="open-admin-btn" class="text-gray-700 hover:text-neon transition-all flex items-center gap-1" title="Admin" aria-label="Panel de administración" style="cursor:pointer;pointer-events:auto;padding:4px 8px;border:1px solid transparent;border-radius:8px;opacity:0.3;font-size:0.6rem;">
+          ⚙️
         </button>
       </div>
     </div>
@@ -1224,180 +922,11 @@
         `).join('');
       }
 
-      // --- CATALOG REGIONS + SECTORS + VALUE PROPS + CARDS ---
-      const catalogGrid = document.getElementById('catalog-grid');
-      const sectorTabsEl = document.getElementById('sector-tabs');
-      const valuePropsGrid = document.getElementById('value-props-grid');
-      const regionToggleEl = document.getElementById('region-toggle');
-      const regionSubtitleEl = document.getElementById('region-subtitle');
-
-      // Render value props
-      if (CONFIG.catalog_value_props && valuePropsGrid) {
-        valuePropsGrid.innerHTML = CONFIG.catalog_value_props.map((vp, i) => `
-          <div class="value-prop-card" data-aos="zoom-in" data-aos-delay="${i * 80}">
-            <div class="value-prop-icon"><i data-lucide="${esc(vp.icon)}" class="w-7 h-7"></i></div>
-            <h4 class="font-outfit font-bold text-lg mb-2">${esc(vp.title)}</h4>
-            <p class="text-sm text-gray-400 leading-relaxed">${esc(vp.desc)}</p>
-          </div>
-        `).join('');
-      }
-
-      // Current active region & sector state
-      let activeRegion = 'todos';
-      let activeSector = 'todos';
-
-      // Render region toggle
-      const regions = CONFIG.catalog_regions || [];
-      if (regionToggleEl && regions.length) {
-        regionToggleEl.innerHTML = `
-          <button class="region-toggle-btn active-usa" data-region="todos">✨ Todos</button>
-          ${regions.map(r => `
-            <div class="region-toggle-divider"></div>
-            <button class="region-toggle-btn" data-region="${esc(r.id)}">${esc(r.name)}</button>
-          `).join('')}
-        `;
-        // Set initial subtitle
-        if (regionSubtitleEl) regionSubtitleEl.textContent = '';
-
-        regionToggleEl.querySelectorAll('.region-toggle-btn').forEach(btn => {
-          btn.addEventListener('click', () => {
-            activeRegion = btn.dataset.region;
-            // Update toggle styles
-            regionToggleEl.querySelectorAll('.region-toggle-btn').forEach(b => {
-              b.className = 'region-toggle-btn';
-            });
-            if (activeRegion === 'todos') {
-              btn.classList.add('active-usa');
-              if (regionSubtitleEl) regionSubtitleEl.textContent = '';
-            } else {
-              const reg = regions.find(r => r.id === activeRegion);
-              btn.classList.add(activeRegion === 'latam' ? 'active-latam' : 'active-usa');
-              if (regionSubtitleEl && reg) regionSubtitleEl.textContent = reg.subtitle;
-            }
-            // Reset sector to "todos" and rebuild sector tabs
-            activeSector = 'todos';
-            renderSectorTabs();
-            filterCatalogCards();
-          });
-        });
-      }
-
-      // Render sector tabs based on active region
-      const sectors = CONFIG.catalog_sectors || [];
-      function renderSectorTabs() {
-        if (!sectorTabsEl || !sectors.length) return;
-        const filteredSectors = activeRegion === 'todos' ? sectors : sectors.filter(s => s.region === activeRegion);
-        sectorTabsEl.innerHTML = `
-          <button class="sector-tab active" data-sector="todos" style="--tab-color: #00f4ff;">
-            <span>✨</span> Todos
-          </button>
-          ${filteredSectors.map(s => `
-            <button class="sector-tab" data-sector="${esc(s.id)}" style="--tab-color: ${s.color};">
-              <span>${esc(s.emoji)}</span> ${esc(s.name)}
-            </button>
-          `).join('')}
-        `;
-        // Wire sector tab clicks
-        sectorTabsEl.querySelectorAll('.sector-tab').forEach(tab => {
-          tab.addEventListener('click', () => {
-            sectorTabsEl.querySelectorAll('.sector-tab').forEach(t => {
-              t.classList.remove('active');
-              t.style.background = '';
-              t.style.borderColor = '';
-              t.style.color = '';
-            });
-            tab.classList.add('active');
-            const color = tab.style.getPropertyValue('--tab-color');
-            tab.style.background = color;
-            tab.style.borderColor = 'transparent';
-            tab.style.color = '#050510';
-            activeSector = tab.dataset.sector;
-            filterCatalogCards();
-          });
-          // Apply active style to initial "Todos" tab
-          if (tab.dataset.sector === 'todos') {
-            const color = tab.style.getPropertyValue('--tab-color');
-            tab.style.background = color;
-            tab.style.color = '#050510';
-          }
-        });
-      }
-      renderSectorTabs();
-
-      // Filter catalog cards based on activeRegion + activeSector
-      function filterCatalogCards() {
-        document.querySelectorAll('.catalog-card').forEach(card => {
-          const cardRegion = card.dataset.region || '';
-          const cardSector = card.dataset.sector || '';
-          let show = true;
-          if (activeRegion !== 'todos' && cardRegion !== activeRegion) show = false;
-          if (activeSector !== 'todos' && cardSector !== activeSector) show = false;
-          if (show) card.classList.remove('hidden-card');
-          else card.classList.add('hidden-card');
-        });
-      }
-
-      // Build sector color map
-      const sectorColorMap = {};
-      sectors.forEach(s => { sectorColorMap[s.id] = s.color; });
-
-      // Render catalog cards
-      if (CONFIG.catalog && catalogGrid) {
-        const WA = (CONFIG.business && CONFIG.business.whatsapp) || '15125551234';
-        catalogGrid.innerHTML = CONFIG.catalog.map((item, i) => {
-          const sColor = sectorColorMap[item.sector] || '#00f4ff';
-          const regionCls = item.region ? ' region-' + item.region : '';
-          const topIncludes = (item.includes || []).slice(0, 4);
-          const moreCount = (item.includes || []).length - 4;
-          const shareMsg = encodeURIComponent('🚀 Mira esta solución digital de DigitalPro:\n\n*' + item.name + '*\n' + item.tagline + '\n\n💰 Desde $' + item.subscription.price + item.subscription.period + ' o $' + item.one_time.price + ' compra única\n\n✅ Incluye: ' + (item.includes || []).slice(0,3).join(', ') + '\n\n👉 Ver más: ' + window.location.origin + 'producto=' + item.id);
-          return `
-          <div data-aos="zoom-in-up" data-aos-delay="${Math.min(i * 60, 400)}" data-aos-duration="700"
-               class="catalog-card${item.featured ? ' featured' : ''}${regionCls}" data-catalog-id="${esc(item.id)}" data-sector="${esc(item.sector || '')}" data-region="${esc(item.region || '')}">
-            <div style="overflow:hidden; border-radius: 16px 16px 0 0;" onclick="openCatalogModal('${esc(item.id)}')">
-              <img src="${esc(item.image)}" alt="${esc(item.name)}" loading="lazy" class="catalog-card-img" />
-            </div>
-            <div class="catalog-card-body" onclick="openCatalogModal('${esc(item.id)}')">
-              <span class="catalog-card-tag" style="background: ${sColor}15; color: ${sColor}; border: 1px solid ${sColor}30;">${esc(item.category)}</span>
-              <h3 class="font-outfit font-bold text-xl mb-1">${esc(item.name)}</h3>
-              <p class="text-xs text-gray-500 font-semibold mb-2">${esc(item.tagline)}</p>
-              <p class="text-sm text-gray-400 leading-relaxed">${esc(item.description_short)}</p>
-              <div class="catalog-card-includes">
-                <div class="inc-title"><i data-lucide="package" class="w-3 h-3"></i> Lo que obtienes</div>
-                <ul>
-                  ${topIncludes.map(inc => '<li><i data-lucide="check" class="w-3 h-3"></i> ' + esc(inc) + '</li>').join('')}
-                  ${moreCount > 0 ? '<li style="color:rgba(0,244,255,0.5);font-weight:600;">+ ' + moreCount + ' más incluidos</li>' : ''}
-                </ul>
-              </div>
-              <div class="catalog-card-prices">
-                <div>
-                  <div class="price-label">${esc(item.subscription.label || 'Suscripción')}</div>
-                  <span class="price-val">$${item.subscription.price}</span>
-                  <span class="price-period">${esc(item.subscription.period)}</span>
-                </div>
-                <div>
-                  <div class="price-label">${esc(item.one_time.label || 'Compra Única')}</div>
-                  <span class="price-val">$${item.one_time.price}</span>
-                  <span class="price-period"> ${esc(item.currency)}</span>
-                </div>
-              </div>
-            </div>
-            <div style="padding: 0 1.5rem 1.5rem;">
-              <div class="catalog-card-actions">
-                <div class="catalog-card-cta" onclick="openCatalogModal('${esc(item.id)}')">
-                  <i data-lucide="eye" class="w-4 h-4"></i>
-                  ${item.region === 'latam' ? '🔥 Ver Detalles' : 'Ver Detalles'}
-                </div>
-                <a class="catalog-card-cta" href="/catalogo?producto=${esc(item.id)}" style="text-decoration:none;background:rgba(0,244,255,0.06);color:#00f4ff;border:1px solid rgba(0,244,255,0.15);" title="Ver en catálogo 3D interactivo">
-                  <i data-lucide="box" class="w-4 h-4"></i> 3D
-                </a>
-                <a class="catalog-card-share" href="https://wa.me/?text=${shareMsg}" target="_blank" rel="noopener" title="Compartir por WhatsApp" onclick="event.stopPropagation();">
-                  <svg viewBox="0 0 32 32" width="16" height="16" fill="currentColor"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.9 15.9 0 0016.004 32C24.826 32 32 24.826 32 16.004 32 7.176 24.826 0 16.004 0z"/></svg>
-                </a>
-              </div>
-              <p class="catalog-card-disclaimer">* Modelo base. El precio final varía según las necesidades de cada rubro.</p>
-            </div>
-          </div>
-        `}).join('');
+      // --- CATALOG: now served at /catalogo (standalone 3D page) ---
+      // Update catalog count if element exists
+      var catalogCountEl = document.getElementById('catalog-count');
+      if (catalogCountEl && CONFIG.catalog) {
+        catalogCountEl.textContent = CONFIG.catalog.length + '+';
       }
 
       // --- WEB-TO-APP (PWA) SECTION ---
@@ -1453,28 +982,6 @@
       const WA_NUMBER = (CONFIG.business && CONFIG.business.whatsapp) || '15125551234';
       setupWhatsApp(WA_NUMBER, CONFIG.services || []);
 
-      // --- SHARE FULL CATALOG via WhatsApp ---
-      const shareCatalogBtn = document.getElementById('share-catalog-wa');
-      if (shareCatalogBtn && CONFIG.catalog) {
-        const items = CONFIG.catalog;
-        let catalogMsg = '📋 *Catálogo DigitalPro — Soluciones Digitales*\n\n';
-        const grouped = {};
-        items.forEach(item => {
-          const rLabel = item.region === 'usa' ? '🇺🇸 USA' : item.region === 'latam' ? '🌎 LATAM' : '🌍';
-          if (!grouped[rLabel]) grouped[rLabel] = [];
-          grouped[rLabel].push(item);
-        });
-        Object.entries(grouped).forEach(([region, list]) => {
-          catalogMsg += '*' + region + '*\n';
-          list.forEach(item => {
-            catalogMsg += '• ' + item.name + ' — desde $' + item.subscription.price + item.subscription.period + '\n';
-          });
-          catalogMsg += '\n';
-        });
-        catalogMsg += '📌 _Cada modelo es una idea base. El precio varía según tu rubro._\n\n';
-        catalogMsg += '👉 Ver catálogo completo: ' + window.location.origin + '/catalogo';
-        shareCatalogBtn.href = 'https://wa.me/?text=' + encodeURIComponent(catalogMsg);
-      }
 
       // Re-init Lucide icons for dynamically added elements
       lucide.createIcons();
@@ -1592,160 +1099,7 @@
       setTimeout(() => { waTooltip.classList.remove('show'); }, 8000);
     }
 
-    // ===== CATALOG MODAL CONFIGURATOR =====
-    let _CATALOG_DATA = null;
-    // Reuse config already loaded by the main IIFE
-    (function() {
-      function initCatalogData() {
-        if (window._SITE_CONFIG) {
-          var cfg = window._SITE_CONFIG;
-          _CATALOG_DATA = cfg.catalog || [];
-          window._CATALOG_WA = (cfg.business && cfg.business.whatsapp) || '15125551234';
-          window._CATALOG_FORMSPREE = cfg.business && cfg.business.formspree_id ? 'https://formspree.io/f/' + cfg.business.formspree_id : '#contacto';
-        } else {
-          setTimeout(initCatalogData, 200);
-        }
-      }
-      initCatalogData();
-    })();
-
-    function openCatalogModal(itemId) {
-      const items = _CATALOG_DATA || [];
-      const item = items.find(c => c.id === itemId);
-      if (!item) return;
-      const modal = document.getElementById('catalog-modal');
-      const content = document.getElementById('catalog-modal-content');
-      const waNum = window._CATALOG_WA || '15125551234';
-      const formUrl = window._CATALOG_FORMSPREE || '#contacto';
-
-      const shareText = '🚀 *' + item.name + '*\n' + item.tagline + '\n\n💰 Suscripción: $' + item.subscription.price + item.subscription.period + ' | Compra Única: $' + item.one_time.price + '\n\n✅ Incluye:\n' + (item.includes || []).map(x => '• ' + x).join('\n') + '\n\n📌 _Modelo base — el precio varía según tu rubro._\n\n👉 Ver más: ' + window.location.origin + '/catalogo?producto=' + item.id;
-      const encodedShare = encodeURIComponent(shareText);
-
-      content.innerHTML = `
-        <img src="${esc(item.image)}" alt="${esc(item.name)}" class="modal-hero-img" />
-        <div class="flex items-center justify-between mb-2">
-          <span class="catalog-card-tag" style="background: rgba(0,244,255,0.1); color: #00f4ff; border: 1px solid rgba(0,244,255,0.15);">${esc(item.category)}</span>
-          <div class="flex gap-2">
-            <a href="https://wa.me/?text=${encodedShare}" target="_blank" rel="noopener"
-               class="inline-flex items-center gap-1.5 px-3window.location.origin + ' bg-green-500/10 text-green-400 border border-green-400/20 hover:bg-green-500 hover:text-white transition-all" title="Compartir por WhatsApp">
-              <svg viewBox="0 0 32 32" width="12" height="12" fill="currentColor"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.9 15.9 0 0016.004 32C24.826 32 32 24.826 32 16.004 32 7.176 24.826 0 16.004 0z"/></svg>
-              Compartir
-            </a>
-            <button onclick="navigator.clipboard.writeText(window.location.origin + '/catalogo?producto=' + '${esc(item.id)}');this.textContent='✅';setTimeout(()=>{this.textContent='🔗'},1500)"
-               class="px-2.5 py-1.5 rounded-lg text-xs bg-white/5 border border-white/10 hover:bg-white/10 transition-all cursor-pointer" title="Copiar enlace">🔗</button>
-          </div>
-        </div>
-        <h2 class="font-outfit font-bold text-2xl md:text-3xl mt-1 mb-1">${esc(item.name)}</h2>
-        <p class="text-neon font-semibold text-sm mb-4">${esc(item.tagline)}</p>
-        <p class="text-gray-300 leading-relaxed text-sm mb-2">${esc(item.description_full)}</p>
-
-        <details class="modal-includes" open>
-          <summary>
-            <i data-lucide="shield-check" class="w-4 h-4"></i>
-            ¿Qué incluye este paquete?
-            <i data-lucide="chevron-down" class="w-4 h-4 chevron-icon transition-transform ml-auto"></i>
-          </summary>
-          <ul class="mt-3 space-y-2">
-            ${(item.includes || []).map(inc => `
-              <li class="flex items-center gap-2 text-sm text-gray-300">
-                <i data-lucide="check-circle" class="w-4 h-4 text-neon flex-shrink-0"></i>
-                ${esc(inc)}
-              </li>
-            `).join('')}
-          </ul>
-        </details>
-
-        <h3 class="font-outfit font-bold text-lg mb-3 flex items-center gap-2">
-          <i data-lucide="settings-2" class="w-5 h-5 text-neon"></i>
-          Elige cómo prefieres adquirirlo
-        </h3>
-        <div class="modal-pricing-cols">
-          <div class="modal-pricing-box recommended">
-            <div class="box-label" style="background: rgba(0,244,255,0.15); color: #00f4ff;">${esc(item.subscription.label || 'Plan Emprendedor')} · Suscripción</div>
-            <div class="flex items-baseline gap-1 mb-3">
-              <span class="font-outfit font-bold text-3xl text-neon">$${item.subscription.price}</span>
-              <span class="text-gray-500 text-sm">${esc(item.subscription.period)}</span>
-            </div>
-            <ul class="space-y-1.5 mb-4">
-              ${(item.subscription.benefits || []).map(b => `
-                <li class="flex items-start gap-2 text-xs text-gray-300">
-                  <i data-lucide="zap" class="w-3 h-3 text-neon flex-shrink-0 mt-0.5"></i>
-                  ${esc(b)}
-                </li>
-              `).join('')}
-            </ul>
-            <a href="https://wa.me/${esc(waNum)}?text=${encodeURIComponent(item.whatsapp_msg + ' (Suscripción $' + item.subscription.price + item.subscription.period + ')')}"
-               target="_blank" rel="noopener" class="modal-btn-wa">
-              <svg viewBox="0 0 32 32" width="16" height="16" fill="#fff"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.9 15.9 0 0016.004 32C24.826 32 32 24.826 32 16.004 32 7.176 24.826 0 16.004 0z"/></svg>
-              Solicitar por WhatsApp
-            </a>
-          </div>
-          <div class="modal-pricing-box">
-            <div class="box-label" style="background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6);">${esc(item.one_time.label || 'Plan Crecimiento')} · Compra Única</div>
-            <div class="flex items-baseline gap-1 mb-3">
-              <span class="font-outfit font-bold text-3xl text-white">$${item.one_time.price}</span>
-              <span class="text-gray-500 text-sm">${esc(item.currency)}</span>
-            </div>
-            <ul class="space-y-1.5 mb-4">
-              ${(item.one_time.benefits || []).map(b => `
-                <li class="flex items-start gap-2 text-xs text-gray-300">
-                  <i data-lucide="check" class="w-3 h-3 text-green-400 flex-shrink-0 mt-0.5"></i>
-                  ${esc(b)}
-                </li>
-              `).join('')}
-            </ul>
-            <a href="https://wa.me/${esc(waNum)}?text=${encodeURIComponent(item.whatsapp_msg + ' (Compra Única $' + item.one_time.price + ')')}"
-               target="_blank" rel="noopener" class="modal-btn-wa">
-              <svg viewBox="0 0 32 32" width="16" height="16" fill="#fff"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.9 15.9 0 0016.004 32C24.826 32 32 24.826 32 16.004 32 7.176 24.826 0 16.004 0z"/></svg>
-              Solicitar por WhatsApp
-            </a>
-          </div>
-        </div>
-
-        <a href="${esc(formUrl)}" class="modal-btn-form mt-2"
-           onclick="prefillContact('${esc(item.formspree_subject)}')">
-          <i data-lucide="mail" class="w-4 h-4"></i>
-          Solicitar por Formulario
-        </a>
-        <p class="text-center text-xs text-gray-600 mt-3">
-          <i data-lucide="shield-check" class="w-3 h-3 inline mr-1"></i>
-          Sin compromisos. Te respondemos en menos de 24h.
-        </p>
-        <div class="mt-4 p-3 rounded-lg" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);">
-          <p class="text-xs text-gray-500 text-center leading-relaxed">
-            <i data-lucide="info" class="w-3 h-3 inline mr-1 text-gray-600"></i>
-            <strong>Nota:</strong> Este es un modelo base. Cada solución se adapta a las necesidades específicas de tu rubro. El monto final puede variar según la complejidad y exigencias del sistema.
-          </p>
-        </div>
-      `;
-
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      lucide.createIcons();
-    }
-
-    function closeCatalogModal() {
-      const modal = document.getElementById('catalog-modal');
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
-
-    function prefillContact(subject) {
-      closeCatalogModal();
-      setTimeout(() => {
-        const el = document.getElementById('contacto');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-        const msgField = document.querySelector('#contact-form textarea[name="message"]');
-        if (msgField && !msgField.value) msgField.value = subject;
-      }, 300);
-    }
-
-    // Close modal on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeCatalogModal();
-    });
+    // ===== PWA SERVICE WORKER REGISTRATION =====
 
     // ===== PWA SERVICE WORKER REGISTRATION =====
     if ('serviceWorker' in navigator) {
@@ -2425,21 +1779,6 @@
         adminPanel.classList.add('open');
         document.body.style.overflow = 'hidden';
       }
-    }
-
-    // Triple-click on footer copyright to reveal admin button
-    var footerCopy = document.getElementById('footer-copy');
-    var _adminClickCount = 0, _adminClickTimer = null;
-    if (footerCopy) {
-      footerCopy.addEventListener('click', function() {
-        _adminClickCount++;
-        clearTimeout(_adminClickTimer);
-        _adminClickTimer = setTimeout(function() { _adminClickCount = 0; }, 800);
-        if (_adminClickCount >= 3) {
-          openBtn.style.display = '';
-          _adminClickCount = 0;
-        }
-      });
     }
 
     // Button click
