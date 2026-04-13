@@ -948,7 +948,7 @@
           <svg viewBox="0 0 32 32" width="14" height="14" fill="#fff"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.9 15.9 0 0016.004 32C24.826 32 32 24.826 32 16.004 32 7.176 24.826 0 16.004 0z"/></svg>
           Enviar por WhatsApp
         </a>
-        <button onclick="navigator.clipboard.writeText('https://digital-pro-core.vercel.app/#catalogo').then(()=>{this.textContent='✅ Copiado!';setTimeout(()=>{this.innerHTML='<i data-lucide=&quot;link&quot; class=&quot;w-3.5 h-3.5&quot;></i> Copiar Link';lucide.createIcons();},2000)})" class="share-copy-btn">
+        <button onclick="navigator.clipboard.writeText('https://digital-pro-core.vercel.app/catalogo').then(()=>{this.textContent='✅ Copiado!';setTimeout(()=>{this.innerHTML='<i data-lucide=&quot;link&quot; class=&quot;w-3.5 h-3.5&quot;></i> Copiar Link';lucide.createIcons();},2000)})" class="share-copy-btn">
           <i data-lucide="link" class="w-3.5 h-3.5"></i> Copiar Link
         </button>
       </div>
@@ -1345,7 +1345,7 @@
           const regionCls = item.region ? ' region-' + item.region : '';
           const topIncludes = (item.includes || []).slice(0, 4);
           const moreCount = (item.includes || []).length - 4;
-          const shareMsg = encodeURIComponent('🚀 Mira esta solución digital de DigitalPro:\n\n*' + item.name + '*\n' + item.tagline + '\n\n💰 Desde $' + item.subscription.price + item.subscription.period + ' o $' + item.one_time.price + ' compra única\n\n✅ Incluye: ' + (item.includes || []).slice(0,3).join(', ') + '\n\n👉 Ver más: ' + 'https://digital-pro-core.vercel.app/#catalogo');
+          const shareMsg = encodeURIComponent('🚀 Mira esta solución digital de DigitalPro:\n\n*' + item.name + '*\n' + item.tagline + '\n\n💰 Desde $' + item.subscription.price + item.subscription.period + ' o $' + item.one_time.price + ' compra única\n\n✅ Incluye: ' + (item.includes || []).slice(0,3).join(', ') + '\n\n👉 Ver más: ' + 'https://digital-pro-core.vercel.app/catalogo?producto=' + item.id);
           return `
           <div data-aos="zoom-in-up" data-aos-delay="${Math.min(i * 60, 400)}" data-aos-duration="700"
                class="catalog-card${item.featured ? ' featured' : ''}${regionCls}" data-catalog-id="${esc(item.id)}" data-sector="${esc(item.sector || '')}" data-region="${esc(item.region || '')}">
@@ -1465,7 +1465,7 @@
           catalogMsg += '\n';
         });
         catalogMsg += '📌 _Cada modelo es una idea base. El precio varía según tu rubro._\n\n';
-        catalogMsg += '👉 Ver catálogo completo: https://digital-pro-core.vercel.app/#catalogo';
+        catalogMsg += '👉 Ver catálogo completo: https://digital-pro-core.vercel.app/catalogo';
         shareCatalogBtn.href = 'https://wa.me/?text=' + encodeURIComponent(catalogMsg);
       }
 
@@ -1607,7 +1607,7 @@
       const waNum = window._CATALOG_WA || '15125551234';
       const formUrl = window._CATALOG_FORMSPREE || '#contacto';
 
-      const shareText = '🚀 *' + item.name + '*\\n' + item.tagline + '\\n\\n💰 Suscripción: $' + item.subscription.price + item.subscription.period + ' | Compra Única: $' + item.one_time.price + '\\n\\n✅ Incluye:\\n' + (item.includes || []).map(x => '• ' + x).join('\\n') + '\\n\\n📌 _Modelo base — el precio varía según tu rubro._\\n\\n👉 Ver más: https://digital-pro-core.vercel.app/#catalogo';
+      const shareText = '🚀 *' + item.name + '*\\n' + item.tagline + '\\n\\n💰 Suscripción: $' + item.subscription.price + item.subscription.period + ' | Compra Única: $' + item.one_time.price + '\\n\\n✅ Incluye:\\n' + (item.includes || []).map(x => '• ' + x).join('\\n') + '\\n\\n📌 _Modelo base — el precio varía según tu rubro._\\n\\n👉 Ver más: https://digital-pro-core.vercel.app/catalogo?producto=' + item.id;
       const encodedShare = encodeURIComponent(shareText);
 
       content.innerHTML = `
@@ -1620,7 +1620,7 @@
               <svg viewBox="0 0 32 32" width="12" height="12" fill="currentColor"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.9 15.9 0 0016.004 32C24.826 32 32 24.826 32 16.004 32 7.176 24.826 0 16.004 0z"/></svg>
               Compartir
             </a>
-            <button onclick="navigator.clipboard.writeText('https://digital-pro-core.vercel.app/#catalogo');this.textContent='✅';setTimeout(()=>{this.textContent='🔗'},1500)"
+            <button onclick="navigator.clipboard.writeText('https://digital-pro-core.vercel.app/catalogo?producto=' + '${esc(item.id)}');this.textContent='✅';setTimeout(()=>{this.textContent='🔗'},1500)"
                class="px-2.5 py-1.5 rounded-lg text-xs bg-white/5 border border-white/10 hover:bg-white/10 transition-all cursor-pointer" title="Copiar enlace">🔗</button>
           </div>
         </div>
